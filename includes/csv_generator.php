@@ -24,7 +24,7 @@ function generateGreenButtonCSV($data) {
     }
     
     // Write header (Green Button format)
-    fputcsv($file, ['Date', 'Time', 'Usage'], CSV_DELIMITER, CSV_ENCLOSURE);
+    fputcsv($file, ['Date', 'Time', 'Usage'], CSV_DELIMITER, CSV_ENCLOSURE, '\\');
     
     // Write data rows
     foreach ($data as $point) {
@@ -36,7 +36,7 @@ function generateGreenButtonCSV($data) {
             $point['date'],
             $point['time'],
             number_format($kwh, 6, '.', '') // 6 decimal places for precision
-        ], CSV_DELIMITER, CSV_ENCLOSURE);
+        ], CSV_DELIMITER, CSV_ENCLOSURE, '\\');
     }
     
     fclose($file);
