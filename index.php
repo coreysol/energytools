@@ -149,6 +149,46 @@ if (isset($_GET['has_ev'])) {
                     <button type="submit" class="btn-primary">Generate Demand Profile</button>
                 </div>
             </form>
+
+            <section class="data-sources">
+                <h2>How we build your demand profile</h2>
+                <p>
+                    The curves and data in your downloaded file are generated from
+                    publicly available information and standard engineering
+                    assumptions about residential electricity use. Key references include:
+                </p>
+                <ul>
+                    <li>
+                        Typical residential load shapes based on
+                        <a href="https://www.eia.gov/consumption/residential/" target="_blank" rel="noopener noreferrer">
+                            U.S. Energy Information Administration (EIA) Residential Energy Consumption Survey
+                        </a>.
+                    </li>
+                    <li>
+                        Climate and degree-day concepts similar to those used by
+                        <a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">
+                            National Weather Service / NOAA
+                        </a>
+                        for heating and cooling demand.
+                    </li>
+                    <li>
+                        Interval data formatting inspired by the Green Button standard
+                        for customer usage data
+                        (<a href="https://energy.gov/data/green-button" target="_blank" rel="noopener noreferrer">
+                            U.S. Department of Energy Green Button
+                        </a>).
+                    </li>
+                    <li>
+                        EV charging patterns and work‑from‑home impacts derived from
+                        published utility and industry studies of residential load profiles.
+                    </li>
+                </ul>
+                <p class="data-sources-note">
+                    This tool uses representative patterns, not utility‑grade billing data.
+                    For exact historical usage, download Green Button or interval data from your
+                    electric utility if available.
+                </p>
+            </section>
         </main>
 
         <footer>

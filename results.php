@@ -33,6 +33,19 @@ $season_labels = [
     'winter' => 'Winter'
 ];
 
+// Find maximum kW value across all seasons for consistent Y-axis scaling
+$max_kw = 0;
+foreach ($seasons as $season) {
+    if (isset($seasonal_data[$season])) {
+        $season_max = max($seasonal_data[$season]);
+        if ($season_max > $max_kw) {
+            $max_kw = $season_max;
+        }
+    }
+}
+// Round up to next nice number (add 10% padding and round up)
+$max_kw = ceil($max_kw * 1.1);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +105,8 @@ $season_labels = [
 
     <script>
         // Chart configuration
+        // X-axis: Hours of day (0-23, starting at midnight on left)
+        // Y-axis: kW usage
         const chartOptions = {
             type: 'line',
             options: {
@@ -101,21 +116,24 @@ $season_labels = [
                     x: {
                         title: {
                             display: true,
-                            text: 'kW Usage'
-                        },
-                        reverse: false
-                    },
-                    y: {
-                        title: {
-                            display: true,
                             text: 'Hour of Day'
                         },
                         min: 0,
                         max: 23,
-                        reverse: true, // Start at midnight (0) on top
                         ticks: {
-                            stepSize: 1
+                            stepSize: 1,
+                            callback: function(value) {
+                                return value + ':00';
+                            }
                         }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'kW Usage'
+                        },
+                        beginAtZero: true,
+                        max: <?php echo $max_kw; ?>
                     }
                 },
                 plugins: {
@@ -125,7 +143,7 @@ $season_labels = [
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return 'Hour ' + context.parsed.y + ': ' + context.parsed.x.toFixed(2) + ' kW';
+                                return 'Hour ' + context.parsed.x + ': ' + context.parsed.y.toFixed(2) + ' kW';
                             }
                         }
                     }
@@ -136,6 +154,7 @@ $season_labels = [
         // Create charts for each season
         <?php foreach ($seasons as $season): ?>
         const data<?php echo ucfirst($season); ?> = {
+            labels: [<?php for ($hour = 0; $hour < 24; $hour++): ?><?php echo $hour; ?><?php echo $hour < 23 ? ',' : ''; ?><?php endfor; ?>],
             datasets: [{
                 label: 'Average kW',
                 data: [
@@ -144,7 +163,7 @@ $season_labels = [
                     for ($hour = 0; $hour < 24; $hour++): 
                         $kw = $hour_data[$hour] ?? 0;
                     ?>
-                    {x: <?php echo number_format($kw, 2); ?>, y: <?php echo $hour; ?>}<?php echo $hour < 23 ? ',' : ''; ?>
+                    <?php echo number_format($kw, 2); ?><?php echo $hour < 23 ? ',' : ''; ?>
                     <?php endfor; ?>
                 ],
                 borderColor: '<?php 

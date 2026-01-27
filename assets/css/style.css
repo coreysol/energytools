@@ -12,7 +12,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #fff7e6 0%, #f5f5f1 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f7941d 0%, #e57a00 100%);
     color: white;
     padding: 40px 30px;
     text-align: center;
@@ -82,7 +82,7 @@ input[type="number"] {
 input[type="text"]:focus,
 input[type="number"]:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #f7941d;
 }
 
 input[type="text"]:invalid,
@@ -115,7 +115,7 @@ small {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: #f7941d;
 }
 
 .checkbox-label span {
@@ -129,7 +129,7 @@ small {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f7941d 0%, #e57a00 100%);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -143,7 +143,7 @@ small {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px rgba(231, 122, 0, 0.4);
 }
 
 .btn-primary:active {
@@ -169,7 +169,7 @@ footer {
 }
 
 .results-header h2 {
-    color: #667eea;
+    color: #f7941d;
     margin-bottom: 10px;
 }
 
@@ -195,14 +195,14 @@ footer {
 .download-section {
     margin-top: 30px;
     padding: 20px;
-    background: #e8f5e9;
+    background: #fff4e5;
     border-radius: 5px;
     text-align: center;
 }
 
 .download-btn {
     display: inline-block;
-    background: #4caf50;
+    background: #f7941d;
     color: white;
     padding: 12px 25px;
     text-decoration: none;
@@ -213,13 +213,13 @@ footer {
 }
 
 .download-btn:hover {
-    background: #45a049;
+    background: #e57a00;
 }
 
 .loading {
     text-align: center;
     padding: 40px;
-    color: #667eea;
+    color: #f7941d;
 }
 
 /* Responsive design */
