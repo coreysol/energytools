@@ -201,9 +201,11 @@ if (isset($_GET['has_ev'])) {
             <?php
             // Get git commit hash for version number
             $git_version = '';
-            $git_dir = __DIR__ . '/.git';
-            if (is_dir($git_dir)) {
-                $git_hash = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && git rev-parse --short HEAD 2>/dev/null');
+            // Find git repository root (may be in parent directory)
+            $git_root = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && git rev-parse --show-toplevel 2>/dev/null');
+            if ($git_root) {
+                $git_root = trim($git_root);
+                $git_hash = shell_exec('cd ' . escapeshellarg($git_root) . ' && git rev-parse --short HEAD 2>/dev/null');
                 if ($git_hash) {
                     $git_version = trim($git_hash);
                 }
