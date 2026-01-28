@@ -188,6 +188,11 @@ if (isset($_GET['has_ev'])) {
                     For exact historical usage, download Green Button or interval data from your
                     electric utility if available.
                 </p>
+                <p style="margin-top: 20px;">
+                    <a href="methods.php" style="color: #f7941d; font-weight: 600; text-decoration: underline;">
+                        Learn more about the calculation methods and formulas used →
+                    </a>
+                </p>
             </section>
         </main>
 
