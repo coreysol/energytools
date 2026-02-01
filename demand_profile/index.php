@@ -173,7 +173,7 @@ if (isset($_GET['has_ev'])) {
                     </li>
                     <li>
                         Interval data formatting inspired by the Green Button standard
-                        for customer usage data
+                        for exporting customer usage data
                         (<a href="https://energy.gov/data/green-button" target="_blank" rel="noopener noreferrer">
                             U.S. Department of Energy Green Button
                         </a>).
