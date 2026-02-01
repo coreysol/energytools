@@ -101,7 +101,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 
         <main>
 <?php if (!empty($_POST['showCalc'])): ?>
-            <form method="POST" action="mcalc.php">
+            <form method="POST" action="index.php">
                 <div class="form-group">
                     <label for="chosenState">What state do you live in?</label>
                     <select name="chosenState" id="chosenState">
@@ -139,7 +139,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                 </div>
             </form>
             
-            <a href="mcalc.php?state=<?php echo urlencode($chosenState); ?>" class="back-link">← Back to instructions</a>
+            <a href="index.php?state=<?php echo urlencode($chosenState); ?>" class="back-link">← Back to instructions</a>
 
 <?php elseif (!empty($_POST['showResults'])): ?>
             <div class="results-container">
@@ -204,12 +204,12 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 <?php endif; ?>
 
                 <div class="actions">
-                    <form method="POST" action="mcalc.php" style="display: inline;">
+                    <form method="POST" action="index.php" style="display: inline;">
                         <input type="hidden" name="showCalc" value="showCalc">
                         <input type="hidden" name="chosenState" value="<?php echo $safeChosenState; ?>">
                         <button type="submit" class="btn-primary">Recalculate</button>
                     </form>
-                    <a href="mcalc.php?state=<?php echo urlencode($chosenState); ?>" class="btn-secondary">Back to instructions</a>
+                    <a href="index.php?state=<?php echo urlencode($chosenState); ?>" class="btn-secondary">Back to instructions</a>
                 </div>
             </div>
 
@@ -222,7 +222,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                 </p>
             </section>
 
-            <form method="POST" action="mcalc.php">
+            <form method="POST" action="index.php">
                 <input type="hidden" name="showCalc" value="showCalc">
                 <input type="hidden" name="chosenState" value="<?php echo $safeChosenState; ?>">
                 <div class="form-group">
