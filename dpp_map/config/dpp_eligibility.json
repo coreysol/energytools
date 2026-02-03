@@ -1,0 +1,11 @@
+{
+    "utilities": {
+        "Sample Utility": {
+            "rate_classes": [
+                "residential",
+                "commercial"
+            ],
+            "reference_link": "https://example.com/dpp-program"
+        }
+    }
+}
