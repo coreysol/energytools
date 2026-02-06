@@ -68,10 +68,7 @@ function generateDemandProfile($inputs) {
                     $adjusted_kw *= 1.3; // 30% increase during work hours
                 }
                 
-                // Apply EV charging adjustments
-                if ($inputs['has_ev']) {
-                    $adjusted_kw += getEVChargingLoad($hour, $is_weekend);
-                }
+                // EV is added after normalization so base+AC demand stays the same (see below)
                 
                 // Create timestamp
                 $timestamp = clone $current_date;
@@ -89,7 +86,7 @@ function generateDemandProfile($inputs) {
         }
     }
     
-    // Normalize to match annual kWh
+    // Normalize only non-EV load to match annual kWh (so AC-only and AC+EV show same base/AC demand)
     $total_kwh = 0;
     foreach ($data as $point) {
         $total_kwh += $point['kw'] * HOURS_PER_INTERVAL;
@@ -99,6 +96,26 @@ function generateDemandProfile($inputs) {
     
     foreach ($data as &$point) {
         $point['kw'] *= $normalization_factor;
+    }
+    unset($point);
+
+    // Add EV load on top (no second normalization) so afternoon AC matches AC-only run
+    if ($inputs['has_ev']) {
+        $start_date = new DateTime('2024-01-01 00:00:00');
+        $idx = 0;
+        for ($day = 0; $day < DAYS_PER_YEAR; $day++) {
+            $current_date = clone $start_date;
+            $current_date->modify("+{$day} days");
+            $day_of_week = (int)$current_date->format('w');
+            $is_weekend = ($day_of_week == 0 || $day_of_week == 6);
+            for ($hour = 0; $hour < HOURS_PER_DAY; $hour++) {
+                $ev_kw = getEVChargingLoad($hour, $is_weekend);
+                for ($interval = 0; $interval < INTERVALS_PER_HOUR; $interval++) {
+                    $data[$idx]['kw'] = max(0, $data[$idx]['kw'] + $ev_kw);
+                    $idx++;
+                }
+            }
+        }
     }
     
     return $data;
