@@ -150,6 +150,17 @@ footer {
     border-top: 1px solid #e9ecef;
 }
 
+footer .data-source-note {
+    margin-top: 12px;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+footer .data-source-note a {
+    color: #f7941d;
+    font-weight: 600;
+}
+
 /* Results section styles */
 .results-container {
     padding: 30px;

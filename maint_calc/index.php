@@ -57,7 +57,7 @@ $brokenModuleCount = filter_input(INPUT_POST, 'brokenModuleCount', FILTER_VALIDA
 $brokenModuleCount = ($brokenModuleCount !== false && $brokenModuleCount > 0 && $brokenModuleCount <= 1000) ? $brokenModuleCount : 1;
 
 $brokenModuleSize = filter_input(INPUT_POST, 'brokenModuleSize', FILTER_VALIDATE_INT);
-$brokenModuleSize = ($brokenModuleSize !== false && $brokenModuleSize > 0 && $brokenModuleSize <= 1000) ? $brokenModuleSize : 300;
+$brokenModuleSize = ($brokenModuleSize !== false && $brokenModuleSize > 0 && $brokenModuleSize <= 1000) ? $brokenModuleSize : 400;
 
 $stateKwhCosts = filter_input(INPUT_POST, 'stateKwhCosts', FILTER_VALIDATE_FLOAT);
 $stateKwhCosts = ($stateKwhCosts !== false && $stateKwhCosts > 0 && $stateKwhCosts <= 10) ? $stateKwhCosts : $dbStateKwhCosts[$chosenState];
@@ -124,12 +124,12 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 
                 <div class="form-group">
                     <label for="stateKwhCosts">How much does electricity cost ($/kWh)?</label>
-                    <input type="number" step="0.001" min="0.001" max="10" id="stateKwhCosts" name="stateKwhCosts" placeholder="<?php echo (float)$stateKwhCosts; ?>">
+                    <input type="number" step="0.0001" min="0.0001" max="10" id="stateKwhCosts" name="stateKwhCosts" value="<?php echo htmlspecialchars((string)(float)$stateKwhCosts, ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="repairCost">How much will it cost to fix the problem? ($)</label>
-                    <input type="number" min="1" max="100000" id="repairCost" name="repairCost" placeholder="<?php echo (float)$repairCost; ?>">
+                    <input type="number" min="1" max="100000" id="repairCost" name="repairCost" value="<?php echo htmlspecialchars((string)(int)$repairCost, ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <input type="hidden" name="showResults" value="showResults">
@@ -138,7 +138,32 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                     <button type="submit" class="btn-primary">Calculate</button>
                 </div>
             </form>
-            
+            <script>
+            (function() {
+                var stateData = <?php
+                    $stateFormData = [];
+                    foreach ($dbStateKwhCosts as $st => $kwh) {
+                        $stateFormData[$st] = [
+                            'kwh_cost' => (float) $kwh,
+                            'repair_cost' => (int) ($dbStateRepairCost[$st] ?? 500),
+                        ];
+                    }
+                    echo json_encode($stateFormData);
+                ?>;
+                var select = document.getElementById('chosenState');
+                var kwhInput = document.getElementById('stateKwhCosts');
+                var repairInput = document.getElementById('repairCost');
+                if (select && kwhInput && repairInput) {
+                    select.addEventListener('change', function() {
+                        var state = this.value;
+                        if (stateData[state]) {
+                            kwhInput.value = stateData[state].kwh_cost;
+                            repairInput.value = stateData[state].repair_cost;
+                        }
+                    });
+                }
+            })();
+            </script>
             <a href="index.php?state=<?php echo urlencode($chosenState); ?>" class="back-link">← Back to instructions</a>
 
 <?php elseif (!empty($_POST['showResults'])): ?>
@@ -234,6 +259,8 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 
         <footer>
             <p>This tool generates estimates based on typical solar production patterns and your inputs.</p>
+            <p class="data-source-note">Electricity cost (kWh) by state: U.S. Energy Information Administration (EIA), State Electricity Profiles, 2024 average retail price (residential), converted to $/kWh. <a href="https://www.eia.gov/electricity/state/" target="_blank" rel="noopener noreferrer">eia.gov/electricity/state</a>. Profile year 2024; release November 10, 2025.</p>
+            <p class="data-source-note">Energy production factor by state: Derived from solar resource and utility-scale PV capacity factor data. EIA state capacity factors (e.g. AZ 29.1%, UT 29.0%, CA 28.4%); NREL ATB capacity factors by resource class (GHI). State factors scaled to relative solar resource (Southwest highest, Northeast/Pacific NW lower). US = 1.20 baseline. <a href="https://www.eia.gov/todayinenergy/detail.php?id=39832" target="_blank" rel="noopener noreferrer">EIA Today in Energy</a>; <a href="https://atb.nrel.gov/electricity/2024/utility-scale_pv" target="_blank" rel="noopener noreferrer">NREL ATB</a>.</p>
         </footer>
     </div>
 </body>
