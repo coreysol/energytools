@@ -241,7 +241,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 <?php else: ?>
             <section class="info-section">
                 <h2>Do you have modules in your solar array that aren't working?</h2>
-                <p>Use the calculator to see how much lost electricity savings you're missing out on and how that compares to the cost of repairs.</p>
+                <p>Use the calculator to see how much lost electricity savings you're missing out on and how that compares to the cost of repairs. The calculated value assumes all electricity is used on site and does not factor in your local solar export crediting policy.</p>
                 <p class="note">
                     <strong>NOTE:</strong> Energy production estimates (kWh) are based on conservative assumptions for your state. Your system may produce more or less energy than this estimate but for smaller numbers of modules that are broken, the difference is likely minimal.
                 </p>
