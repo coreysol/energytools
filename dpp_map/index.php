@@ -24,9 +24,10 @@ $pageSubtitle = 'Search by address to view a location on the map';
 
         <main>
             <div class="search-controls" role="search">
-                <div class="form-group">
+                <div class="form-group form-group-address">
                     <label for="search-address">Address</label>
-                    <input type="text" id="search-address" name="search-address" placeholder="Enter address or city, state" aria-label="Search by address" autocomplete="off">
+                    <input type="text" id="search-address" name="search-address" placeholder="Enter address or city, state" aria-label="Search by address" aria-autocomplete="list" aria-controls="address-suggest-list" aria-expanded="false" autocomplete="off">
+                    <ul id="address-suggest-list" class="address-suggest-list" role="listbox" aria-label="Address suggestions" style="display: none;"></ul>
                 </div>
                 <div class="form-group">
                     <button type="button" id="btn-search" class="btn-primary" aria-label="Search">Search</button>

@@ -56,6 +56,73 @@
         addressMarker = L.marker([lat, lng]).addTo(map);
     }
 
+    let suggestTimeout = null;
+    let suggestHighlight = -1;
+
+    function showAddressSuggestions(suggestions) {
+        const list = document.getElementById('address-suggest-list');
+        const input = document.getElementById('search-address');
+        if (!list || !input) return;
+        list.innerHTML = '';
+        if (!suggestions || suggestions.length === 0) {
+            list.style.display = 'none';
+            input.setAttribute('aria-expanded', 'false');
+            return;
+        }
+        suggestions.forEach(function (s, i) {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'option');
+            li.setAttribute('id', 'address-suggest-' + i);
+            li.setAttribute('data-lat', String(s.lat));
+            li.setAttribute('data-lng', String(s.lng));
+            li.textContent = s.display_name;
+            li.tabIndex = -1;
+            li.addEventListener('click', function () {
+                input.value = s.display_name;
+                list.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+                flyTo(s.lat, s.lng);
+                clearSearchError();
+            });
+            li.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    input.value = s.display_name;
+                    list.style.display = 'none';
+                    input.setAttribute('aria-expanded', 'false');
+                    flyTo(s.lat, s.lng);
+                    clearSearchError();
+                }
+            });
+            list.appendChild(li);
+        });
+        list.style.display = 'block';
+        input.setAttribute('aria-expanded', 'true');
+        suggestHighlight = -1;
+    }
+
+    function hideAddressSuggestions() {
+        const list = document.getElementById('address-suggest-list');
+        const input = document.getElementById('search-address');
+        if (list) list.style.display = 'none';
+        if (input) input.setAttribute('aria-expanded', 'false');
+        suggestHighlight = -1;
+    }
+
+    function fetchAddressSuggestions(q) {
+        if (q.length < 2) {
+            showAddressSuggestions([]);
+            return;
+        }
+        fetch(API_BASE + '/geocode-suggest.php?q=' + encodeURIComponent(q))
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                const suggestions = Array.isArray(data) ? data : [];
+                showAddressSuggestions(suggestions);
+            })
+            .catch(function () { showAddressSuggestions([]); });
+    }
+
     async function searchByAddress() {
         const input = document.getElementById('search-address');
         const btn = document.getElementById('btn-search');
@@ -92,15 +159,53 @@
     function bindEvents() {
         const btn = document.getElementById('btn-search');
         const input = document.getElementById('search-address');
+        const suggestList = document.getElementById('address-suggest-list');
         if (btn) btn.addEventListener('click', searchByAddress);
         if (input) {
+            input.addEventListener('input', function () {
+                clearTimeout(suggestTimeout);
+                const q = input.value.trim();
+                suggestTimeout = setTimeout(function () { fetchAddressSuggestions(q); }, 300);
+            });
             input.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
+                    if (suggestList && suggestList.style.display === 'block') {
+                        const opts = suggestList.querySelectorAll('[role="option"]');
+                        if (opts.length && suggestHighlight >= 0 && opts[suggestHighlight]) {
+                            const lat = parseFloat(opts[suggestHighlight].dataset.lat);
+                            const lng = parseFloat(opts[suggestHighlight].dataset.lng);
+                            input.value = opts[suggestHighlight].textContent;
+                            hideAddressSuggestions();
+                            if (!isNaN(lat) && !isNaN(lng)) flyTo(lat, lng);
+                            clearSearchError();
+                            return;
+                        }
+                    }
                     searchByAddress();
+                } else if (e.key === 'Escape') {
+                    hideAddressSuggestions();
+                } else if (e.key === 'ArrowDown' && suggestList && suggestList.style.display === 'block') {
+                    e.preventDefault();
+                    const opts = suggestList.querySelectorAll('[role="option"]');
+                    suggestHighlight = Math.min(suggestHighlight + 1, opts.length - 1);
+                    if (opts[suggestHighlight]) opts[suggestHighlight].focus();
+                } else if (e.key === 'ArrowUp' && suggestList && suggestList.style.display === 'block') {
+                    e.preventDefault();
+                    const opts = suggestList.querySelectorAll('[role="option"]');
+                    suggestHighlight = Math.max(suggestHighlight - 1, -1);
+                    if (opts[suggestHighlight]) opts[suggestHighlight].focus();
                 }
             });
+            input.addEventListener('blur', function () {
+                setTimeout(hideAddressSuggestions, 200);
+            });
         }
+        document.addEventListener('click', function (e) {
+            if (input && suggestList && !input.contains(e.target) && !suggestList.contains(e.target)) {
+                hideAddressSuggestions();
+            }
+        });
     }
 
     function init() {
