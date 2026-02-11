@@ -1,10 +1,10 @@
 <?php
 /**
- * DPP Map - Interactive map for distributed power plant (DPP) eligibility
- * Search by address or electric utility; view eligibility by utility and rate class.
+ * DPP Map - Interactive map for distributed power plant (DPP)
+ * Search by address to zoom the map to that location.
  */
 $pageTitle = 'Distributed Power Plant Map';
-$pageSubtitle = 'Find out if you can register for a distributed power plant in your area';
+$pageSubtitle = 'Search by address to view a location on the map';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,53 +25,25 @@ $pageSubtitle = 'Find out if you can register for a distributed power plant in y
         <main>
             <div class="search-controls" role="search">
                 <div class="form-group">
-                    <label for="search-address">Search by address</label>
+                    <label for="search-address">Address</label>
                     <input type="text" id="search-address" name="search-address" placeholder="Enter address or city, state" aria-label="Search by address" autocomplete="off">
                 </div>
-                <div class="form-group form-group-utility">
-                    <label for="search-utility">Search by utility</label>
-                    <input type="text" id="search-utility" name="search-utility" placeholder="Enter electric utility name" aria-label="Search by utility name" aria-autocomplete="list" aria-controls="utility-suggest-list" aria-expanded="false" autocomplete="off">
-                    <ul id="utility-suggest-list" class="utility-suggest-list" role="listbox" aria-label="Utility suggestions" style="display: none;"></ul>
-                </div>
                 <div class="form-group">
-                    <label for="rate-class">Rate class</label>
-                    <select id="rate-class" name="rate-class" aria-label="Rate class">
-                        <option value="residential">Residential</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="industrial">Industrial</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="button" id="btn-search-address" class="btn-primary" aria-label="Search by address">Search address</button>
-                </div>
-                <div class="form-group">
-                    <button type="button" id="btn-search-utility" class="btn-primary" aria-label="Search by utility">Search utility</button>
+                    <button type="button" id="btn-search" class="btn-primary" aria-label="Search">Search</button>
                 </div>
             </div>
+
+            <div id="search-error" class="search-error" style="display: none;"></div>
 
             <div class="map-layout">
                 <div class="map-container">
                     <div id="map"></div>
                 </div>
-                <aside class="side-panel" role="region" aria-label="Eligibility results">
-                    <h2>Eligibility</h2>
-                    <div id="panel-placeholder" class="panel-placeholder">
-                        Search by address or utility to see if you can register for a distributed power plant in your area.
-                    </div>
-                    <div id="panel-content" class="panel-content">
-                        <div class="utility-name" id="panel-utility"></div>
-                        <div id="panel-eligibility" class="eligibility-result"></div>
-                        <div class="reference-link" id="panel-reference"></div>
-                        <div id="panel-freshness" class="panel-freshness" style="display: none;" aria-live="polite"></div>
-                    </div>
-                    <div id="panel-loading" class="loading" style="display: none;" aria-live="polite">Searching…</div>
-                    <div id="panel-error" class="error" style="display: none;"></div>
-                </aside>
             </div>
         </main>
 
         <footer>
-            <p>Eligibility is determined by your electric utility and rate class. Data is for reference only.</p>
+            <p>Search by address to zoom the map to that location.</p>
         </footer>
     </div>
 
