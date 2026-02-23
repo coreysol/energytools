@@ -46,7 +46,7 @@ $base = BASE_PATH . '/';
     <div class="container">
         <header>
             <h1>VPP Value Calculator</h1>
-            <p class="subtitle">Estimate utility savings per MW of virtual power plants deployed (<a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle report, 2023</a>)</p>
+            <p class="subtitle">Estimate utility savings per MW of virtual power plants deployed. (<a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle report, 2023</a>)</p>
         </header>
         <main>
             <form method="POST" action="<?php echo htmlspecialchars(BASE_PATH); ?>/process.php" id="vppForm">

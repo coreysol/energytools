@@ -89,84 +89,18 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Cost Calculator</title>
+    <title>Residential Solar Maintenance Cost Calculator</title>
     <link rel="stylesheet" href="mcalc.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Maintenance Cost Calculator</h1>
+            <h1>Residential Solar Maintenance Cost Calculator</h1>
             <p class="subtitle">Calculate the cost of delayed solar panel repairs</p>
         </header>
 
         <main>
-<?php if (!empty($_POST['showCalc'])): ?>
-            <form method="POST" action="index.php">
-                <div class="form-group">
-                    <label for="chosenState">What state do you live in?</label>
-                    <select name="chosenState" id="chosenState">
-                        <option value="<?php echo $safeChosenState; ?>"><?php echo $safeChosenState; ?></option>
-<?php foreach($dbStateKwhCosts as $key => $value): ?>
-                        <option value="<?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?></option>
-<?php endforeach; ?>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="brokenModuleCount">How many panels aren't working?</label>
-                    <input type="number" id="brokenModuleCount" name="brokenModuleCount" min="1" max="1000" placeholder="<?php echo (int)$brokenModuleCount; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="brokenModuleSize">What's the size of each panel in Watts?</label>
-                    <input type="number" id="brokenModuleSize" name="brokenModuleSize" min="1" max="1000" placeholder="<?php echo (int)$brokenModuleSize; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="stateKwhCosts">How much does electricity cost ($/kWh)?</label>
-                    <input type="number" step="0.0001" min="0.0001" max="10" id="stateKwhCosts" name="stateKwhCosts" value="<?php echo htmlspecialchars((string)(float)$stateKwhCosts, ENT_QUOTES, 'UTF-8'); ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="repairCost">How much will it cost to fix the problem? ($)</label>
-                    <input type="number" min="1" max="100000" id="repairCost" name="repairCost" value="<?php echo htmlspecialchars((string)(int)$repairCost, ENT_QUOTES, 'UTF-8'); ?>">
-                </div>
-
-                <input type="hidden" name="showResults" value="showResults">
-                
-                <div class="form-group">
-                    <button type="submit" class="btn-primary">Calculate</button>
-                </div>
-            </form>
-            <script>
-            (function() {
-                var stateData = <?php
-                    $stateFormData = [];
-                    foreach ($dbStateKwhCosts as $st => $kwh) {
-                        $stateFormData[$st] = [
-                            'kwh_cost' => (float) $kwh,
-                            'repair_cost' => (int) ($dbStateRepairCost[$st] ?? 500),
-                        ];
-                    }
-                    echo json_encode($stateFormData);
-                ?>;
-                var select = document.getElementById('chosenState');
-                var kwhInput = document.getElementById('stateKwhCosts');
-                var repairInput = document.getElementById('repairCost');
-                if (select && kwhInput && repairInput) {
-                    select.addEventListener('change', function() {
-                        var state = this.value;
-                        if (stateData[state]) {
-                            kwhInput.value = stateData[state].kwh_cost;
-                            repairInput.value = stateData[state].repair_cost;
-                        }
-                    });
-                }
-            })();
-            </script>
-            <a href="index.php?state=<?php echo urlencode($chosenState); ?>" class="back-link">← Back to instructions</a>
-
-<?php elseif (!empty($_POST['showResults'])): ?>
+<?php if (!empty($_POST['showResults'])): ?>
             <div class="results-container">
                 <div class="results-header">
                     <h2>Your Results</h2>
@@ -224,7 +158,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
 
 <?php if (!empty($dbStateSrecs[$chosenState])): ?>
                 <div class="srec-notice">
-                    ** You're in a state with <a href="https://www.solarunitedneighbors.org/learn-the-issues/solar-incentives/solar-renewable-energy-credits-srecs/" target="_blank" rel="noopener noreferrer">SRECs</a>. Lost revenue estimates do not include SREC value.
+                    ** You're in a state with <a href="https://www.solarunitedneighbors.org/learn-the-issues/solar-incentives/solar-renewable-energy-credits-srecs/" target="_blank" rel="noopener noreferrer">SRECs</a>. Those SRECs may have value. Lost revenue estimates do not include SREC value.
                 </div>
 <?php endif; ?>
 
@@ -232,28 +166,86 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                     <form method="POST" action="index.php" style="display: inline;">
                         <input type="hidden" name="showCalc" value="showCalc">
                         <input type="hidden" name="chosenState" value="<?php echo $safeChosenState; ?>">
+                        <input type="hidden" name="brokenModuleCount" value="<?php echo (int)$brokenModuleCount; ?>">
+                        <input type="hidden" name="brokenModuleSize" value="<?php echo (int)$brokenModuleSize; ?>">
+                        <input type="hidden" name="stateKwhCosts" value="<?php echo htmlspecialchars((string)(float)$stateKwhCosts, ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="hidden" name="repairCost" value="<?php echo htmlspecialchars((string)(int)$repairCost, ENT_QUOTES, 'UTF-8'); ?>">
                         <button type="submit" class="btn-primary">Recalculate</button>
                     </form>
-                    <a href="index.php?state=<?php echo urlencode($chosenState); ?>" class="btn-secondary">Back to instructions</a>
                 </div>
             </div>
 
 <?php else: ?>
             <section class="info-section">
                 <h2>Do you have modules in your solar array that aren't working?</h2>
-                <p>Use the calculator to see how much lost electricity savings you're missing out on and how that compares to the cost of repairs. The calculated value assumes all electricity is used on site and does not factor in your local solar export crediting policy.</p>
+                <p>Use the calculator below to see how much lost electricity savings you're missing out on and how that compares to the cost of repairs. The calculated value assumes all electricity is used on site and does not factor in your local solar export crediting policy.</p>
                 <p class="note">
                     <strong>NOTE:</strong> Energy production estimates (kWh) are based on conservative assumptions for your state. Your system may produce more or less energy than this estimate but for smaller numbers of modules that are broken, the difference is likely minimal.
                 </p>
             </section>
-
             <form method="POST" action="index.php">
-                <input type="hidden" name="showCalc" value="showCalc">
-                <input type="hidden" name="chosenState" value="<?php echo $safeChosenState; ?>">
                 <div class="form-group">
-                    <button type="submit" class="btn-primary">Go to Calculator</button>
+                    <label for="chosenState">What state do you live in?</label>
+                    <select name="chosenState" id="chosenState">
+                        <option value="<?php echo $safeChosenState; ?>"><?php echo $safeChosenState; ?></option>
+<?php foreach($dbStateKwhCosts as $key => $value): ?>
+                        <option value="<?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?></option>
+<?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="brokenModuleCount">How many panels aren't working?</label>
+                    <input type="number" id="brokenModuleCount" name="brokenModuleCount" min="1" max="1000" value="<?php echo (int)$brokenModuleCount; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="brokenModuleSize">What's the size of each panel in Watts?</label>
+                    <input type="number" id="brokenModuleSize" name="brokenModuleSize" min="1" max="1000" value="<?php echo (int)$brokenModuleSize; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="stateKwhCosts">How much does electricity cost ($/kWh)?</label>
+                    <input type="number" step="0.0001" min="0.0001" max="10" id="stateKwhCosts" name="stateKwhCosts" value="<?php echo htmlspecialchars((string)(float)$stateKwhCosts, ENT_QUOTES, 'UTF-8'); ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="repairCost">How much will it cost to fix the problem? ($)</label>
+                    <input type="number" min="1" max="100000" id="repairCost" name="repairCost" value="<?php echo htmlspecialchars((string)(int)$repairCost, ENT_QUOTES, 'UTF-8'); ?>">
+                </div>
+
+                <input type="hidden" name="showResults" value="showResults">
+                
+                <div class="form-group">
+                    <button type="submit" class="btn-primary">Calculate</button>
                 </div>
             </form>
+            <script>
+            (function() {
+                var stateData = <?php
+                    $stateFormData = [];
+                    foreach ($dbStateKwhCosts as $st => $kwh) {
+                        $stateFormData[$st] = [
+                            'kwh_cost' => (float) $kwh,
+                            'repair_cost' => (int) ($dbStateRepairCost[$st] ?? 500),
+                        ];
+                    }
+                    echo json_encode($stateFormData);
+                ?>;
+                var select = document.getElementById('chosenState');
+                var kwhInput = document.getElementById('stateKwhCosts');
+                var repairInput = document.getElementById('repairCost');
+                if (select && kwhInput && repairInput) {
+                    select.addEventListener('change', function() {
+                        var state = this.value;
+                        if (stateData[state]) {
+                            kwhInput.value = stateData[state].kwh_cost;
+                            repairInput.value = stateData[state].repair_cost;
+                        }
+                    });
+                }
+            })();
+            </script>
 <?php endif; ?>
         </main>
 

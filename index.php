@@ -28,9 +28,15 @@
                 </a>
 
                 <a href="maint_calc/" class="tool-card">
-                    <h2>Maintenance Cost Calculator</h2>
+                    <h2>Residential Solar Maintenance Cost Calculator</h2>
                     <p>Estimate the cost of delayed solar panel repairs. Enter your state, number of broken modules, and repair cost to see daily, monthly, and yearly lost energy and revenue so you can compare against repair cost.</p>
-                    <span class="tool-link">Open Maintenance Cost Calculator →</span>
+                    <span class="tool-link">Open Residential Solar Maintenance Cost Calculator →</span>
+                </a>
+
+                <a href="vpp_value/" class="tool-card">
+                    <h2>VPP Value Calculator</h2>
+                    <p>Estimate utility savings per megawatt of virtual power plants (VPPs) deployed. Based on the Brattle Group report &ldquo;Real Reliability: The Value of Virtual Power.&rdquo; Compare VPP net cost to gas peakers and utility-scale batteries; optional sensitivities for carbon price, T&amp;D, and more.</p>
+                    <span class="tool-link">Open VPP Value Calculator →</span>
                 </a>
             </section>
         </main>
