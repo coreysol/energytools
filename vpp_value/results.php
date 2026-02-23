@@ -59,11 +59,10 @@ $base = BASE_PATH . '/';
             <h1>VPP Value Calculator – Results</h1>
             <p class="subtitle">Savings per MW of VPP deployed (utility/ratepayer perspective)</p>
         </header>
-        <p class="disclaimer-below-header">Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
         <main class="results-container">
             <div class="results-header">
                 <h2>Your results</h2>
-                <p>Comparison baseline: <strong><?php echo htmlspecialchars($baselineLabel); ?></strong>. Resource adequacy net costs in 2022 $/MW/year.</p>
+                <p>Comparison baseline: <strong><?php echo htmlspecialchars($baselineLabel); ?></strong>. Resource adequacy net costs in 2022 $/MW/year. Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
             </div>
 
             <div class="savings-result">
