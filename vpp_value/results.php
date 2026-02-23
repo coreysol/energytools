@@ -58,9 +58,8 @@ $base = BASE_PATH . '/';
         <header>
             <h1>VPP Value Calculator – Results</h1>
             <p class="subtitle">Savings per MW of VPP deployed (utility/ratepayer perspective)</p>
-            <p class="header-disclaimer">Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
         </header>
-
+        <p class="disclaimer-below-header">Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
         <main class="results-container">
             <div class="results-header">
                 <h2>Your results</h2>

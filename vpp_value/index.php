@@ -47,9 +47,7 @@ $base = BASE_PATH . '/';
         <header>
             <h1>VPP Value Calculator</h1>
             <p class="subtitle">Estimate utility savings per MW of virtual power plants deployed (<a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle report, 2023</a>)</p>
-            <p class="header-disclaimer">Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
         </header>
-
         <main>
             <form method="POST" action="<?php echo htmlspecialchars(BASE_PATH); ?>/process.php" id="vppForm">
                 <div class="form-group checkbox-group">
@@ -172,7 +170,7 @@ $base = BASE_PATH . '/';
                 <div class="form-group">
                     <button type="submit" class="btn-primary">Calculate savings per MW</button>
                 </div>
-                <p class="form-note">Methods and assumptions will be displayed on the results page.</p>
+                <p class="form-note">Methods and assumptions will be displayed on the results page. Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
             </form>
         </main>
 
