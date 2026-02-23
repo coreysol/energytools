@@ -44,6 +44,21 @@ header h1 {
     opacity: 0.95;
 }
 
+.header-disclaimer {
+    font-size: 0.85em;
+    opacity: 0.9;
+    margin-top: 12px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+}
+
 main {
     padding: 40px 30px;
 }
