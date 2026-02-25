@@ -59,11 +59,26 @@ function compute_savings_per_mw(array $inputs) {
     $savingsPerMwYear = $alternativeNetCost - $vppNetCost;
     $savingsPerMw10yr = $savingsPerMwYear * 10;
 
-    return [
+    $out = [
         'savings_per_mw_year'   => $savingsPerMwYear,
         'savings_per_mw_10yr'  => $savingsPerMw10yr,
         'net_cost_vpp'         => $vppNetCost,
         'net_cost_gas'         => $gasNetCost,
         'net_cost_battery'    => $batteryNetCost,
     ];
+
+    $peakMw = isset($inputs['peak_demand']) && isset($inputs['pct_peak_vpp'])
+        && $inputs['peak_demand'] !== null && $inputs['pct_peak_vpp'] !== null
+        ? (float) $inputs['peak_demand'] * ((float) $inputs['pct_peak_vpp'] / 100) : null;
+    if ($peakMw !== null) {
+        $out['vpp_mw'] = $peakMw;
+        $out['total_savings_year'] = $savingsPerMwYear * $peakMw;
+        $out['total_savings_10yr'] = $savingsPerMw10yr * $peakMw;
+    } else {
+        $out['vpp_mw'] = null;
+        $out['total_savings_year'] = null;
+        $out['total_savings_10yr'] = null;
+    }
+
+    return $out;
 }

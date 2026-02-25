@@ -15,18 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $validation = validateVppInputs($_POST);
 
 if (!$validation['valid']) {
+    $s = $validation['sanitized'];
     $params = array_merge(
         ['errors' => json_encode($validation['errors'])],
         [
-            'include_resilience'   => $validation['sanitized']['include_resilience'] ? '1' : '',
-            'include_emissions'   => $validation['sanitized']['include_emissions'] ? '1' : '',
-            'include_ancillary'   => $validation['sanitized']['include_ancillary'] ? '1' : '',
-            'comparison_baseline' => $validation['sanitized']['comparison_baseline'],
-            'carbon_price'        => $validation['sanitized']['carbon_price'],
-            'td_level'            => $validation['sanitized']['td_level'],
-            'tech_cost'           => $validation['sanitized']['tech_cost'],
-            'renewables'          => $validation['sanitized']['renewables'],
-            'battery_config'      => $validation['sanitized']['battery_config'],
+            'include_resilience'   => $s['include_resilience'] ? '1' : '',
+            'include_emissions'   => $s['include_emissions'] ? '1' : '',
+            'include_ancillary'   => $s['include_ancillary'] ? '1' : '',
+            'comparison_baseline' => $s['comparison_baseline'],
+            'carbon_price'        => $s['carbon_price'],
+            'td_level'            => $s['td_level'],
+            'tech_cost'           => $s['tech_cost'],
+            'renewables'          => $s['renewables'],
+            'battery_config'      => $s['battery_config'],
+            'peak_demand'         => $s['peak_demand'] !== null ? (string) $s['peak_demand'] : '',
+            'pct_peak_vpp'        => $s['pct_peak_vpp'] !== null ? (string) $s['pct_peak_vpp'] : '',
         ]
     );
     header('Location: ' . BASE_PATH . '/index.php?' . http_build_query($params));

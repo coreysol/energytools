@@ -68,7 +68,11 @@ $base = BASE_PATH . '/';
             <div class="savings-result">
                 <div class="primary">$<?php echo number_format($savingsYear, 0); ?> per MW of VPP deployed saved per year</div>
                 <div class="secondary">Over 10 years: $<?php echo number_format($savings10yr, 0); ?> per MW (undiscounted)</div>
+                <?php if (isset($result['total_savings_year']) && $result['total_savings_year'] !== null): ?>
+                <div class="secondary" style="margin-top: 10px; font-weight: 600;">Total savings (<?php echo number_format($result['vpp_mw'], 1); ?> MW VPP or <?php echo number_format((float) $inputs['pct_peak_vpp'], 1); ?>% of total system demand): $<?php echo number_format($result['total_savings_year'], 0); ?> per year; over 10 years: $<?php echo number_format($result['total_savings_10yr'], 0); ?> (undiscounted).</div>
+                <?php else: ?>
                 <div class="secondary" style="margin-top: 6px;">Use this value as a multiplier: multiply by your planned VPP capacity (MW) to estimate total savings.</div>
+                <?php endif; ?>
             </div>
 
             <div class="chart-wrapper">
@@ -89,7 +93,11 @@ $base = BASE_PATH . '/';
                 Tech cost: <?php echo $inputs['tech_cost'] === '2030' ? '2030 trends' : 'Base'; ?>;
                 Renewables: <?php echo $inputs['renewables'] === 'bau' ? 'Business-as-usual' : 'Base'; ?>;
                 Battery config: <?php echo $inputs['battery_config'] === 'alt' ? 'Alternative' : 'Base'; ?>;
-                Ancillary services <?php echo !empty($inputs['include_ancillary']) ? 'on' : 'off'; ?>.
+                Ancillary services <?php echo !empty($inputs['include_ancillary']) ? 'on' : 'off'; ?>;
+                <?php if (isset($inputs['peak_demand']) && $inputs['peak_demand'] !== null && isset($inputs['pct_peak_vpp']) && $inputs['pct_peak_vpp'] !== null): ?>
+                Peak demand: <?php echo number_format((float) $inputs['peak_demand'], 1); ?> MW;
+                % of peak from VPPs: <?php echo number_format((float) $inputs['pct_peak_vpp'], 1); ?>%.
+                <?php endif; ?>
             </div>
             <div style="margin-top: 30px; text-align: center;">
                 <a href="<?php echo htmlspecialchars(BASE_PATH); ?>/index.php" class="btn-primary">New calculation</a>
@@ -105,8 +113,18 @@ $base = BASE_PATH . '/';
                     </section>
 
                     <section class="method-section">
+                        <h3>Scope</h3>
+                        <p>This tool values a <strong>residential-only</strong> VPP as defined in the Brattle report. The U.S. Department of Energy&rsquo;s <a href="https://liftoff.energy.gov/vpp/" target="_blank" rel="noopener noreferrer">Pathways to Commercial Liftoff: Virtual Power Plants</a> report uses a broader VPP definition that includes commercial and industrial flexible loads, rooftop solar plus batteries, and other distributed resources; scaling this calculator to system-wide savings (e.g., 10–20% of peak) is consistent with DOE&rsquo;s framing, but this tool does not model C&amp;I or other non-residential DERs. Equity, C&amp;I participation, and wholesale market integration are discussed in the DOE report but are outside the scope of this calculator.</p>
+                    </section>
+
+                    <section class="method-section">
+                        <h3>Related report</h3>
+                        <p>The DOE <a href="https://liftoff.energy.gov/vpp/" target="_blank" rel="noopener noreferrer">Pathways to Commercial Liftoff: Virtual Power Plants</a> (2023) uses related Brattle analysis and projects 80–160 GW of VPPs by 2030 (10–20% of peak load) with large system-level savings. This calculator provides <strong>per-MW</strong> economics that you can scale (e.g., using the optional peak demand and % of peak) rather than DOE&rsquo;s aggregate numbers.</p>
+                    </section>
+
+                    <section class="method-section">
                         <h3>Net cost definition</h3>
-                        <p>Net cost = all-in cost (CapEx, O&M, fuel where applicable) minus market value (energy, ancillary services, T&amp;D deferral, and optionally emissions and resilience). Lower net cost means the resource is more attractive. When &ldquo;Include emissions benefits&rdquo; or &ldquo;Include resilience benefits&rdquo; is on, the report&rsquo;s incremental societal value is subtracted from the VPP net cost (reducing it or making it negative).</p>
+                        <p>Net cost = all-in cost (CapEx, O&M, fuel where applicable) minus market value (energy, ancillary services, T&amp;D deferral, and optionally emissions and resilience). Lower net cost means the resource is more attractive. When &ldquo;Include emissions benefits&rdquo; or &ldquo;Include resilience benefits&rdquo; is on, the report&rsquo;s incremental societal value is subtracted from the VPP net cost (reducing it or making it negative). The DOE Liftoff report&rsquo;s finding that VPPs can provide resource adequacy at a negative net cost (with societal benefits) is consistent with turning on emissions and optionally resilience here and scaling to tens of GW.</p>
                     </section>
 
                     <section class="method-section">
@@ -133,7 +151,7 @@ $base = BASE_PATH . '/';
                         <h3>Sensitivity options</h3>
                         <ul>
                             <li><strong>T&amp;D cost level:</strong> Base = report base; High = more T&amp;D deferral value for VPP (lower VPP net cost); Low = less.</li>
-                            <li><strong>Technology cost scenario:</strong> Base = report base-case costs; 2030 trends = assumed future cost declines (lower net costs).</li>
+                            <li><strong>Technology cost scenario:</strong> Base = report base-case costs; 2030 trends = assumed future cost declines (lower net costs). This is a simple sensitivity from the Brattle report and can be used to approximate a 2030 cost view, as in the DOE Liftoff narrative, but is not the same as DOE&rsquo;s own scenario modeling.</li>
                             <li><strong>Renewables deployment:</strong> Base = report&rsquo;s 50% renewables illustrative system; Business-as-usual = sensitivity with lower renewables.</li>
                             <li><strong>Battery configuration:</strong> Applies to the utility-scale battery alternative only: Base = 4‑hour/6‑hour mix; Alternative = 4‑hour storage only (Table 4 &ldquo;4-hr Storage&rdquo; column; does not fully meet RA in report).</li>
                             <li><strong>Include ancillary services value:</strong> When on, net cost subtracts value from providing spinning reserves etc. (report base case). When off, &ldquo;energy only&rdquo; sensitivity—higher net costs.</li>
@@ -142,7 +160,7 @@ $base = BASE_PATH . '/';
 
                     <section class="method-section">
                         <h3>Report reference</h3>
-                        <p class="data-sources-note"><a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023). <em>Real Reliability: The Value of Virtual Power</em>, prepared for Google</a> (summary). <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power-Technical-Appendix_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Technical Appendix</a>, Table 4: annual costs, benefits, and net costs by scenario. All constants in this calculator are from Table 4 or derived from it.</p>
+                        <p class="data-sources-note"><a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023). <em>Real Reliability: The Value of Virtual Power</em>, prepared for Google</a> (summary). <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power-Technical-Appendix_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Technical Appendix</a>, Table 4: annual costs, benefits, and net costs by scenario. All constants in this calculator are from Table 4 or derived from it. <a href="https://liftoff.energy.gov/vpp/" target="_blank" rel="noopener noreferrer">DOE Pathways to Commercial Liftoff: Virtual Power Plants</a> (2023) uses related Brattle analysis.</p>
                     </section>
                 </div>
             </div>

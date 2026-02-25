@@ -59,6 +59,8 @@ function validateVppInputs(array $inputs) {
         'tech_cost'           => $inputs['tech_cost'] ?? 'base',
         'renewables'          => $inputs['renewables'] ?? 'base',
         'battery_config'      => $inputs['battery_config'] ?? 'base',
+        'peak_demand'         => null,
+        'pct_peak_vpp'        => null,
     ];
 
     global $VALID_BASELINES, $VALID_TD_LEVELS, $VALID_TECH_COSTS, $VALID_RENEWABLES, $VALID_BATTERY_CONFIGS;
@@ -103,6 +105,28 @@ function validateVppInputs(array $inputs) {
         $errors['battery_config'] = $result;
     } else {
         $sanitized['battery_config'] = $result;
+    }
+
+    // Optional: peak demand (MW) and % of peak from VPPs. Both or neither.
+    $peakRaw = isset($inputs['peak_demand']) ? trim((string) $inputs['peak_demand']) : '';
+    $pctRaw  = isset($inputs['pct_peak_vpp']) ? trim((string) $inputs['pct_peak_vpp']) : '';
+    $peakSet = $peakRaw !== '';
+    $pctSet  = $pctRaw !== '';
+    if ($peakSet && !$pctSet) {
+        $errors['pct_peak_vpp'] = 'Provide both peak demand and % of peak from VPPs, or leave both blank.';
+    } elseif (!$peakSet && $pctSet) {
+        $errors['peak_demand'] = 'Provide both peak demand and % of peak from VPPs, or leave both blank.';
+    } elseif ($peakSet && $pctSet) {
+        if (!is_numeric($peakRaw) || (float) $peakRaw <= 0 || (float) $peakRaw > 500000) {
+            $errors['peak_demand'] = 'Peak demand must be a number between 0.1 and 500,000 MW.';
+        } else {
+            $sanitized['peak_demand'] = (float) $peakRaw;
+        }
+        if (!is_numeric($pctRaw) || (float) $pctRaw < 0 || (float) $pctRaw > 100) {
+            $errors['pct_peak_vpp'] = '% of peak from VPPs must be between 0 and 100.';
+        } else {
+            $sanitized['pct_peak_vpp'] = (float) $pctRaw;
+        }
     }
 
     return [

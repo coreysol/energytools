@@ -16,13 +16,15 @@ $defaults = [
     'tech_cost'           => 'base',
     'renewables'          => 'base',
     'battery_config'      => 'base',
+    'peak_demand'          => '',
+    'pct_peak_vpp'         => '',
 ];
 
 $errors = [];
 if (isset($_GET['errors'])) {
     $errors = json_decode(urldecode($_GET['errors']), true) ?? [];
 }
-foreach (['include_resilience', 'include_emissions', 'include_ancillary', 'comparison_baseline', 'carbon_price', 'td_level', 'tech_cost', 'renewables', 'battery_config'] as $k) {
+foreach (['include_resilience', 'include_emissions', 'include_ancillary', 'comparison_baseline', 'carbon_price', 'td_level', 'tech_cost', 'renewables', 'battery_config', 'peak_demand', 'pct_peak_vpp'] as $k) {
     if (isset($_GET[$k])) {
         if (in_array($k, ['include_resilience', 'include_emissions', 'include_ancillary'], true)) {
             $defaults[$k] = (bool) $_GET[$k];
@@ -53,7 +55,7 @@ $base = BASE_PATH . '/';
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="include_resilience" name="include_resilience" value="1" <?php echo $defaults['include_resilience'] ? 'checked' : ''; ?>>
-                        <span>Include resilience benefits <span class="tooltip-trigger" title="When on, adds the report's estimated value of avoided distribution outages from behind-the-meter batteries (backup during outages). Default: off (utility-only perspective).">?</span></span>
+                        <span>Include resilience benefits <span class="tooltip-trigger" title="When on, subtracts the report's incremental resilience value from VPP net cost (value of avoided distribution outages from behind-the-meter batteries providing backup during outages). Technical Appendix Table 4 reports this as part of VPP 'Societal Cost Impact' (~$400/MW-year in base case). Default: off for utility-only perspective.">?</span></span>
                     </label>
                     <small>Default: off (From Brattle report (2023)—utility perspective)</small>
                 </div>
@@ -61,14 +63,14 @@ $base = BASE_PATH . '/';
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="include_emissions" name="include_emissions" value="1" <?php echo $defaults['include_emissions'] ? 'checked' : ''; ?>>
-                        <span>Include emissions benefits <span class="tooltip-trigger" title="When on, adds the value of reduced GHG emissions at the report's carbon price. Default: off (utility-only perspective).">?</span></span>
+                        <span>Include emissions benefits <span class="tooltip-trigger" title="When on, subtracts the report's incremental emissions value from VPP net cost (reduced GHG emissions valued at the carbon price). Technical Appendix Table 4 reports this in VPP 'Societal Cost Impact' (~$36,900/MW-year at $100/metric ton); the calculator scales this value linearly with carbon price. Default: off for utility-only perspective.">?</span></span>
                     </label>
                     <small>Default: off (From Brattle report (2023))</small>
                 </div>
 
                 <div class="form-group">
                     <label for="comparison_baseline" class="label-with-tooltip">Comparison baseline
-                        <span class="tooltip-trigger" title="Gas peaker = compare to a new gas combustion turbine; Battery = compare to transmission-connected utility-scale battery; Average = compare to the average of both.">?</span>
+                        <span class="tooltip-trigger" title="Table 4 'Net Resource Adequacy Cost (System)' base case: Gas peaker = compare to a new gas combustion turbine; Utility-scale battery = compare to transmission-connected battery; Average = compare to the average of both. Savings = (selected alternative net cost per MW) − (VPP net cost per MW).">?</span>
                     </label>
                     <select id="comparison_baseline" name="comparison_baseline">
                         <option value="gas" <?php echo $defaults['comparison_baseline'] === 'gas' ? 'selected' : ''; ?>>Gas peaker</option>
@@ -89,7 +91,7 @@ $base = BASE_PATH . '/';
                     <div class="accordion-panel" id="accordion-panel" role="region" aria-labelledby="accordion-toggle" hidden>
                 <div class="form-group">
                     <label for="carbon_price" class="label-with-tooltip">Carbon price ($/metric ton CO₂)
-                        <span class="tooltip-trigger" title="Social cost of carbon in $/metric ton CO₂. Report base case: $100. Used when 'Include emissions benefits' is on.">?</span>
+                        <span class="tooltip-trigger" title="Social cost of carbon in $/metric ton CO₂. Technical Appendix base case: $100. Table 4 VPP emissions benefit is at this price; when 'Include emissions benefits' is on, the calculator scales that benefit proportionally (e.g. $200/ton → 2× the base emissions value).">?</span>
                     </label>
                     <input type="number" id="carbon_price" name="carbon_price" value="<?php echo htmlspecialchars($defaults['carbon_price']); ?>"
                            min="0" max="500" step="1">
@@ -101,7 +103,7 @@ $base = BASE_PATH . '/';
 
                 <div class="form-group">
                     <label for="td_level" class="label-with-tooltip">T&amp;D cost level
-                        <span class="tooltip-trigger" title="Base = report base; High/Low = sensitivity cases for value of deferred T&D investment from distributed VPP resources.">?</span>
+                        <span class="tooltip-trigger" title="Table 4 T&amp;D sensitivity (VPP only): Base = report base. Higher T&amp;D Cost = more value from deferred distribution investment (lower VPP net cost). Lower T&amp;D Cost = less deferral value (higher VPP net cost). Does not change gas or battery net costs.">?</span>
                     </label>
                     <select id="td_level" name="td_level">
                         <option value="base" <?php echo $defaults['td_level'] === 'base' ? 'selected' : ''; ?>>Base</option>
@@ -116,7 +118,7 @@ $base = BASE_PATH . '/';
 
                 <div class="form-group">
                     <label for="tech_cost" class="label-with-tooltip">Technology cost scenario
-                        <span class="tooltip-trigger" title="Base = report base-case technology costs; 2030 trends = sensitivity with assumed future cost declines.">?</span>
+                        <span class="tooltip-trigger" title="Table 4 '2030 Tech Cost Trend' sensitivity: Base = report base-case technology costs. 2030 trends = assumed future cost declines; each resource has a different multiplier (gas ~0.91×, battery ~0.29×, VPP ~0.81×). Use this to approximate a 2030 cost view, as in the DOE Liftoff report, but it is a simple sensitivity, not DOE's full scenario modeling.">?</span>
                     </label>
                     <select id="tech_cost" name="tech_cost">
                         <option value="base" <?php echo $defaults['tech_cost'] === 'base' ? 'selected' : ''; ?>>Base</option>
@@ -130,7 +132,7 @@ $base = BASE_PATH . '/';
 
                 <div class="form-group">
                     <label for="renewables" class="label-with-tooltip">Renewables deployment
-                        <span class="tooltip-trigger" title="Base = report's 50% renewables illustrative system; Business-as-usual = sensitivity with lower renewables.">?</span>
+                        <span class="tooltip-trigger" title="Table 4 'BAU Renewables Deployment' sensitivity: Base = report's 50% renewables illustrative system. Business-as-usual = lower renewables deployment; all three resources (gas, battery, VPP) have slightly lower net costs in this case (~97% for gas, ~97% for battery, ~90% for VPP).">?</span>
                     </label>
                     <select id="renewables" name="renewables">
                         <option value="base" <?php echo $defaults['renewables'] === 'base' ? 'selected' : ''; ?>>Base</option>
@@ -144,7 +146,7 @@ $base = BASE_PATH . '/';
 
                 <div class="form-group">
                     <label for="battery_config" class="label-with-tooltip">Battery configuration (for alternative)
-                        <span class="tooltip-trigger" title="Applies to the utility-scale battery baseline: Base = 4-hour/6-hour mix in report; Alternative = different duration mix from sensitivity.">?</span>
+                        <span class="tooltip-trigger" title="Table 4 battery sensitivity (utility-scale battery alternative only): Base = 4-hour/6-hour duration mix in report. Alternative = '4-hr Storage' column—4-hour storage only; lower net cost per MW but report notes this configuration does not fully meet resource adequacy in their analysis.">?</span>
                     </label>
                     <select id="battery_config" name="battery_config">
                         <option value="base" <?php echo $defaults['battery_config'] === 'base' ? 'selected' : ''; ?>>Base</option>
@@ -159,9 +161,33 @@ $base = BASE_PATH . '/';
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="include_ancillary" name="include_ancillary" value="1" <?php echo $defaults['include_ancillary'] ? 'checked' : ''; ?>>
-                        <span>Include ancillary services value <span class="tooltip-trigger" title="When on, net cost subtracts value from providing spinning reserves etc. Report base case includes this. Turn off for 'energy only' sensitivity.">?</span></span>
+                        <span>Include ancillary services value <span class="tooltip-trigger" title="Table 4 base case includes value from providing ancillary services (e.g. spinning reserves). When off = 'Energy Value Only' sensitivity: net cost does not subtract ancillary value, so net costs rise (e.g. battery ~1.53×, VPP ~1.04×). Use off to approximate energy-only valuation.">?</span></span>
                     </label>
                     <small>Default: on (From Brattle report (2023))</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="peak_demand" class="label-with-tooltip">Peak demand expected (MW)
+                        <span class="tooltip-trigger" title="Optional. Your utility's expected peak demand in MW. If provided with % of peak below, total savings are calculated. DOE Liftoff assumes U.S. peak demand ~800–900 GW by 2030; you can enter your system peak or use that range for context.">?</span>
+                    </label>
+                    <input type="number" id="peak_demand" name="peak_demand" value="<?php echo htmlspecialchars($defaults['peak_demand']); ?>"
+                           min="0" step="0.1" placeholder="Leave blank for $/MW only">
+                    <?php if (isset($errors['peak_demand'])): ?>
+                        <span class="error"><?php echo htmlspecialchars($errors['peak_demand']); ?></span>
+                    <?php endif; ?>
+                    <small>Optional. Provide with % below to see total savings.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pct_peak_vpp" class="label-with-tooltip">% of peak demand to be covered by VPPs
+                        <span class="tooltip-trigger" title="Optional. Percentage of peak demand you expect to meet with VPPs. VPP capacity (MW) = peak demand × this % ÷ 100. DOE Liftoff uses 10–20% of peak by 2030; provide this together with peak demand to see total savings.">?</span>
+                    </label>
+                    <input type="number" id="pct_peak_vpp" name="pct_peak_vpp" value="<?php echo htmlspecialchars($defaults['pct_peak_vpp']); ?>"
+                           min="0" max="100" step="0.1" placeholder="Leave blank for $/MW only">
+                    <?php if (isset($errors['pct_peak_vpp'])): ?>
+                        <span class="error"><?php echo htmlspecialchars($errors['pct_peak_vpp']); ?></span>
+                    <?php endif; ?>
+                    <small>Optional. 0–100. Provide with peak demand above to see total savings.</small>
                 </div>
 
                     </div>
