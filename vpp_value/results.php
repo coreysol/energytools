@@ -118,14 +118,14 @@ $base = BASE_PATH . '/';
                     </section>
 
                     <section class="method-section">
-                        <h3>Base-case constants (from report)</h3>
-                        <p>Base-case net costs per MW-year (before sensitivities) are derived from the report&rsquo;s exhibited ranges (VPP ~40–60% of gas peaker net cost, ~60% of battery; 60 GW over 10 years → $15–35B total savings).</p>
+                        <h3>Base-case constants (Technical Appendix Table 4)</h3>
+                        <p>Base-case net costs per MW-year are from Brattle Volume II Technical Appendix, Table 4, &ldquo;Net Resource Adequacy Cost (System)&rdquo; base case, converted from $million/year for 400 MW to $/MW-year.</p>
                         <ul>
                             <li>Gas peaker (base): <?php echo number_format(\BRATTLE_NET_COST_GAS_PEAKER_BASE); ?> $/MW-year</li>
                             <li>Utility-scale battery (base): <?php echo number_format(\BRATTLE_NET_COST_BATTERY_BASE); ?> $/MW-year</li>
                             <li>VPP (base): <?php echo number_format(\BRATTLE_NET_COST_VPP_BASE); ?> $/MW-year</li>
-                            <li>Incremental emissions value (when included): <?php echo number_format(\BRATTLE_EMISSIONS_VALUE_PER_MW_YR); ?> $/MW-year at $<?php echo \BRATTLE_CARBON_PRICE_BASE; ?>/metric ton; scales with carbon price</li>
-                            <li>Incremental resilience value (when included): <?php echo number_format(\BRATTLE_RESILIENCE_VALUE_PER_MW_YR); ?> $/MW-year</li>
+                            <li>Incremental emissions value (when included): <?php echo number_format(\BRATTLE_EMISSIONS_VALUE_PER_MW_YR); ?> $/MW-year at $<?php echo \BRATTLE_CARBON_PRICE_BASE; ?>/metric ton (Table 4 VPP emissions); scales with carbon price</li>
+                            <li>Incremental resilience value (when included): <?php echo number_format(\BRATTLE_RESILIENCE_VALUE_PER_MW_YR); ?> $/MW-year (Table 4 VPP resilience)</li>
                         </ul>
                     </section>
 
@@ -135,14 +135,14 @@ $base = BASE_PATH . '/';
                             <li><strong>T&amp;D cost level:</strong> Base = report base; High = more T&amp;D deferral value for VPP (lower VPP net cost); Low = less.</li>
                             <li><strong>Technology cost scenario:</strong> Base = report base-case costs; 2030 trends = assumed future cost declines (lower net costs).</li>
                             <li><strong>Renewables deployment:</strong> Base = report&rsquo;s 50% renewables illustrative system; Business-as-usual = sensitivity with lower renewables.</li>
-                            <li><strong>Battery configuration:</strong> Applies to the utility-scale battery alternative only: Base = 4‑hour/6‑hour mix; Alternative = different duration mix from report sensitivity.</li>
+                            <li><strong>Battery configuration:</strong> Applies to the utility-scale battery alternative only: Base = 4‑hour/6‑hour mix; Alternative = 4‑hour storage only (Table 4 &ldquo;4-hr Storage&rdquo; column; does not fully meet RA in report).</li>
                             <li><strong>Include ancillary services value:</strong> When on, net cost subtracts value from providing spinning reserves etc. (report base case). When off, &ldquo;energy only&rdquo; sensitivity—higher net costs.</li>
                         </ul>
                     </section>
 
                     <section class="method-section">
                         <h3>Report reference</h3>
-                        <p class="data-sources-note"><a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023). <em>Real Reliability: The Value of Virtual Power</em>, prepared for Google</a>. Constants used in this tool are either from report exhibits or derived from reported ranges where exact exhibit values are not published.</p>
+                        <p class="data-sources-note"><a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023). <em>Real Reliability: The Value of Virtual Power</em>, prepared for Google</a> (summary). <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power-Technical-Appendix_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Technical Appendix</a>, Table 4: annual costs, benefits, and net costs by scenario. All constants in this calculator are from Table 4 or derived from it.</p>
                     </section>
                 </div>
             </div>

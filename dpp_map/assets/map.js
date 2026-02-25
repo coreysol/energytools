@@ -14,6 +14,7 @@
 
     let map = null;
     let addressMarker = null;
+    let utilityBoundaryLayer = null;
 
     function initMap() {
         map = L.map('map').setView(DEFAULT_CENTER, DEFAULT_ZOOM);
@@ -56,6 +57,55 @@
         addressMarker = L.marker([lat, lng]).addTo(map);
     }
 
+    var utilityBoundaryStyle = {
+        color: '#c00',
+        weight: 2.5,
+        opacity: 0.9,
+        fillColor: '#c00',
+        fillOpacity: 0.08
+    };
+
+    function drawUtilityBoundary(geometryOrGeometries) {
+        if (!map) return;
+        if (utilityBoundaryLayer) {
+            map.removeLayer(utilityBoundaryLayer);
+            utilityBoundaryLayer = null;
+        }
+        var geometries = Array.isArray(geometryOrGeometries)
+            ? geometryOrGeometries
+            : (geometryOrGeometries && geometryOrGeometries.coordinates ? [geometryOrGeometries] : []);
+        if (geometries.length === 0) return;
+        utilityBoundaryLayer = L.layerGroup();
+        geometries.forEach(function (geom) {
+            if (!geom || !geom.coordinates) return;
+            var feature = { type: 'Feature', geometry: geom, properties: {} };
+            L.geoJSON(feature, { style: utilityBoundaryStyle }).addTo(utilityBoundaryLayer);
+        });
+        utilityBoundaryLayer.addTo(map);
+    }
+
+    function clearUtilityBoundary() {
+        if (map && utilityBoundaryLayer) {
+            map.removeLayer(utilityBoundaryLayer);
+            utilityBoundaryLayer = null;
+        }
+    }
+
+    function fetchAndDrawUtilityBoundary(lat, lng) {
+        fetch(API_BASE + '/utility-at-point.php?lat=' + encodeURIComponent(lat) + '&lng=' + encodeURIComponent(lng))
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.geometries && data.geometries.length > 0) {
+                    drawUtilityBoundary(data.geometries);
+                } else if (data.geometry) {
+                    drawUtilityBoundary(data.geometry);
+                } else {
+                    clearUtilityBoundary();
+                }
+            })
+            .catch(function () { clearUtilityBoundary(); });
+    }
+
     let suggestTimeout = null;
     let suggestHighlight = -1;
 
@@ -83,6 +133,7 @@
                 input.setAttribute('aria-expanded', 'false');
                 flyTo(s.lat, s.lng);
                 clearSearchError();
+                fetchAndDrawUtilityBoundary(s.lat, s.lng);
             });
             li.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
@@ -92,6 +143,7 @@
                     input.setAttribute('aria-expanded', 'false');
                     flyTo(s.lat, s.lng);
                     clearSearchError();
+                    fetchAndDrawUtilityBoundary(s.lat, s.lng);
                 }
             });
             list.appendChild(li);
@@ -149,6 +201,7 @@
                 return;
             }
             flyTo(lat, lng);
+            fetchAndDrawUtilityBoundary(lat, lng);
         } catch (err) {
             showSearchError('Search failed. Please try again.', null);
         } finally {
@@ -177,7 +230,10 @@
                             const lng = parseFloat(opts[suggestHighlight].dataset.lng);
                             input.value = opts[suggestHighlight].textContent;
                             hideAddressSuggestions();
-                            if (!isNaN(lat) && !isNaN(lng)) flyTo(lat, lng);
+                            if (!isNaN(lat) && !isNaN(lng)) {
+                                flyTo(lat, lng);
+                                fetchAndDrawUtilityBoundary(lat, lng);
+                            }
                             clearSearchError();
                             return;
                         }
