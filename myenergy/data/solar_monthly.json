@@ -1,0 +1,654 @@
+[
+  {
+    "year_month": "2012-06",
+    "solar_kwh": 198.0
+  },
+  {
+    "year_month": "2012-07",
+    "solar_kwh": 460.9
+  },
+  {
+    "year_month": "2012-08",
+    "solar_kwh": 408.0
+  },
+  {
+    "year_month": "2012-09",
+    "solar_kwh": 358.4
+  },
+  {
+    "year_month": "2012-10",
+    "solar_kwh": 222.6
+  },
+  {
+    "year_month": "2012-11",
+    "solar_kwh": 179.9
+  },
+  {
+    "year_month": "2012-12",
+    "solar_kwh": 118.6
+  },
+  {
+    "year_month": "2013-01",
+    "solar_kwh": 141.7
+  },
+  {
+    "year_month": "2013-02",
+    "solar_kwh": 191.6
+  },
+  {
+    "year_month": "2013-03",
+    "solar_kwh": 302.2
+  },
+  {
+    "year_month": "2013-04",
+    "solar_kwh": 424.5
+  },
+  {
+    "year_month": "2013-05",
+    "solar_kwh": 456.7
+  },
+  {
+    "year_month": "2013-06",
+    "solar_kwh": 428.4
+  },
+  {
+    "year_month": "2013-07",
+    "solar_kwh": 439.2
+  },
+  {
+    "year_month": "2013-08",
+    "solar_kwh": 379.9
+  },
+  {
+    "year_month": "2013-09",
+    "solar_kwh": 365.5
+  },
+  {
+    "year_month": "2013-10",
+    "solar_kwh": 242.4
+  },
+  {
+    "year_month": "2013-11",
+    "solar_kwh": 171.1
+  },
+  {
+    "year_month": "2013-12",
+    "solar_kwh": 113.7
+  },
+  {
+    "year_month": "2014-01",
+    "solar_kwh": 126.6
+  },
+  {
+    "year_month": "2014-02",
+    "solar_kwh": 181.4
+  },
+  {
+    "year_month": "2014-03",
+    "solar_kwh": 241.6
+  },
+  {
+    "year_month": "2014-04",
+    "solar_kwh": 394.0
+  },
+  {
+    "year_month": "2014-05",
+    "solar_kwh": 465.5
+  },
+  {
+    "year_month": "2014-06",
+    "solar_kwh": 491.0
+  },
+  {
+    "year_month": "2014-07",
+    "solar_kwh": 481.2
+  },
+  {
+    "year_month": "2014-08",
+    "solar_kwh": 403.2
+  },
+  {
+    "year_month": "2014-09",
+    "solar_kwh": 335.4
+  },
+  {
+    "year_month": "2014-10",
+    "solar_kwh": 233.0
+  },
+  {
+    "year_month": "2014-11",
+    "solar_kwh": 164.4
+  },
+  {
+    "year_month": "2014-12",
+    "solar_kwh": 109.9
+  },
+  {
+    "year_month": "2015-01",
+    "solar_kwh": 121.8
+  },
+  {
+    "year_month": "2015-02",
+    "solar_kwh": 152.9
+  },
+  {
+    "year_month": "2015-03",
+    "solar_kwh": 268.2
+  },
+  {
+    "year_month": "2015-04",
+    "solar_kwh": 397.1
+  },
+  {
+    "year_month": "2015-05",
+    "solar_kwh": 492.1
+  },
+  {
+    "year_month": "2015-06",
+    "solar_kwh": 412.3
+  },
+  {
+    "year_month": "2015-07",
+    "solar_kwh": 419.3
+  },
+  {
+    "year_month": "2015-08",
+    "solar_kwh": 445.5
+  },
+  {
+    "year_month": "2015-09",
+    "solar_kwh": 333.7
+  },
+  {
+    "year_month": "2015-10",
+    "solar_kwh": 249.8
+  },
+  {
+    "year_month": "2015-11",
+    "solar_kwh": 156.4
+  },
+  {
+    "year_month": "2015-12",
+    "solar_kwh": 109.4
+  },
+  {
+    "year_month": "2016-01",
+    "solar_kwh": 127.1
+  },
+  {
+    "year_month": "2016-02",
+    "solar_kwh": 201.1
+  },
+  {
+    "year_month": "2016-03",
+    "solar_kwh": 318.4
+  },
+  {
+    "year_month": "2016-04",
+    "solar_kwh": 402.2
+  },
+  {
+    "year_month": "2016-05",
+    "solar_kwh": 364.4
+  },
+  {
+    "year_month": "2016-06",
+    "solar_kwh": 500.3
+  },
+  {
+    "year_month": "2016-07",
+    "solar_kwh": 479.1
+  },
+  {
+    "year_month": "2016-08",
+    "solar_kwh": 465.3
+  },
+  {
+    "year_month": "2016-09",
+    "solar_kwh": 317.8
+  },
+  {
+    "year_month": "2016-10",
+    "solar_kwh": 271.7
+  },
+  {
+    "year_month": "2016-11",
+    "solar_kwh": 176.4
+  },
+  {
+    "year_month": "2016-12",
+    "solar_kwh": 137.1
+  },
+  {
+    "year_month": "2017-01",
+    "solar_kwh": 125.6
+  },
+  {
+    "year_month": "2017-02",
+    "solar_kwh": 203.6
+  },
+  {
+    "year_month": "2017-03",
+    "solar_kwh": 304.9
+  },
+  {
+    "year_month": "2017-04",
+    "solar_kwh": 375.2
+  },
+  {
+    "year_month": "2017-05",
+    "solar_kwh": 388.7
+  },
+  {
+    "year_month": "2017-06",
+    "solar_kwh": 489.2
+  },
+  {
+    "year_month": "2017-07",
+    "solar_kwh": 381.0
+  },
+  {
+    "year_month": "2017-08",
+    "solar_kwh": 424.8
+  },
+  {
+    "year_month": "2017-09",
+    "solar_kwh": 338.8
+  },
+  {
+    "year_month": "2017-10",
+    "solar_kwh": 264.9
+  },
+  {
+    "year_month": "2017-11",
+    "solar_kwh": 177.9
+  },
+  {
+    "year_month": "2017-12",
+    "solar_kwh": 121.7
+  },
+  {
+    "year_month": "2018-01",
+    "solar_kwh": 164.5
+  },
+  {
+    "year_month": "2018-02",
+    "solar_kwh": 153.6
+  },
+  {
+    "year_month": "2018-03",
+    "solar_kwh": 305.2
+  },
+  {
+    "year_month": "2018-04",
+    "solar_kwh": 369.6
+  },
+  {
+    "year_month": "2018-05",
+    "solar_kwh": 402.4
+  },
+  {
+    "year_month": "2018-06",
+    "solar_kwh": 416.6
+  },
+  {
+    "year_month": "2018-07",
+    "solar_kwh": 451.7
+  },
+  {
+    "year_month": "2018-08",
+    "solar_kwh": 430.0
+  },
+  {
+    "year_month": "2018-09",
+    "solar_kwh": 254.1
+  },
+  {
+    "year_month": "2018-10",
+    "solar_kwh": 246.1
+  },
+  {
+    "year_month": "2018-11",
+    "solar_kwh": 150.7
+  },
+  {
+    "year_month": "2018-12",
+    "solar_kwh": 119.6
+  },
+  {
+    "year_month": "2019-01",
+    "solar_kwh": 114.6
+  },
+  {
+    "year_month": "2019-02",
+    "solar_kwh": 174.1
+  },
+  {
+    "year_month": "2019-03",
+    "solar_kwh": 319.8
+  },
+  {
+    "year_month": "2019-04",
+    "solar_kwh": 379.0
+  },
+  {
+    "year_month": "2019-05",
+    "solar_kwh": 435.1
+  },
+  {
+    "year_month": "2019-06",
+    "solar_kwh": 487.8
+  },
+  {
+    "year_month": "2019-07",
+    "solar_kwh": 496.4
+  },
+  {
+    "year_month": "2019-08",
+    "solar_kwh": 423.6
+  },
+  {
+    "year_month": "2019-09",
+    "solar_kwh": 343.6
+  },
+  {
+    "year_month": "2019-10",
+    "solar_kwh": 236.9
+  },
+  {
+    "year_month": "2019-11",
+    "solar_kwh": 177.3
+  },
+  {
+    "year_month": "2019-12",
+    "solar_kwh": 120.9
+  },
+  {
+    "year_month": "2020-01",
+    "solar_kwh": 149.5
+  },
+  {
+    "year_month": "2020-02",
+    "solar_kwh": 196.4
+  },
+  {
+    "year_month": "2020-03",
+    "solar_kwh": 286.8
+  },
+  {
+    "year_month": "2020-04",
+    "solar_kwh": 349.5
+  },
+  {
+    "year_month": "2020-05",
+    "solar_kwh": 426.5
+  },
+  {
+    "year_month": "2020-06",
+    "solar_kwh": 473.6
+  },
+  {
+    "year_month": "2020-07",
+    "solar_kwh": 490.5
+  },
+  {
+    "year_month": "2020-08",
+    "solar_kwh": 391.6
+  },
+  {
+    "year_month": "2020-09",
+    "solar_kwh": 312.4
+  },
+  {
+    "year_month": "2020-10",
+    "solar_kwh": 237.0
+  },
+  {
+    "year_month": "2020-11",
+    "solar_kwh": 170.8
+  },
+  {
+    "year_month": "2020-12",
+    "solar_kwh": 132.8
+  },
+  {
+    "year_month": "2021-01",
+    "solar_kwh": 144.0
+  },
+  {
+    "year_month": "2021-02",
+    "solar_kwh": 148.3
+  },
+  {
+    "year_month": "2021-03",
+    "solar_kwh": 329.3
+  },
+  {
+    "year_month": "2021-04",
+    "solar_kwh": 390.8
+  },
+  {
+    "year_month": "2021-05",
+    "solar_kwh": 433.4
+  },
+  {
+    "year_month": "2021-06",
+    "solar_kwh": 477.6
+  },
+  {
+    "year_month": "2021-07",
+    "solar_kwh": 475.7
+  },
+  {
+    "year_month": "2021-08",
+    "solar_kwh": 396.7
+  },
+  {
+    "year_month": "2021-09",
+    "solar_kwh": 346.9
+  },
+  {
+    "year_month": "2021-10",
+    "solar_kwh": 228.9
+  },
+  {
+    "year_month": "2021-11",
+    "solar_kwh": 184.5
+  },
+  {
+    "year_month": "2021-12",
+    "solar_kwh": 122.2
+  },
+  {
+    "year_month": "2022-01",
+    "solar_kwh": 109.6
+  },
+  {
+    "year_month": "2022-02",
+    "solar_kwh": 198.5
+  },
+  {
+    "year_month": "2022-03",
+    "solar_kwh": 272.3
+  },
+  {
+    "year_month": "2022-04",
+    "solar_kwh": 372.1
+  },
+  {
+    "year_month": "2022-05",
+    "solar_kwh": 376.4
+  },
+  {
+    "year_month": "2022-06",
+    "solar_kwh": 457.1
+  },
+  {
+    "year_month": "2022-07",
+    "solar_kwh": 419.0
+  },
+  {
+    "year_month": "2022-08",
+    "solar_kwh": 435.8
+  },
+  {
+    "year_month": "2022-09",
+    "solar_kwh": 314.3
+  },
+  {
+    "year_month": "2022-10",
+    "solar_kwh": 221.1
+  },
+  {
+    "year_month": "2022-11",
+    "solar_kwh": 163.6
+  },
+  {
+    "year_month": "2022-12",
+    "solar_kwh": 119.9
+  },
+  {
+    "year_month": "2023-01",
+    "solar_kwh": 117.4
+  },
+  {
+    "year_month": "2023-02",
+    "solar_kwh": 180.4
+  },
+  {
+    "year_month": "2023-03",
+    "solar_kwh": 294.9
+  },
+  {
+    "year_month": "2023-04",
+    "solar_kwh": 377.9
+  },
+  {
+    "year_month": "2023-05",
+    "solar_kwh": 431.7
+  },
+  {
+    "year_month": "2023-06",
+    "solar_kwh": 388.3
+  },
+  {
+    "year_month": "2023-07",
+    "solar_kwh": 412.1
+  },
+  {
+    "year_month": "2023-08",
+    "solar_kwh": 375.3
+  },
+  {
+    "year_month": "2023-09",
+    "solar_kwh": 291.1
+  },
+  {
+    "year_month": "2023-10",
+    "solar_kwh": 239.9
+  },
+  {
+    "year_month": "2023-11",
+    "solar_kwh": 171.2
+  },
+  {
+    "year_month": "2023-12",
+    "solar_kwh": 107.6
+  },
+  {
+    "year_month": "2024-01",
+    "solar_kwh": 77.4
+  },
+  {
+    "year_month": "2024-02",
+    "solar_kwh": 202.1
+  },
+  {
+    "year_month": "2024-03",
+    "solar_kwh": 283.0
+  },
+  {
+    "year_month": "2024-04",
+    "solar_kwh": 331.3
+  },
+  {
+    "year_month": "2024-05",
+    "solar_kwh": 345.6
+  },
+  {
+    "year_month": "2024-06",
+    "solar_kwh": 452.4
+  },
+  {
+    "year_month": "2024-07",
+    "solar_kwh": 411.3
+  },
+  {
+    "year_month": "2024-08",
+    "solar_kwh": 388.3
+  },
+  {
+    "year_month": "2024-09",
+    "solar_kwh": 272.0
+  },
+  {
+    "year_month": "2024-10",
+    "solar_kwh": 269.1
+  },
+  {
+    "year_month": "2024-11",
+    "solar_kwh": 159.5
+  },
+  {
+    "year_month": "2024-12",
+    "solar_kwh": 120.5
+  },
+  {
+    "year_month": "2025-01",
+    "solar_kwh": 99.7
+  },
+  {
+    "year_month": "2025-02",
+    "solar_kwh": 180.5
+  },
+  {
+    "year_month": "2025-03",
+    "solar_kwh": 319.8
+  },
+  {
+    "year_month": "2025-04",
+    "solar_kwh": 347.3
+  },
+  {
+    "year_month": "2025-05",
+    "solar_kwh": 377.6
+  },
+  {
+    "year_month": "2025-06",
+    "solar_kwh": 400.5
+  },
+  {
+    "year_month": "2025-07",
+    "solar_kwh": 406.0
+  },
+  {
+    "year_month": "2025-08",
+    "solar_kwh": 394.4
+  },
+  {
+    "year_month": "2025-09",
+    "solar_kwh": 314.7
+  },
+  {
+    "year_month": "2025-10",
+    "solar_kwh": 275.7
+  },
+  {
+    "year_month": "2025-11",
+    "solar_kwh": 172.7
+  },
+  {
+    "year_month": "2025-12",
+    "solar_kwh": 114.1
+  }
+]
