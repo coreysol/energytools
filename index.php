@@ -27,6 +27,12 @@
                     <span class="tool-link">Open Demand Profile Generator →</span>
                 </a>
 
+                <a href="myenergy/" class="tool-card">
+                    <h2>Our Energy Story</h2>
+                    <p>A scrollytelling narrative of 22 years of electricity in one home. Combines utility records with SolarEdge monitoring data.</p>
+                    <span class="tool-link">Open Home Energy Story →</span>
+                </a>
+
                 <a href="maint_calc/" class="tool-card">
                     <h2>Residential Solar Maintenance Cost Calculator</h2>
                     <p>Estimate the cost of delayed solar panel repairs. Enter your state, number of broken modules, and repair cost to see daily, monthly, and yearly lost energy and revenue so you can compare against repair cost.</p>

@@ -1,18 +1,29 @@
 [
   {
     "slug": "the-beginning",
-    "title": "The Beginning",
-    "body": "Our energy story starts here — a young family in a new home. Before solar, before smart thermostats, every kilowatt came straight from the grid. Summer AC and winter heating drove big seasonal swings.",
+    "title": "Starting a family",
+    "body": "Our energy story starts here — a young family in a new home. Before solar, before smart thermostats, every kilowatt came straight from the grid. We are heads down parenting and not thinking about energy much.",
     "anchor": "2004-01",
-    "sensitivity": "public"
+    "sensitivity": "public",
+    "image": "the-beginning.jpg"
   },
   {
     "slug": "peak-years",
-    "title": "Peak Consumption",
-    "body": "The mid-2000s were our highest-usage years, regularly topping 1,000 kWh in summer months. July 2007 hit 1,660 kWh — our all-time peak. We were a typical American household, fully dependent on the grid.",
+    "title": "Peak Grid Consumption",
+    "body": "The mid-2000s were our highest-usage years, regularly topping 1,000 kWh in summer months. We're deep into the toddler years but starting to take notice of high energy bills.",
     "anchor": "2005-01",
-    "end": "2008-12",
-    "sensitivity": "public"
+    "end": "2007-6",
+    "sensitivity": "public",
+    "image": "peak-years.jpg"
+  },
+  {
+    "slug": "new-ac-and-air-sealing",
+    "title": "New AC and air sealing",
+    "body": "We replaced our old roof AC unit out of necessity, start air sealing, and installed programmable thermostats. This house is 100 years old and things are leaking.",
+    "anchor": "2007-10",
+    "end": "2010-10",
+    "sensitivity": "public",
+    "image": "new-ac-and-air-sealing.jpg"
   },
   {
     "slug": "solar-install",

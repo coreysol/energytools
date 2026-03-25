@@ -108,7 +108,7 @@
       .attr('d', gridLine)
       .attr('fill', 'none')
       .attr('stroke', 'var(--color-grid)')
-      .attr('stroke-width', 1.5)
+      .attr('stroke-width', 3)
       .attr('stroke-dasharray', '6 3');
 
     var solarItems = items.filter(function (d) { return d.solar_kwh != null; });
@@ -282,6 +282,11 @@
     var stepsContainer = document.getElementById('scroll-steps');
     stepsContainer.innerHTML = '';
 
+    var heroImg = document.createElement('div');
+    heroImg.className = 'step-hero-image';
+    heroImg.innerHTML = '<img src="images/front of house.jpg" alt="Our home">';
+    stepsContainer.appendChild(heroImg);
+
     events.forEach(function (ev, i) {
       var step = document.createElement('div');
       step.className = 'step';
@@ -289,16 +294,25 @@
       step.dataset.anchor = ev.anchor;
       if (ev.end) step.dataset.end = ev.end;
 
-      var dateLabel = ev.sensitivity === 'soft'
+      var startLabel = ev.sensitivity === 'soft'
         ? formatSoftDate(ev.anchor)
         : formatDate(ev.anchor);
+      var dateLabel = ev.end
+        ? startLabel + ' – ' + formatDate(ev.end)
+        : startLabel;
+
+      var imageHtml = '';
+      if (ev.image) {
+        imageHtml = '<div class="step-image"><img src="images/' + ev.image + '" alt="' + ev.title + '"></div>';
+      }
 
       step.innerHTML =
         '<div class="step-content">' +
           '<h3>' + ev.title + '</h3>' +
           '<p>' + ev.body + '</p>' +
           '<div class="step-date">' + dateLabel + '</div>' +
-        '</div>';
+        '</div>' +
+        imageHtml;
       stepsContainer.appendChild(step);
     });
 
