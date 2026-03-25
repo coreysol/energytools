@@ -45,7 +45,7 @@ body {
   background: white;
   border-radius: 10px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow: clip;
 }
 
 /* ── Header (orange gradient bar) ─────────────────────────── */
@@ -189,7 +189,7 @@ header h1 {
   text-align: center;
   border-top: 1px solid var(--color-border);
 }
-.outro-inner { max-width: 700px; margin: 0 auto; }
+.outro-inner { max-width: 900px; margin: 0 auto; }
 .outro h2 {
   font-size: 1.5em;
   font-weight: 700;
@@ -199,7 +199,7 @@ header h1 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -285,5 +285,11 @@ header h1 {
 
   .stats {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,41 +1,61 @@
 # My Energy — Scrollytelling Home Energy Story
 
-A static scrollytelling page that visualizes 22 years of home energy data (2004–2025), combining monthly grid consumption with SolarEdge solar production data. Built with D3, Scrollama, and Vite. Deployed as plain static files — no server-side code.
-
-## Quick start
-
-```bash
-npm install
-npm run dev       # opens http://localhost:5173
-```
+A static scrollytelling page that visualizes 22 years of home energy data (2004–2025), combining monthly grid consumption with SolarEdge solar production data. No build step — the repo is the deployable site.
 
 ## Project structure
 
 ```
 myenergy/
 ├── index.html              Main page
-├── src/
-│   ├── main.js             Entry point, data loading, Scrollama init
-│   ├── chart.js            D3 chart (dual-series area + line)
-│   ├── annotations.js      Event markers and time-window highlights
-│   ├── scroll.js           Scrollama step handlers
+├── css/
 │   └── style.css           All styles
+├── js/
+│   ├── app.js              Application code (chart, scrolling, stats)
+│   └── vendor/
+│       ├── d3.v7.min.js    D3.js (vendored)
+│       └── scrollama.min.js Scrollama (vendored)
 ├── data/
-│   ├── energy_story.json   Merged grid + solar data (committed)
+│   ├── energy_story.json   Merged grid + solar data
 │   ├── events.json         Narrative events (hand-editable)
 │   ├── grid_monthly.json   Grid-only data (intermediate)
-│   └── solar_monthly.json  Solar-only data (after SolarEdge fetch)
+│   └── solar_monthly.json  Solar-only data
 ├── scripts/
 │   ├── transform_csv.py    One-time: unpivot utility CSV → grid_monthly.json
 │   ├── fetch_solar.py      One-time: SolarEdge API → solar_monthly.json
 │   └── merge_data.py       One-time: grid + solar → energy_story.json
-├── vite.config.js
-└── package.json
+└── README.md
 ```
+
+## Local preview
+
+Open `index.html` directly in a browser, or use any static server:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then visit `http://localhost:8000`.
+
+## Deploying to DreamHost
+
+The repo **is** the site. Upload the contents of this folder to your DreamHost directory:
+
+```
+public_html/energytools/myenergy/
+```
+
+Or pull directly from GitHub on the server:
+
+```bash
+cd ~/energytools.example.com/energytools/myenergy
+git pull
+```
+
+No Node.js, no build step, no server-side runtime needed.
 
 ## Data pipeline
 
-The data pipeline runs on your machine only — not on every deploy. You run these scripts once (or again if you want a new "edition" with updated data).
+These scripts run on your machine only — not on the server. Run them once (or again to update the data for a new "edition").
 
 ### Step 1: Transform the utility CSV
 
@@ -69,8 +89,6 @@ python3 scripts/merge_data.py
 
 Output: `data/energy_story.json` (this is what the site reads)
 
-If you haven't run the SolarEdge fetch yet, this still works — solar values will be `null`.
-
 ## Editing events
 
 Edit `data/events.json` directly. Each event has:
@@ -86,48 +104,9 @@ Edit `data/events.json` directly. Each event has:
 
 Scroll order follows the array order. Add, remove, or reorder events freely.
 
-## Building for production
+## Updating vendor libraries
 
-```bash
-npm run build
-```
+D3 and Scrollama are vendored in `js/vendor/`. To update them, download the new minified files and replace:
 
-Output goes to `dist/`. This contains everything needed for DreamHost:
-
-```
-dist/
-├── index.html
-├── assets/
-│   ├── index-*.js
-│   └── index-*.css
-├── energy_story.json
-└── events.json
-```
-
-## Deploying to DreamHost
-
-Upload the **contents** of `dist/` to your DreamHost directory:
-
-```
-public_html/energytools/myenergy/
-```
-
-No Node.js, PHP, or any server-side runtime needed. Just static files.
-
-You can upload via SFTP, rsync, or the DreamHost file manager:
-
-```bash
-rsync -avz --delete dist/ user@server:~/energytools.example.com/energytools/myenergy/
-```
-
-## Creating a new edition
-
-If you want to update the story with newer data:
-
-1. Update the CSV with new months
-2. Re-run `transform_csv.py`
-3. Re-run `fetch_solar.py` (to get new solar months)
-4. Re-run `merge_data.py`
-5. Edit events in `events.json` if needed
-6. `npm run build`
-7. Upload `dist/` to DreamHost
+- D3: https://d3js.org/ → download `d3.min.js` → save as `js/vendor/d3.v7.min.js`
+- Scrollama: https://github.com/russellsamora/scrollama → `build/scrollama.min.js` → save as `js/vendor/scrollama.min.js`
