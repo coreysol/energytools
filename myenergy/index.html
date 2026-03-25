@@ -8,8 +8,8 @@
 </head>
 <body>
 
-  <header class="hero">
-    <div class="hero-inner">
+  <div class="container">
+    <header>
       <h1>Our Home's Energy Story</h1>
       <p class="subtitle">Twenty-two years of electricity&mdash;from peak grid dependence to solar independence.</p>
       <div class="scroll-cue" aria-hidden="true">
@@ -18,28 +18,27 @@
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <section id="scrolly">
-    <div class="scrolly-container">
-      <figure class="sticky-chart">
-        <div id="chart"></div>
-        <div class="chart-legend" id="chart-legend"></div>
-      </figure>
-      <article class="scroll-steps" id="scroll-steps">
-        <!-- Steps injected by JS from events.json -->
-      </article>
-    </div>
-  </section>
+    <section id="scrolly">
+      <div class="scrolly-container">
+        <figure class="sticky-chart">
+          <div id="chart"></div>
+          <div class="chart-legend" id="chart-legend"></div>
+        </figure>
+        <article class="scroll-steps" id="scroll-steps">
+        </article>
+      </div>
+    </section>
 
-  <footer class="outro">
-    <div class="outro-inner">
-      <h2>By the Numbers</h2>
-      <div class="stats" id="stats"></div>
-      <p class="colophon">Data from utility records (2004&ndash;2025) and SolarEdge monitoring. Built with D3 &amp; Scrollama.</p>
-    </div>
-  </footer>
+    <footer class="outro">
+      <div class="outro-inner">
+        <h2>By the Numbers</h2>
+        <div class="stats" id="stats"></div>
+        <p class="colophon">Data from utility records (2004&ndash;2025) and SolarEdge monitoring. Built with D3 &amp; Scrollama.</p>
+      </div>
+    </footer>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>
