@@ -3,7 +3,7 @@
     "slug": "the-beginning",
     "title": "Starting a family",
     "body": "Our energy story starts here — a young family in a new home. Before solar, before smart thermostats, every kilowatt came straight from the grid. We are heads down parenting and not thinking about energy much.",
-    "anchor": "2004-01",
+    "anchor": "2004-12",
     "sensitivity": "public",
     "image": "the-beginning.jpg"
   },
@@ -26,40 +26,53 @@
     "image": "new-ac-and-air-sealing.jpg"
   },
   {
-    "slug": "solar-install",
-    "title": "Going Solar",
-    "body": "Everything changed when solar panels went on the roof. Grid consumption plummeted almost overnight. The meters started running backward in spring and fall — months where our panels produced more than we consumed.",
-    "anchor": "2012-06",
-    "sensitivity": "public"
+    "slug": "insulation-improvements-new-roof",
+    "title": "Insulation improvements and a new roof",
+    "body": "In 2010, I left a career in IT, was on a path to join the solar industry, and starting to really pay attention to what a homeowner could do to improve efficiency. I also started volunteering at WeatherizeDC, doing non-technical energy audits for homeowners. By Spring of 2011, we seal rim joists and top plates and blow insulation into the attic crawlspace. A few months later we replace our roof and paint the new metal roof white. Life hasn't slowed down but we're catching up.",
+    "anchor": "2011-01",
+    "sensitivity": "public",
+    "image": "insulation-improvements-new-roof.jpg"
   },
   {
-    "slug": "first-net-export",
-    "title": "First Net Export",
-    "body": "April 2013: for the first time, our monthly meter reading went negative. We sent 291 kWh back to the grid — more than we used. A small milestone, but it felt like the future.",
-    "anchor": "2013-04",
+    "slug": "solar-install",
+    "title": "Going Solar",
+    "body": "Everything changed when solar panels went on the roof. Grid consumption plummeted.",
+    "anchor": "2012-06",
+    "sensitivity": "public",
+    "image": "solar-install.jpg"
+  },
+  {
+    "slug": "cruising",
+    "title": "Cruising",
+    "body": "April 2013: for the first time, our monthly meter reading went negative. We sent 291 kWh back to the grid, more than we used. The next three years brings our lowest consumption and our lowest grid use.",
+    "anchor": "2012-08",
+    "end": "2015-09",
     "sensitivity": "public"
   },
   {
     "slug": "solar-maturity",
-    "title": "Finding a Rhythm",
-    "body": "By the mid-2010s, our energy pattern had settled into a new normal. Low grid usage most of the year, with modest draws in the hottest and coldest months. The panels were quietly doing their work.",
-    "anchor": "2015-01",
-    "end": "2018-12",
-    "sensitivity": "public"
+    "title": "Shifting Normal",
+    "body": "By the mid to late-2010s, our energy pattern had settled into a new normal with lower grid usage. The panels were quietly doing their work. But, we also had a teenager with a new gaming rig and a cousin who moved in with us for several years. Electricity usage began to rise again.",
+    "anchor": "2015-10",
+    "end": "2021-05",
+    "sensitivity": "public",
+    "image": "solar-maturity.jpg"
   },
   {
     "slug": "recent-changes",
     "title": "Recent Years",
-    "body": "The last few years have brought new patterns. Some months crept back up — new equipment, changing habits, life evolving. But the overall arc remains: dramatically less grid dependence than where we started.",
-    "anchor": "2020-01",
+    "body": "By the time the college years arrived, our son was away most of the time and our cousin was gone too. Electricity usage fell again. Time flies, the college years end and our son is back and we've had long term extended family member stays in that time too. All the while, the panels just kept working, hedging our bills againt rising electricity costs",
+    "anchor": "2021-08",
     "end": "2025-12",
-    "sensitivity": "public"
+    "sensitivity": "public",
+    "image": "recent-years.jpg"
   },
   {
     "slug": "looking-back",
     "title": "Looking Back",
-    "body": "Twenty-two years of data tell a clear story: from 11,000+ kWh per year to under 3,000. From complete grid dependence to months of net export. Our home's relationship with energy was transformed.",
+    "body": "Twenty+ years of our lives tells a complex story of energy use. We went from 11,000+ kWh per year of energy consumpion, all from the grid, to close to 6,000 with less than half of that coming from the grid. We went from complete grid dependence to some months with net export. But life is complicated and our energy usage has been too.",
     "anchor": "2025-12",
-    "sensitivity": "public"
+    "sensitivity": "public",
+    "image": "looking-back.jpg"
   }
 ]

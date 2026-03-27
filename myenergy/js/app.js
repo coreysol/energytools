@@ -143,7 +143,7 @@
       .attr('class', 'axis x-axis')
       .attr('transform', 'translate(0,' + innerH + ')')
       .call(d3.axisBottom(x)
-        .ticks(d3.timeYear.every(1))
+        .ticks(d3.timeYear.every(2))
         .tickFormat(d3.timeFormat("'%y"))
         .tickSizeOuter(0)
       )
@@ -347,22 +347,19 @@
 
   function renderStats(data) {
     var container = document.getElementById('stats');
-    var total = function (d) { return d.grid_kwh + (d.solar_kwh != null ? d.solar_kwh : 0); };
-    var preSolar = data.filter(function (d) { return d.year_month < '2012-06'; });
-    var postSolar = data.filter(function (d) { return d.year_month >= '2012-06'; });
+    var preMeasures = data.filter(function (d) { return d.year_month < '2011-01'; });
+    var postMeasures = data.filter(function (d) { return d.year_month >= '2011-01'; });
 
-    var avgPre = preSolar.reduce(function (s, d) { return s + total(d); }, 0) / preSolar.length;
-    var avgPost = postSolar.reduce(function (s, d) { return s + total(d); }, 0) / postSolar.length;
-    var netExportMonths = data.filter(function (d) { return d.grid_kwh < 0; }).length;
+    var avgPre = preMeasures.reduce(function (s, d) { return s + d.grid_kwh; }, 0) / preMeasures.length;
+    var avgPost = postMeasures.reduce(function (s, d) { return s + d.grid_kwh; }, 0) / postMeasures.length;
 
     var totalSolar = data
       .filter(function (d) { return d.solar_kwh != null; })
       .reduce(function (s, d) { return s + d.solar_kwh; }, 0);
 
     var stats = [
-      { value: Math.round(avgPre).toLocaleString(), label: 'Avg monthly kWh before solar' },
-      { value: Math.round(avgPost).toLocaleString(), label: 'Avg monthly kWh after solar' },
-      { value: netExportMonths, label: 'Net-export months' },
+      { value: Math.round(avgPre).toLocaleString(), label: 'Avg. monthly grid consumption before energy efficiency and solar' },
+      { value: Math.round(avgPost).toLocaleString(), label: 'Avg. monthly grid consumption after energy efficiency and solar' },
       { value: Math.round(totalSolar).toLocaleString(), label: 'Total solar kWh produced' },
     ];
 
@@ -394,8 +391,9 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
           var newState = createChart('#chart', data);
+          Object.assign(chartState, newState);
           buildLegend('#chart-legend', hasSolar);
-          drawAnnotations(newState, events);
+          drawAnnotations(chartState, events);
         }, 200);
       });
     }).catch(function (err) {

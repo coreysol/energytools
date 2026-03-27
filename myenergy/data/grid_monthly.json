@@ -1,49 +1,5 @@
 [
   {
-    "year_month": "2004-01",
-    "grid_kwh": 630
-  },
-  {
-    "year_month": "2004-02",
-    "grid_kwh": 770
-  },
-  {
-    "year_month": "2004-03",
-    "grid_kwh": 450
-  },
-  {
-    "year_month": "2004-04",
-    "grid_kwh": 410
-  },
-  {
-    "year_month": "2004-05",
-    "grid_kwh": 450
-  },
-  {
-    "year_month": "2004-06",
-    "grid_kwh": 590
-  },
-  {
-    "year_month": "2004-07",
-    "grid_kwh": 960
-  },
-  {
-    "year_month": "2004-08",
-    "grid_kwh": 790
-  },
-  {
-    "year_month": "2004-09",
-    "grid_kwh": 850
-  },
-  {
-    "year_month": "2004-10",
-    "grid_kwh": 530
-  },
-  {
-    "year_month": "2004-11",
-    "grid_kwh": 700
-  },
-  {
     "year_month": "2004-12",
     "grid_kwh": 900
   },
