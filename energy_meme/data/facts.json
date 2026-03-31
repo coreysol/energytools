@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "tone": "boost",
+    "category": "Solar Energy",
+    "fact": "The sun delivers more energy to Earth in one hour than all of humanity uses in an entire year.",
+    "explanation": "Solar irradiance reaching Earth's surface totals roughly 173,000 terawatts — about 10,000 times global energy consumption. The constraint on solar power is not the resource itself, it is our ability to capture and store it economically — and we are solving that fast.",
+    "source": "IEA, World Energy Outlook 2023",
+    "source_url": "https://www.iea.org/reports/world-energy-outlook-2023",
+    "background": "solar"
+  },
+  {
+    "id": 2,
+    "tone": "boost",
+    "category": "Solar Energy",
+    "fact": "The cost of utility-scale solar electricity has fallen by more than 90% in the last decade, making it the cheapest source of new electricity generation in history.",
+    "explanation": "Utility-scale solar PV reached a levelized cost of electricity below $0.05/kWh in many markets by 2023 — cheaper than natural gas, coal, or nuclear in most new-build scenarios. No other energy technology has ever fallen in cost this fast at this scale.",
+    "source": "IRENA, Renewable Power Generation Costs in 2022",
+    "source_url": "https://www.irena.org/publications/2023/Aug/Renewable-Power-Generation-Costs-in-2022",
+    "background": "solar"
+  },
+  {
+    "id": 3,
+    "tone": "boost",
+    "category": "Solar Energy",
+    "fact": "Enough solar panels are now installed worldwide to generate electricity for every home in the United States, United Kingdom, and Germany — combined.",
+    "explanation": "Global installed solar PV capacity surpassed 1 terawatt in 2022 and is adding another terawatt roughly every two years. At typical capacity factors, 1 TW of solar generates approximately 1,400–1,600 TWh per year — enough to power hundreds of millions of homes.",
+    "source": "IRENA, Renewable Capacity Statistics 2023",
+    "source_url": "https://www.irena.org/Publications/2023/Mar/Renewable-capacity-statistics-2023",
+    "background": "solar"
+  },
+  {
+    "id": 4,
+    "tone": "boost",
+    "category": "Wind Energy",
+    "fact": "Wind power is now the single largest source of installed electricity generation capacity in the United States.",
+    "explanation": "As of 2023, installed U.S. wind capacity exceeded 140 GW — surpassing natural gas peakers and nuclear. Wind and solar together now account for the vast majority of all new generation added each year, and that share keeps growing.",
+    "source": "U.S. EIA, Electric Power Monthly 2023",
+    "source_url": "https://www.eia.gov/electricity/monthly/",
+    "background": "wind"
+  },
+  {
+    "id": 5,
+    "tone": "boost",
+    "category": "Wind Energy",
+    "fact": "Modern offshore wind turbines now stand taller than the Eiffel Tower, with blades sweeping an area larger than two football fields.",
+    "explanation": "Turbines like the Vestas V236-15MW have rotor diameters of 236 meters and tip heights exceeding 260 meters. Greater hub height and a larger rotor area mean access to faster, steadier winds — dramatically increasing annual energy output per turbine and driving down the cost per megawatt-hour.",
+    "source": "Vestas, V236-15.0 MW Offshore Wind Turbine",
+    "source_url": "https://www.vestas.com/en/products/offshore/V236-15MW",
+    "background": "wind"
+  },
+  {
+    "id": 6,
+    "tone": "boost",
+    "category": "Grid & Storage",
+    "fact": "Global grid-scale battery storage capacity quadrupled between 2020 and 2023, reaching over 45 GW of installed capacity worldwide.",
+    "explanation": "As battery costs fall and grid operators seek flexible resources to balance increasing renewables, storage deployment is accelerating. The U.S., China, and Australia lead deployment, using batteries for frequency regulation, peak shaving, and renewable integration — and the pace is still accelerating.",
+    "source": "IEA, Batteries and Secure Energy Transitions 2024",
+    "source_url": "https://www.iea.org/reports/batteries-and-secure-energy-transitions",
+    "background": null
+  },
+  {
+    "id": 7,
+    "tone": "boost",
+    "category": "Climate",
+    "fact": "Every dollar invested in clean energy now supports three times more jobs than the same dollar invested in fossil fuels.",
+    "explanation": "Clean energy jobs are more labor-intensive per dollar invested and more evenly distributed geographically. The IEA estimates that $1 million in clean energy spending supports 5–15 direct and indirect jobs, versus 3–5 for fossil fuels. Global clean energy employment now exceeds 13.7 million people and is growing every year.",
+    "source": "IEA, World Energy Employment 2023",
+    "source_url": "https://www.iea.org/reports/world-energy-employment-2023",
+    "background": null
+  },
+  {
+    "id": 8,
+    "tone": "boost",
+    "category": "Policy",
+    "fact": "The U.S. Inflation Reduction Act is projected to mobilize over $3 trillion in clean energy investment through 2030 — the largest climate investment in U.S. history.",
+    "explanation": "Signed in 2022, the IRA provides tax credits, grants, and loan guarantees for solar, wind, EVs, storage, and efficiency. Princeton's REPEAT Project, Goldman Sachs, and BloombergNEF all project the law will catalyze $3–4 trillion in total investment over the decade — a fundamental shift in U.S. energy policy.",
+    "source": "Princeton REPEAT Project, Inflation Reduction Act Analysis 2022",
+    "source_url": "https://repeatproject.org/docs/REPEAT_IRA_Preliminary_Report_2022-08-04.pdf",
+    "background": null
+  },
+  {
+    "id": 9,
+    "tone": "motivate",
+    "category": "Climate",
+    "fact": "The 10 hottest years on record have all occurred since 2010. The year 2023 was the hottest in recorded human history — and 2024 broke that record.",
+    "explanation": "Global average temperatures have now reached approximately 1.5°C above the pre-industrial baseline — the threshold the Paris Agreement was designed to prevent crossing. The window to avoid the most severe impacts is narrowing. Every fraction of a degree we prevent matters, and the choices made this decade will determine outcomes for centuries.",
+    "source": "Copernicus Climate Change Service, Annual Climate Bulletin 2024",
+    "source_url": "https://climate.copernicus.eu/copernicus-2024-hottest-year-record",
+    "background": null
+  },
+  {
+    "id": 10,
+    "tone": "motivate",
+    "category": "Demand & Efficiency",
+    "fact": "Replacing all remaining inefficient lighting in the U.S. with LEDs would eliminate the need for roughly 44 large power plants — yet 40% of U.S. light sockets still use inefficient bulbs.",
+    "explanation": "LEDs use 75% less energy than incandescents and last 25 times longer. The technology is mature, affordable, and available today. The gap is not innovation — it is adoption. Accelerating efficiency upgrades is one of the fastest, cheapest paths to cutting emissions right now.",
+    "source": "U.S. DOE, Solid-State Lighting Program",
+    "source_url": "https://www.energy.gov/eere/ssl/energy-efficiency-federal-buildings",
+    "background": null
+  },
+  {
+    "id": 11,
+    "tone": "motivate",
+    "category": "Demand & Efficiency",
+    "fact": "Heat pumps are 2–4 times more efficient than gas furnaces — yet more than 70% of U.S. homes still heat with fossil fuels.",
+    "explanation": "The technology to decarbonize home heating exists today and saves money over time in most climates. The barrier is upfront cost, contractor availability, and awareness — not the technology itself. With the average HVAC system lasting 15–20 years, decisions made today lock in emissions for decades.",
+    "source": "Rocky Mountain Institute, The Economics of Electrifying Buildings 2018",
+    "source_url": "https://rmi.org/insight/the-economics-of-electrifying-buildings/",
+    "background": null
+  },
+  {
+    "id": 12,
+    "tone": "motivate",
+    "category": "Grid & Storage",
+    "fact": "A virtual power plant tapping just 10% of U.S. residential demand could provide 80 GW of flexible capacity — but less than 1% of that potential has been deployed.",
+    "explanation": "The DOE estimates VPPs could provide 80–160 GW of grid flexibility by 2030, displacing billions in new power plant construction. Most of the hardware — batteries, smart thermostats, EV chargers — is already in homes. What's missing is coordination, policy, and utility programs to unlock it.",
+    "source": "U.S. DOE, Liftoff: Virtual Power Plants 2023",
+    "source_url": "https://liftoff.energy.gov/virtual-power-plants/",
+    "background": null
+  },
+  {
+    "id": 13,
+    "tone": "motivate",
+    "category": "Climate",
+    "fact": "Despite decades of clean energy growth, fossil fuels still supply about 80% of global primary energy — the same share as 30 years ago.",
+    "explanation": "Renewables are growing fast in absolute terms, but so is total energy demand. The result is that fossil fuels remain dominant. Decarbonizing energy means not just adding clean power, but actively phasing out oil, gas, and coal — which requires a pace of transition the world has not yet achieved.",
+    "source": "IEA, World Energy Outlook 2023",
+    "source_url": "https://www.iea.org/reports/world-energy-outlook-2023",
+    "background": null
+  },
+  {
+    "id": 14,
+    "tone": "motivate",
+    "category": "Climate",
+    "fact": "Global CO\u2082 emissions from energy hit a record 37.4 billion tonnes in 2023 — still rising, despite record-breaking renewable deployment.",
+    "explanation": "The world is simultaneously setting records in clean energy installation and in carbon emissions. Growth in energy demand — particularly in developing economies — is currently outpacing the displacement of fossil fuels. Emissions must fall by roughly 45% by 2030 to stay on a 1.5°C pathway. We are moving in the wrong direction.",
+    "source": "IEA, CO\u2082 Emissions in 2023",
+    "source_url": "https://www.iea.org/reports/co2-emissions-in-2023",
+    "background": null
+  },
+  {
+    "id": 15,
+    "tone": "motivate",
+    "category": "Demand & Efficiency",
+    "fact": "Only about 1% of the global building stock is retrofitted for energy efficiency each year. At this rate, it would take a century to decarbonize the world's buildings.",
+    "explanation": "Buildings account for roughly 40% of global energy use and 30% of energy-related CO\u2082 emissions. Most of that comes from buildings constructed before modern efficiency standards existed. The IEA estimates the retrofit rate needs to triple by 2030 to meet climate targets — but financing, skills shortages, and policy gaps are holding it back.",
+    "source": "IEA, Renovating Buildings for Energy Efficiency",
+    "source_url": "https://www.iea.org/topics/buildings",
+    "background": null
+  },
+  {
+    "id": 16,
+    "tone": "motivate",
+    "category": "Policy",
+    "fact": "The world is currently on track to reach roughly 2.5°C of warming by 2100 — more than double the 1.5°C target — even counting all current government commitments.",
+    "explanation": "The UN Environment Programme's annual Emissions Gap Report consistently finds that national pledges, even if fully implemented, fall far short of what's needed. Closing the gap requires roughly tripling global clean energy investment and accelerating fossil fuel phase-out well beyond what current policies deliver. The math is clear — the political will is the missing variable.",
+    "source": "UNEP, Emissions Gap Report 2023",
+    "source_url": "https://www.unep.org/resources/emissions-gap-report-2023",
+    "background": null
+  }
+]

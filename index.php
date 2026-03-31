@@ -39,6 +39,12 @@
                     <span class="tool-link">Open Residential Solar Maintenance Cost Calculator →</span>
                 </a>
 
+                <a href="energy_meme/" class="tool-card">
+                    <h2>Energy Facts &amp; Memes</h2>
+                    <p>Discover shareable facts and inspiration from renewable energy research. Each fact includes an educational explanation and source. Download a shareable image, copy the text, or post directly to social media.</p>
+                    <span class="tool-link">Open Energy Facts &amp; Memes →</span>
+                </a>
+
                 <a href="vpp_value/" class="tool-card">
                     <h2>VPP Value Calculator</h2>
                     <p>Estimate utility savings per megawatt of virtual power plants (VPPs) deployed. Based on the Brattle Group report &ldquo;Real Reliability: The Value of Virtual Power.&rdquo; Compare VPP net cost to gas peakers and utility-scale batteries; optional sensitivities for carbon price, T&amp;D, and more.</p>
