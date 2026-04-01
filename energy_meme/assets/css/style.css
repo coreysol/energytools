@@ -228,7 +228,7 @@ footer a:hover {
 
 .category-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #f7941d 0%, #e57a00 100%);
+    background: linear-gradient(135deg, #7d3c98 0%, #5b2c6f 100%);
     color: white;
     font-size: 0.73em;
     font-weight: 700;
@@ -252,15 +252,15 @@ footer a:hover {
 }
 
 .tone-badge--boost {
-    background: rgba(247, 148, 29, 0.12);
-    color: #e57a00;
-    border: 1px solid rgba(247, 148, 29, 0.3);
+    background: linear-gradient(135deg, #f7941d 0%, #e57a00 100%);
+    color: white;
+    border: none;
 }
 
 .tone-badge--motivate {
-    background: rgba(44, 62, 80, 0.1);
-    color: #2c3e50;
-    border: 1px solid rgba(44, 62, 80, 0.25);
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    color: white;
+    border: none;
 }
 
 /* ── Fact text ─────────────────────────────────────────────────── */
