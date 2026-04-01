@@ -152,5 +152,6 @@ Current facts are organised into these categories:
 | Climate | Temperature records, emissions trends, job creation |
 | Policy | IRA investment, international commitments |
 | Demand & Efficiency | LED adoption, heat pumps, building retrofits |
+| Electrotech | Electrotech revolution, fossil transition economic framework |
 
 You are not limited to these — the `category` field is free text and will render on the badge exactly as written.

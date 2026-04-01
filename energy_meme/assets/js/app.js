@@ -95,9 +95,12 @@
         if (factContainer) factContainer.classList.remove('fact-container--hidden');
         if (welcomeNote)   welcomeNote.hidden = true;
 
-        // Update active tone button styles (isLucky set by caller)
+        // Update active tone button styles (isLucky flag set by caller)
         setActiveToneButton(fact.tone, updateCard._isLucky);
         updateCard._isLucky = false;
+
+        // Apply background image — same source as the downloadable PNG
+        applyCardBackground(fact.background_url);
 
         // Sync browser URL
         const newUrl = window.location.pathname + '?id=' + fact.id;
@@ -133,34 +136,30 @@
         }
     }
 
-    // ── Apply / clear lucky background image on the card ─────────
-    function applyLuckyBg(tone) {
+    // ── Apply background image to the card (mirrors generate.php) ─
+    function applyCardBackground(bgUrl) {
         if (!memeCard) return;
-        const bgAttr = tone === 'boost' ? 'luckyBoostBg' : 'luckyMotivateBg';
-        const bgRel  = app.dataset[bgAttr];
-        if (bgRel) {
+        if (bgUrl) {
             const overlay = 'linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52))';
-            memeCard.style.backgroundImage  = overlay + ', url(' + BASE + bgRel + ')';
-            memeCard.style.backgroundSize   = 'cover';
+            memeCard.style.backgroundImage    = overlay + ', url(' + BASE + bgUrl + ')';
+            memeCard.style.backgroundSize     = 'cover';
             memeCard.style.backgroundPosition = 'center';
             memeCard.classList.add('meme-card--has-bg');
         } else {
-            clearLuckyBg();
+            memeCard.style.backgroundImage    = '';
+            memeCard.style.backgroundSize     = '';
+            memeCard.style.backgroundPosition = '';
+            memeCard.classList.remove('meme-card--has-bg');
         }
     }
 
-    function clearLuckyBg() {
-        if (!memeCard) return;
-        memeCard.style.backgroundImage   = '';
-        memeCard.style.backgroundSize    = '';
-        memeCard.style.backgroundPosition = '';
-        memeCard.classList.remove('meme-card--has-bg');
-    }
-
     // ── Fetch a fact by tone ──────────────────────────────────────
-    function fetchFact(tone, excludeId, callback) {
+    // luckyTone: pass the tone when in lucky mode so the API can
+    // resolve lucky-specific backgrounds server-side.
+    function fetchFact(tone, excludeId, luckyTone, callback) {
         let url = BASE + 'api/fact.php?tone=' + encodeURIComponent(tone);
         if (excludeId) url += '&exclude=' + excludeId;
+        if (luckyTone) url += '&lucky_tone=' + encodeURIComponent(luckyTone);
 
         fetch(url)
             .then(function (res) {
@@ -176,20 +175,19 @@
     // ── Public: select a tone (called by named tone buttons) ─────
     window.selectTone = function (tone) {
         const exclude = currentTone === tone ? currentId : 0;
-        fetchFact(tone, exclude, function (fact) {
-            clearLuckyBg();
+        fetchFact(tone, exclude, null, function (fact) {
             updateCard(fact);
         });
     };
 
-    // ── Public: lucky button — alternates tone, applies special bg
+    // ── Public: lucky button — alternates tone, uses lucky backgrounds
     window.selectLucky = function () {
         const tone = luckyNextTone;
         luckyNextTone = tone === 'boost' ? 'motivate' : 'boost';
-        fetchFact(tone, 0, function (fact) {
+        // Pass lucky_tone so the API resolves lucky-specific backgrounds
+        fetchFact(tone, 0, tone, function (fact) {
             updateCard._isLucky = true;
             updateCard(fact);
-            applyLuckyBg(tone);
         });
     };
 
@@ -207,10 +205,12 @@
     window.copyFact = function () {
         const factText   = textEl   ? textEl.textContent.trim()   : '';
         const sourceText = sourceEl ? sourceEl.textContent.trim() : '';
+        const sourceLink = sourceEl ? (sourceEl.querySelector('a') || {}).href || '' : '';
         const link       = permalink ? permalink.href : window.location.href;
 
         const combined = factText
             + (sourceText ? '\n\nSource: ' + sourceText : '')
+            + (sourceLink ? '\n' + sourceLink : '')
             + '\n\n' + link;
 
         if (navigator.clipboard && navigator.clipboard.writeText) {

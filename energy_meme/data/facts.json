@@ -57,7 +57,7 @@
     "explanation": "As battery costs fall and grid operators seek flexible resources to balance increasing renewables, storage deployment is accelerating. The U.S., China, and Australia lead deployment, using batteries for frequency regulation, peak shaving, and renewable integration — and the pace is still accelerating.",
     "source": "IEA, Batteries and Secure Energy Transitions 2024",
     "source_url": "https://www.iea.org/reports/batteries-and-secure-energy-transitions",
-    "background": null
+    "background": "grid"
   },
   {
     "id": 7,
@@ -93,7 +93,7 @@
     "id": 10,
     "tone": "motivate",
     "category": "Demand & Efficiency",
-    "fact": "Replacing all remaining inefficient lighting in the U.S. with LEDs would eliminate the need for roughly 44 large power plants — yet 40% of U.S. light sockets still use inefficient bulbs.",
+    "fact": "Replacing all remaining inefficient U.S. lighting with LEDs would eliminate roughly 44 large power plants — yet 40% of light sockets still use inefficient bulbs.",
     "explanation": "LEDs use 75% less energy than incandescents and last 25 times longer. The technology is mature, affordable, and available today. The gap is not innovation — it is adoption. Accelerating efficiency upgrades is one of the fastest, cheapest paths to cutting emissions right now.",
     "source": "U.S. DOE, Solid-State Lighting Program",
     "source_url": "https://www.energy.gov/eere/ssl/energy-efficiency-federal-buildings",
@@ -133,9 +133,9 @@
     "id": 14,
     "tone": "motivate",
     "category": "Climate",
-    "fact": "Global CO\u2082 emissions from energy hit a record 37.4 billion tonnes in 2023 — still rising, despite record-breaking renewable deployment.",
+    "fact": "Global CO₂ emissions from energy hit a record 37.4 billion tonnes in 2023 — still rising, despite record-breaking renewable deployment.",
     "explanation": "The world is simultaneously setting records in clean energy installation and in carbon emissions. Growth in energy demand — particularly in developing economies — is currently outpacing the displacement of fossil fuels. Emissions must fall by roughly 45% by 2030 to stay on a 1.5°C pathway. We are moving in the wrong direction.",
-    "source": "IEA, CO\u2082 Emissions in 2023",
+    "source": "IEA, CO₂ Emissions in 2023",
     "source_url": "https://www.iea.org/reports/co2-emissions-in-2023",
     "background": null
   },
@@ -144,7 +144,7 @@
     "tone": "motivate",
     "category": "Demand & Efficiency",
     "fact": "Only about 1% of the global building stock is retrofitted for energy efficiency each year. At this rate, it would take a century to decarbonize the world's buildings.",
-    "explanation": "Buildings account for roughly 40% of global energy use and 30% of energy-related CO\u2082 emissions. Most of that comes from buildings constructed before modern efficiency standards existed. The IEA estimates the retrofit rate needs to triple by 2030 to meet climate targets — but financing, skills shortages, and policy gaps are holding it back.",
+    "explanation": "Buildings account for roughly 40% of global energy use and 30% of energy-related CO₂ emissions. Most of that comes from buildings constructed before modern efficiency standards existed. The IEA estimates the retrofit rate needs to triple by 2030 to meet climate targets — but financing, skills shortages, and policy gaps are holding it back.",
     "source": "IEA, Renovating Buildings for Energy Efficiency",
     "source_url": "https://www.iea.org/topics/buildings",
     "background": null
@@ -158,5 +158,505 @@
     "source": "UNEP, Emissions Gap Report 2023",
     "source_url": "https://www.unep.org/resources/emissions-gap-report-2023",
     "background": null
+  },
+  {
+    "id": 17,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Solar and wind costs have fallen 90% and 70% respectively since 2010 — the fastest sustained cost decline of any energy technology ever recorded.",
+    "explanation": "This is not a policy subsidy story — it is a manufacturing learning curve in action. Every time solar capacity doubles, costs fall roughly 20%. The trend has been consistent for four decades and shows no sign of stopping, making clean electricity cheaper than fossil fuels in the majority of global markets.",
+    "source": "IEA / BNEF; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 18,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Electric vehicle sales have grown from near zero in 2010 to over 14 million per year by 2023 — doubling roughly every two years.",
+    "explanation": "EV adoption is following the same S-curve trajectory that characterised mobile phones and solar panels. China now accounts for roughly 60% of global EV sales, and the technology is rapidly approaching cost parity with internal combustion vehicles in most markets, which will accelerate adoption further.",
+    "source": "IEA, Global EV Outlook 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 19,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Heat pump sales globally overtook gas boiler sales for the first time in 2022 — a quiet but historic milestone in home heating electrification.",
+    "explanation": "Heat pumps now outsell gas boilers across Europe as a whole. In the U.S., heat pump sales have exceeded gas furnace sales for two consecutive years. This transition is being driven by falling heat pump costs, rising gas prices, and supportive policy — and the installed base is compounding year on year.",
+    "source": "IEA, The Future of Heat Pumps 2022; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 20,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Battery storage costs have plummeted 97% since 1991 — from over $1,000/kWh to below $100/kWh — and keep falling.",
+    "explanation": "Lithium-ion battery pack prices fell below $100/kWh in 2023 for the first time, a threshold analysts long considered the inflection point for mass EV and grid storage adoption. The same learning curve that drove solar cost declines is operating in batteries — and the scale of manufacturing investment in China and globally is enormous.",
+    "source": "BloombergNEF, Battery Price Survey 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 21,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "In 2023, wind and solar generated more electricity than nuclear for the first time ever — and they continue to grow faster.",
+    "explanation": "Wind and solar together produced approximately 13–14% of global electricity in 2023, surpassing nuclear's roughly 10% share. Unlike nuclear, which has seen flat or declining output for decades, wind and solar are adding hundreds of gigawatts of new capacity every year with shorter build times and no fuel costs.",
+    "source": "Ember, Global Electricity Review 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 22,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "China is now installing more solar every two years than the entire world had installed in total as recently as 2017.",
+    "explanation": "China's solar deployment pace has become almost incomprehensible in scale. It installed over 200 GW of solar in 2023 alone — more than the entire world installed in 2015. This manufacturing and deployment engine is driving global cost declines that benefit every country that builds solar.",
+    "source": "IEA, Renewables 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 23,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The world now adds more solar capacity in a single year than all the nuclear power ever built throughout history — and at a fraction of the cost.",
+    "explanation": "Global cumulative nuclear capacity stands at roughly 400 GW, built over 70 years. Solar is now adding that same amount approximately every two to three years, with costs orders of magnitude lower per unit of installed capacity. The pace of the electrotech build-out has no historical precedent.",
+    "source": "IAEA, IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 24,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Every 1% increase in electrification cuts primary energy demand by ~0.5% — because electric technologies convert energy to useful work far more efficiently than combustion.",
+    "explanation": "An electric heat pump delivers 3–4 units of heat per unit of electricity consumed, while a gas boiler delivers less than 1. An EV converts roughly 85–90% of battery energy to motion; an internal combustion engine converts less than 30%. Electrification is not just fuel switching — it is a massive efficiency upgrade for the entire energy system.",
+    "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 25,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The economic benefits of solar ownership flow overwhelmingly to users, not manufacturers — a $100 panel saves its owner roughly $500 over 30 years.",
+    "explanation": "Solar panel manufacturers operate on thin margins of around 5%. Installers earn modest margins too. But the owner of those panels gets 30 years of near-free electricity, with net savings roughly 100x the manufacturer's profit margin. The value of electrotech is captured locally by the people who deploy it.",
+    "source": "Alibaba / Greenmatch / Renewable Energy Hub; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 26,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Wind and solar are now avoiding over 1 billion tonnes of CO₂ per year compared to 2015 levels — real, measurable emissions reductions happening now.",
+    "explanation": "Unlike carbon capture and storage, which has promised scale for 25 years and delivered negligible results, wind and solar have delivered verifiable, growing avoided emissions every year. The contrast is stark: CCS global capacity has barely moved while wind and solar emissions avoidance has grown exponentially.",
+    "source": "IEA, BNEF; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 27,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Six of the ten largest solar manufacturers in the world did not exist 20 years ago — electrotech creates entirely new industries, not just new products.",
+    "explanation": "The electrotech revolution is not a story of incumbent industries gradually greening themselves. It is a story of new entrants, new supply chains, and new economic powers rising. China dominates solar manufacturing today having started from near zero two decades ago — a template for what is possible when countries back the builders.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 28,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Emerging economies are leapfrogging fossil fuel infrastructure with solar and storage — just as they leapfrogged landlines with mobile phones.",
+    "explanation": "Countries like India, Vietnam, and Brazil are deploying solar at extraordinary speed without the legacy fossil fuel grids that have slowed transitions elsewhere. The mobile phone analogy is instructive: the developing world is not just catching up to the old system — it is building a newer, better one.",
+    "source": "IEA WEB; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 29,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "No country with high electrification rates also has high electricity prices — lower electricity costs drive more electrification, in a self-reinforcing cycle.",
+    "explanation": "Cross-country data consistently shows that nations with the highest shares of electrified energy consumption also tend to have among the lowest electricity prices. Lower prices incentivize electrification of transport and heating; greater electrification scale drives further cost reductions. The feedback loop favors the transition.",
+    "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 30,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Europe and the U.S. grew electricity demand at 2–7% per year for decades — electrification of transport and heat could restore that growth trajectory cleanly.",
+    "explanation": "Electricity demand in the West stagnated after 2008, driven by efficiency gains and deindustrialization. But electrification of heating, transport, and industry could add 1.8–2% annual demand growth through 2050, entirely served by clean sources. Electrification is not just a climate strategy — it is an economic growth strategy.",
+    "source": "IEA WEB; IEA APS; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 31,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Electrotech deployment is driven by physics, economics, and geopolitics — forces far more powerful than any single government policy.",
+    "explanation": "Solar and wind deployment continued accelerating even as some policy supports were rolled back. This is because the economics now stand on their own. Learning curves are physical laws. Cost competitiveness is arithmetic. The transition is not contingent on political goodwill — it is being driven by market logic that no policy can fully reverse.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 32,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "China is on track to hit its 2030 renewable energy targets five years early — demonstrating the speed at which electrotech can be deployed at national scale.",
+    "explanation": "China pledged to reach 1,200 GW of wind and solar by 2030. It crossed that threshold in 2024 — six years ahead of schedule. This demonstrates that when manufacturing, finance, and policy align, the deployment pace of electrotech can dramatically exceed even optimistic projections.",
+    "source": "IEA, Renewables 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 33,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The global solar industry has become so efficient that a solar panel now produces the energy used to manufacture it within 1–4 months — then generates clean power for 25–30 years.",
+    "explanation": "Energy payback time for modern silicon solar panels is 1–4 years in lower-irradiance climates, and under one year in sunny regions. Over a 30-year lifespan, a typical panel generates 10–30 times the energy required to produce it. The manufacturing process itself is increasingly powered by renewable electricity, further shrinking the carbon footprint.",
+    "source": "NREL, Life Cycle Assessment of Solar PV; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 34,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "There are now more than 40 million electric vehicles on the world's roads — up from just a few thousand a decade ago.",
+    "explanation": "The EV fleet has grown from a curiosity to a mainstream product category in a single decade. With over 40 million EVs globally and annual sales above 14 million, the replacement of the internal combustion fleet is no longer a question of if, but when. Fleet turnover will increasingly shift from a 15–20 year cycle to an accelerating pace as economics tip.",
+    "source": "IEA, Global EV Outlook 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 35,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Electrotech creates 'electrostates' — countries that combine cheap renewable power with full electrification of transport and industry, building lasting economic advantage.",
+    "explanation": "Countries like Vietnam and China are building not just renewable energy but fully electrified industrial economies powered by it. This creates a structural economic advantage: cheap, domestically produced clean power replaces expensive imported fossil fuels, drives industrial competitiveness, and reduces exposure to volatile commodity markets.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 36,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The grid interconnection queue in the U.S. holds over 2,600 GW of proposed clean energy projects — more generation capacity than exists in the entire country today.",
+    "explanation": "Over 1,700 GW of solar, 1,100 GW of wind, and 500 GW of battery storage were in the U.S. interconnection queue as of 2024. The limiting factor is not demand or economics — it is the speed of permitting, grid studies, and transmission buildout. The electrotech revolution is ready; the grid infrastructure is struggling to keep pace.",
+    "source": "IEA, Lawrence Berkeley National Laboratory; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "grid"
+  },
+  {
+    "id": 37,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Solar electricity is now cheaper than the marginal cost of running existing coal plants in most of the world — even before accounting for carbon.",
+    "explanation": "When new solar is cheaper to build and operate than the fuel cost alone of an existing coal plant, the economics of early coal retirement become compelling. This 'coal displacement' threshold has been crossed in major markets including the U.S., Europe, India, and Australia — and the trend is spreading globally.",
+    "source": "BNEF, New Energy Outlook 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 38,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The falling cost of electrotech has made energy access a realistic goal for the 700 million people who still lack electricity — for the first time in history.",
+    "explanation": "Off-grid solar and battery systems can now deliver basic electricity services — lighting, phone charging, fans — for less than $10/month in many developing markets. Mini-grid solar-plus-storage is increasingly competitive with diesel generation in remote communities. Electrotech is not just a rich-country energy transition — it is a global energy access revolution.",
+    "source": "IEA, Africa Energy Outlook 2022; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 39,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Global investment in clean energy exceeded investment in fossil fuels for the first time in 2023 — a historic inversion of the world's energy capital flows.",
+    "explanation": "Total global clean energy investment reached approximately $1.8 trillion in 2023, compared to about $1 trillion in fossil fuels. This crossover had been projected to take another decade as recently as 2020. The speed of capital reallocation reflects both the falling cost of clean energy and the stranded asset risk now associated with fossil fuel investment.",
+    "source": "IEA, World Energy Investment 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 40,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "For the first time in human history, we can convert sunlight directly to motion, heat, and information — with no combustion, no fuel supply chain, and no emissions.",
+    "explanation": "An EV charged by rooftop solar converts sunlight to transport directly. A heat pump powered by wind electricity converts renewable energy to warmth. A data center running on solar converts photons to computation. Electrotech has made the sun the direct engine of human civilization — a genuinely unprecedented moment in history.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 41,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Rooftop solar turns consumers into prosumers — and billions of prosumers represent a more resilient, decentralized energy system than any centralized grid.",
+    "explanation": "Every rooftop solar owner becomes a mini power plant, feeding surplus electricity back into the grid. Aggregate rooftop solar capacity in the U.S. already exceeds 50 GW — comparable to 50 large nuclear plants. Distributed generation reduces transmission losses, improves resilience, and shifts energy economics in favor of households.",
+    "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 42,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Over 1,700 GW of solar projects are stuck in U.S. grid interconnection queues — enough to power the country cleanly, waiting years for approval.",
+    "explanation": "The average wait time in the U.S. interconnection queue has grown from 2 years to over 5 years. Roughly 75% of projects that enter the queue are eventually cancelled — not because they are uneconomic, but because the process is broken. Grid connection reform is the single highest-leverage intervention available to accelerate the clean energy transition.",
+    "source": "Lawrence Berkeley National Laboratory, Queued Up 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 43,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Fossil fuel companies received over $7 trillion in global subsidies in 2022 — more than all clean energy investment combined.",
+    "explanation": "The IMF estimates that explicit and implicit fossil fuel subsidies reached $7 trillion in 2022 — about 7% of global GDP. The majority are implicit subsidies that reflect unpriced health and climate damage. These subsidies represent a structural market distortion that tilts investment away from electrotech and toward the incumbent fossil system.",
+    "source": "IMF, Still Not Getting Energy Prices Right 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 44,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Most EU countries tax electricity at rates 5–10 times higher than they tax gas — actively penalizing the electrification they need to meet their own climate targets.",
+    "explanation": "Tax policy across most of Europe creates a systematic disincentive to electrify. When industrial consumers pay 4–10 cEUR/kWh in electricity taxes versus less than 1 cEUR/kWh for gas, the economic case for heat pump adoption and industrial electrification is weakened artificially. Tax rebalancing to achieve parity is a policy no-brainer that most governments have not acted on.",
+    "source": "Eurostat; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 45,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Oil and gas companies spent over $150 million lobbying in the U.S. in 2023 alone — continuing a decades-long effort to slow the energy transition.",
+    "explanation": "Open Secrets data shows consistent, substantial oil and gas lobbying investment in the U.S. The incumbents resist change not because electrotech does not work, but because the status quo is enormously profitable. In 2022, global oil rents alone exceeded $2 trillion. This financial firepower is directed at slowing the policies and regulations that would accelerate electrotech.",
+    "source": "Open Secrets; World Bank; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 46,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Carbon capture and storage has been 'about to take off' for 25 years — yet delivers less than 0.1% of the emissions reductions that wind and solar achieve annually.",
+    "explanation": "Total global CCS capacity captures less than 50 million tonnes of CO₂ per year — less than 0.1% of what wind and solar avoid. Despite decades of investment and repeated announcements of imminent scale-up, CCS capacity has barely grown while project cancellation rates remain high. Electrotech delivers; CCS promises.",
+    "source": "IEA, BNEF; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 47,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Approving a high-voltage transmission line takes 4–5 years in the U.S. but just 1–2 years in China — keeping clean energy stuck in permitting limbo.",
+    "explanation": "Transmission is the backbone of a fully electrified, renewable-powered economy. But in the U.S. and much of Europe, permitting processes for new transmission lines routinely take 8–15 years from proposal to operation. China builds comparable infrastructure in 1–3 years. Without grid reform, the cheapest clean electricity cannot reach the customers who need it.",
+    "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "grid"
+  },
+  {
+    "id": 48,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Global electricity demand is set to grow 25–50% by 2040 driven by electrification of transport and heat — but grid investment has not begun to match this scale.",
+    "explanation": "Electrifying heating, transport, and industry will dramatically increase electricity consumption. IEA projections show electricity's share of final energy rising from roughly 20% today to 35–50% by 2050 in climate-aligned scenarios. Grid infrastructure — wires, transformers, substations, and storage — needs to be expanded at a pace the world has never achieved.",
+    "source": "IEA, World Energy Outlook 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 49,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "The energy transition faces a critical workforce gap — the clean energy sector needs millions of trained workers who do not yet exist.",
+    "explanation": "From heat pump installers and EV technicians to grid engineers and battery storage operators, the electrotech workforce needs to scale from millions to tens of millions in a single decade. Training pipelines, apprenticeship programs, and credential recognition systems have not yet been built to the required scale — creating a human capital bottleneck that rivals the capital investment challenge.",
+    "source": "IEA, World Energy Employment 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 50,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Buildings account for 40% of global energy use — but the retrofit rate of just 1% per year means the world is barely touching its single largest source of energy waste.",
+    "explanation": "Most of the world's building stock was constructed without modern efficiency standards and will still be standing in 2050. Retrofitting these buildings — insulation, air sealing, heat pumps, smart controls — is among the highest-impact opportunities in the entire energy transition. The economics are increasingly compelling. The policy and financing frameworks are not keeping pace.",
+    "source": "IEA, Energy Efficiency 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 51,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Two-thirds of the world's nations have still not experienced significant electrification growth since 2010 — the electrotech revolution is happening unevenly.",
+    "explanation": "While China, Vietnam, India, and a handful of European nations are making measurable progress on both renewable energy and electrification, the majority of the world's countries show little movement on either metric. The risk is a two-tier energy transition: wealthy nations and ambitious emerging economies surge ahead, while most of the developing world is left running on expensive, polluting fossil fuel imports.",
+    "source": "IEA WEB; Ember; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 52,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Despite record EV sales, over 1.4 billion internal combustion vehicles remain on the world's roads — the fleet turnover challenge is enormous.",
+    "explanation": "EV sales of 14 million per year against a global fleet of ~1.4 billion vehicles represents a replacement rate of roughly 1% annually. Even in an optimistic scenario where EV sales double every few years, combustion engines will dominate road transport well into the 2030s. The transition requires both accelerating new EV sales and policies to retire the existing ICE fleet early.",
+    "source": "IEA, Global EV Outlook 2024; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 53,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Global electricity grids were designed for one-way power flow from large central plants — but the electrotech revolution requires fundamentally different infrastructure.",
+    "explanation": "Rooftop solar, EVs, heat pumps, and batteries all create two-way, distributed, flexible electricity flows that traditional grid infrastructure was not built to handle. Upgrading protection systems, transformers, metering, and control software is a multi-trillion-dollar challenge that is only beginning to receive the attention it requires.",
+    "source": "IEA, Electricity Grids and Secure Energy Transitions 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 54,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Critical minerals for batteries and clean energy — lithium, cobalt, nickel, copper — face supply bottlenecks that could slow the electrotech revolution.",
+    "explanation": "The IEA warns that under an accelerated energy transition scenario, demand for lithium could grow 40-fold by 2040, and copper demand could double. Current mining investment is well below what is needed. Supply chain concentration in a handful of countries creates geopolitical risk. The transition will require both rapid mineral supply expansion and technology innovation to reduce mineral intensity.",
+    "source": "IEA, Critical Minerals and Clean Energy Transitions 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 55,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Incumbent energy companies have spent decades promoting CCS, green hydrogen for heating, and synthetic fuels — false solutions that divert attention from proven electrotech.",
+    "explanation": "The incumbent narrative consistently promotes technologies that preserve fossil fuel infrastructure: CCS attached to gas plants, hydrogen boilers replacing heat pumps, e-fuels in passenger vehicles. These technologies are uniformly more expensive, less efficient, and decades slower to scale than the electrotech alternatives. Recognising the pattern of distraction is essential to making good policy and investment decisions.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 56,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Without rapid growth in long-duration storage and flexible demand, a grid powered primarily by wind and solar faces hours or days of surplus and shortage.",
+    "explanation": "Variable renewable energy requires complementary flexibility resources — long-duration storage, demand response, interconnection, and hydrogen for seasonal balancing. Most electricity markets are only beginning to develop the regulatory frameworks and investment signals needed to attract these resources at scale. The gap between installed renewable capacity and a fully flexible clean grid is substantial and underappreciated.",
+    "source": "IEA, Electricity Grids and Secure Energy Transitions 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 57,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Energy poverty affects over 700 million people who lack electricity access — and hundreds of millions more who cannot afford to cool or heat their homes.",
+    "explanation": "The energy transition must not leave the world's poorest behind. Affordable, clean electricity is a prerequisite for health, education, and economic development. While electrotech offers the tools — off-grid solar, mini-grids, pay-as-you-go battery systems — the financing models and policy support to deploy them at scale in the least-developed nations are still insufficient.",
+    "source": "IEA, World Energy Outlook 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 58,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Europe and the U.S. grew electricity demand 5–7% per year for decades. Electrifying heat and transport must recreate that growth cleanly — but current policies fall far short.",
+    "explanation": "Achieving climate targets requires both replacing existing fossil energy with clean electricity and electrifying new demand currently met by gas and oil. Europe's post-2008 electricity demand stagnation must reverse to a growth rate of 1.5–2% annually just to keep pace with climate targets. Without stronger policy on heat pump adoption, EV uptake, and industrial electrification, this growth will not materialize fast enough.",
+    "source": "IEA WEB; IEA APS; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 59,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Stranded assets from the fossil fuel transition could reach $1–5 trillion — and most financial institutions have not yet adequately priced this risk.",
+    "explanation": "As electrotech makes fossil fuel generation increasingly uneconomic, coal plants, gas infrastructure, and oil assets face the risk of being retired before end of useful life. This stranded asset exposure sits on utility balance sheets, bank loan books, and pension fund equity portfolios worldwide. The speed of the transition will determine the scale of the losses — and early movers will be in the best position.",
+    "source": "BNEF, New Energy Outlook 2023; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 60,
+    "tone": "motivate",
+    "category": "Electrotech",
+    "fact": "Falling emissions are a consequence of deploying electrotech — not the cause. Without faster deployment, the world cannot stay within any safe climate pathway.",
+    "explanation": "Waiting for carbon pricing or international climate agreements to drive the transition is backwards: deploying solar, EVs, heat pumps, and storage is what makes emissions fall. Global CO₂ from energy remains near record highs. Only by dramatically accelerating electrotech deployment — on the order of tripling current rates — can the world bend the emissions curve fast enough to avoid the worst outcomes.",
+    "source": "Global Carbon Project; Rystad Energy; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 61,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "For the first time in a century, the direction of geopolitical energy power is shifting — away from fossil fuel exporters and toward nations that build electrotech.",
+    "explanation": "Petrostates derive economic and political leverage from fossil fuel exports. As electrotech makes that leverage obsolete — replacing imported gas with domestic solar, replacing oil demand with homemade electrons — the geopolitical map of energy power is being redrawn. Nations that lead in electrotech manufacturing, deployment, and standards-setting will define the new energy order.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
+  },
+  {
+    "id": 62,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Solar and wind have zero marginal cost of electricity generation — a fundamentally different economic model than any fossil fuel technology.",
+    "explanation": "Once a solar or wind plant is built, each additional unit of electricity costs essentially nothing to produce. This zero marginal cost has profound implications for electricity markets: it structurally suppresses wholesale prices during sunny and windy periods, makes fossil fuel peaker plants economically precarious, and shifts the primary cost of electricity from fuel to capital — favouring economies of scale.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 63,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Vietnam went from near-zero to 17 GW of solar in just three years — proving that rapid electrotech transformation is possible even in developing economies.",
+    "explanation": "Vietnam's solar deployment surge from 2018 to 2021 is one of the fastest energy transitions in history. Driven by feed-in tariffs, improving equipment access, and strong investor interest, Vietnam installed as much solar in three years as Germany had in fifteen. It demonstrates that the pace of transition in emerging economies can exceed that of wealthy nations when the conditions are right.",
+    "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "solar"
+  },
+  {
+    "id": 64,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The electrotech revolution is the first energy transition in history where the new technology is cheaper, faster, and cleaner than what it replaces — all at once.",
+    "explanation": "Previous energy transitions — wood to coal, coal to oil — were driven by energy density and convenience but not by cost parity and climate benefit simultaneously. Electrotech is unique: solar and wind are now the cheapest electricity sources, can be deployed in months rather than years, and produce zero operational emissions. The case for transition has never been stronger on every dimension at once.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "wind"
+  },
+  {
+    "id": 65,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "Countries experimenting with new market rules for EVs, heat pumps, and smart grids build lasting competitive advantage — policy innovation accelerates electrotech.",
+    "explanation": "Time-of-use pricing, vehicle-to-grid programs, nodal battery tenders, dynamic line rating, and performance-based utility payments are all being piloted globally. The countries and utilities that experiment, learn, and scale these new regulatory models fastest will attract the most electrotech investment and build the most resilient, affordable energy systems.",
+    "source": "Systemiq / ETC; Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "grid"
+  },
+  {
+    "id": 66,
+    "tone": "boost",
+    "category": "Electrotech",
+    "fact": "The electrotech revolution will come faster and go further than most people think — stranding fossil fuel assets and reshaping the global economy within a single generation.",
+    "explanation": "History shows that technology transitions, once they reach economic tipping points, move faster than consensus forecasts predict. Mobile phones, digital cameras, and the internet all followed this pattern. Electrotech is at — or past — that tipping point in most sectors. The question is not whether the transition will happen, but whether governments, investors, and institutions are positioned to capture its benefits or bear the costs of resisting it.",
+    "source": "Ember Futures, The Electrotech Revolution 2024",
+    "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
+    "background": "electrotech"
   }
 ]

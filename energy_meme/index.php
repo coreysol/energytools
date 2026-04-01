@@ -25,16 +25,6 @@ if ($requested_id !== null) {
     }
 }
 
-// Detect lucky background images (override all others when lucky mode is active)
-$lucky_bg = ['boost' => null, 'motivate' => null];
-foreach (['boost', 'motivate'] as $tone) {
-    foreach (['jpg', 'jpeg', 'png', 'webp'] as $ext) {
-        if (file_exists(__DIR__ . '/backgrounds/lucky-' . $tone . '.' . $ext)) {
-            $lucky_bg[$tone] = 'backgrounds/lucky-' . $tone . '.' . $ext;
-            break;
-        }
-    }
-}
 
 // Absolute URLs for OG meta
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -80,9 +70,7 @@ $base_href = BASE_PATH . '/';
     <div class="container" id="fact-app"
          data-base="<?= htmlspecialchars($base_href) ?>"
          data-current-id="0"
-         data-current-tone=""
-         data-lucky-boost-bg="<?= htmlspecialchars($lucky_bg['boost'] ?? '') ?>"
-         data-lucky-motivate-bg="<?= htmlspecialchars($lucky_bg['motivate'] ?? '') ?>">
+         data-current-tone="">
 
         <header>
             <h1>Energy Facts</h1>
