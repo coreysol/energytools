@@ -250,14 +250,10 @@ if ($font && function_exists('imagettftext')) {
     }
 
     // --- Source credit (bottom-left) ---
-    $src_size  = 13;
-    $src_text  = 'Source: ' . $fact['source'];
-    if (!empty($fact['source_url'])) {
-        $url = $fact['source_url'];
-        if (mb_strlen($url) > 55) $url = mb_substr($url, 0, 52) . '...';
-        $src_text .= '  ·  ' . $url;
-    }
-    // Wrap source to avoid overflowing into branding
+    // Only show the source name — raw URLs are omitted to avoid truncated
+    // non-functional links in the rendered image.
+    $src_size   = 13;
+    $src_text   = 'Source: ' . $fact['source'];
     $src_max_w  = $text_w - 140;
     $src_lines  = ttf_wrap($font, $src_size, $src_max_w, $src_text);
     $src_line_h = $src_size + 5;
