@@ -27,6 +27,12 @@
                     <span class="tool-link">Open Demand Profile Generator →</span>
                 </a>
 
+                <a href="energy_meme/" class="tool-card">
+                    <h2>Energy Facts &amp; Memes</h2>
+                    <p>Discover shareable facts and inspiration from renewable energy research. Each fact includes an educational explanation and source. Download a shareable image, copy the text, or post directly to social media.</p>
+                    <span class="tool-link">Open Energy Facts &amp; Memes →</span>
+                </a>
+
                 <a href="myenergy/" class="tool-card">
                     <h2>Our Energy Story</h2>
                     <p>A scrollytelling narrative of 22 years of electricity in one home. Combines utility records with SolarEdge monitoring data.</p>
@@ -37,12 +43,6 @@
                     <h2>Residential Solar Maintenance Cost Calculator</h2>
                     <p>Estimate the cost of delayed solar panel repairs. Enter your state, number of broken modules, and repair cost to see daily, monthly, and yearly lost energy and revenue so you can compare against repair cost.</p>
                     <span class="tool-link">Open Residential Solar Maintenance Cost Calculator →</span>
-                </a>
-
-                <a href="energy_meme/" class="tool-card">
-                    <h2>Energy Facts &amp; Memes</h2>
-                    <p>Discover shareable facts and inspiration from renewable energy research. Each fact includes an educational explanation and source. Download a shareable image, copy the text, or post directly to social media.</p>
-                    <span class="tool-link">Open Energy Facts &amp; Memes →</span>
                 </a>
 
                 <a href="vpp_value/" class="tool-card">
