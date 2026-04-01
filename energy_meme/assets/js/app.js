@@ -202,6 +202,27 @@
         });
     };
 
+    // ── Auto-load permalink fact on page load ─────────────────────
+    // If the page was opened with ?id=N (a shared permalink), fetch and
+    // display that specific fact immediately, without requiring a button click.
+    (function () {
+        const permalinkId = parseInt(app.dataset.permalinkId, 10) || 0;
+        if (permalinkId) {
+            fetch(BASE + 'api/fact.php?id=' + permalinkId)
+                .then(function (res) {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function (fact) {
+                    updateCard._isLucky = false;
+                    updateCard(fact);
+                })
+                .catch(function (err) {
+                    console.error('Failed to load permalink fact:', err);
+                });
+        }
+    }());
+
     // ── Browser back/forward ──────────────────────────────────────
     window.addEventListener('popstate', function (e) {
         if (e.state && e.state.factId) {

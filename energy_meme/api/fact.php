@@ -2,14 +2,16 @@
 /**
  * Energy Meme Generator - Fact API
  *
- * Returns a random fact as JSON.
+ * Returns a fact as JSON.
  * Query params:
- *   tone    (string) – "boost" or "motivate"; omit for any tone
- *   exclude (int)    – fact ID to exclude from random selection
+ *   id         (int)    – return a specific fact by ID (for permalinks)
+ *   tone       (string) – "boost" or "motivate"; omit for any tone
+ *   exclude    (int)    – fact ID to exclude from random selection
+ *   lucky_tone (string) – "boost" or "motivate"; activates lucky backgrounds
  *
  * Response fields:
  *   id, tone, category, fact, explanation, source, source_url,
- *   has_image, _image_filename
+ *   background_url
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -29,6 +31,33 @@ $facts = json_decode(file_get_contents($facts_file), true) ?? [];
 if (empty($facts)) {
     http_response_code(500);
     echo json_encode(['error' => 'No facts available.']);
+    exit;
+}
+
+// Fetch a specific fact by ID (permalink / popstate)
+if (isset($_GET['id'])) {
+    $requested_id = (int)$_GET['id'];
+    $fact = null;
+    foreach ($facts as $f) {
+        if ((int)$f['id'] === $requested_id) { $fact = $f; break; }
+    }
+    if (!$fact) {
+        http_response_code(404);
+        echo json_encode(['error' => 'Fact not found.']);
+        exit;
+    }
+    $lucky_tone     = null; // permalinks never carry lucky backgrounds
+    $background_url = resolve_background($fact['id'], $fact['background'] ?? null, $lucky_tone);
+    echo json_encode([
+        'id'             => (int)$fact['id'],
+        'tone'           => $fact['tone'] ?? 'boost',
+        'category'       => $fact['category'],
+        'fact'           => $fact['fact'],
+        'explanation'    => $fact['explanation'],
+        'source'         => $fact['source'],
+        'source_url'     => $fact['source_url'] ?? null,
+        'background_url' => $background_url,
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
 

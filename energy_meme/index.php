@@ -70,7 +70,8 @@ $base_href = BASE_PATH . '/';
     <div class="container" id="fact-app"
          data-base="<?= htmlspecialchars($base_href) ?>"
          data-current-id="0"
-         data-current-tone="">
+         data-current-tone=""
+         data-permalink-id="<?= $preloaded_fact ? (int)$preloaded_fact['id'] : '' ?>">
 
         <header>
             <h1>Energy Facts</h1>
