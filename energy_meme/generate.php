@@ -34,8 +34,9 @@ if ($id < 1) {
 }
 
 // ── Cache ─────────────────────────────────────────────────────────
-$cache_dir  = __DIR__ . '/cache/images';
-$cache_file = $cache_dir . '/fact_' . $id . '.png';
+$cache_dir       = __DIR__ . '/cache/images';
+$cache_suffix    = $lucky_tone ? '_lucky-' . $lucky_tone : '';
+$cache_file      = $cache_dir . '/fact_' . $id . $cache_suffix . '.png';
 
 if (!is_dir($cache_dir)) {
     @mkdir($cache_dir, 0755, true);
@@ -80,21 +81,32 @@ $im = imagecreatetruecolor($width, $height);
 // ── Background ───────────────────────────────────────────────────
 $hint = $fact['background'] ?? null;
 
-function find_bg_image($id, $hint) {
+// Optional lucky_tone — mirrors the priority used in api/fact.php
+$lucky_tone = isset($_GET['lucky_tone']) ? trim($_GET['lucky_tone']) : null;
+if (!in_array($lucky_tone, ['boost', 'motivate'], true)) $lucky_tone = null;
+
+function find_bg_image($id, $hint, $lucky_tone) {
     $exts = ['jpg', 'jpeg', 'png', 'webp'];
-    // 1. Fact-specific
+    // 1. Fact-specific image
     foreach ($exts as $e) {
         $p = __DIR__ . '/images/facts/' . $id . '.' . $e;
         if (file_exists($p)) return $p;
     }
-    // 2. Named background
+    // 2. Lucky background (lucky mode only)
+    if ($lucky_tone) {
+        foreach ($exts as $e) {
+            $p = __DIR__ . '/backgrounds/lucky-' . $lucky_tone . '.' . $e;
+            if (file_exists($p)) return $p;
+        }
+    }
+    // 3. Named category background
     if ($hint) {
         foreach ($exts as $e) {
             $p = __DIR__ . '/backgrounds/' . $hint . '.' . $e;
             if (file_exists($p)) return $p;
         }
     }
-    // 3. Default background
+    // 4. Default background
     foreach ($exts as $e) {
         $p = __DIR__ . '/backgrounds/default.' . $e;
         if (file_exists($p)) return $p;
@@ -110,7 +122,7 @@ function load_image_resource($path) {
     return null;
 }
 
-$bg_path    = find_bg_image($id, $hint);
+$bg_path    = find_bg_image($id, $hint, $lucky_tone);
 $drew_image = false;
 
 if ($bg_path) {

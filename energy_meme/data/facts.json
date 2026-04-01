@@ -107,7 +107,7 @@
     "explanation": "The technology to decarbonize home heating exists today and saves money over time in most climates. The barrier is upfront cost, contractor availability, and awareness — not the technology itself. With the average HVAC system lasting 15–20 years, decisions made today lock in emissions for decades.",
     "source": "Rocky Mountain Institute, The Economics of Electrifying Buildings 2018",
     "source_url": "https://rmi.org/insight/the-economics-of-electrifying-buildings/",
-    "background": null
+    "background": "fossil"
   },
   {
     "id": 12,
@@ -127,7 +127,7 @@
     "explanation": "Renewables are growing fast in absolute terms, but so is total energy demand. The result is that fossil fuels remain dominant. Decarbonizing energy means not just adding clean power, but actively phasing out oil, gas, and coal — which requires a pace of transition the world has not yet achieved.",
     "source": "IEA, World Energy Outlook 2023",
     "source_url": "https://www.iea.org/reports/world-energy-outlook-2023",
-    "background": null
+    "background": "fossil"
   },
   {
     "id": 14,
@@ -137,7 +137,7 @@
     "explanation": "The world is simultaneously setting records in clean energy installation and in carbon emissions. Growth in energy demand — particularly in developing economies — is currently outpacing the displacement of fossil fuels. Emissions must fall by roughly 45% by 2030 to stay on a 1.5°C pathway. We are moving in the wrong direction.",
     "source": "IEA, CO₂ Emissions in 2023",
     "source_url": "https://www.iea.org/reports/co2-emissions-in-2023",
-    "background": null
+    "background": "fossil"
   },
   {
     "id": 15,
@@ -157,12 +157,12 @@
     "explanation": "The UN Environment Programme's annual Emissions Gap Report consistently finds that national pledges, even if fully implemented, fall far short of what's needed. Closing the gap requires roughly tripling global clean energy investment and accelerating fossil fuel phase-out well beyond what current policies deliver. The math is clear — the political will is the missing variable.",
     "source": "UNEP, Emissions Gap Report 2023",
     "source_url": "https://www.unep.org/resources/emissions-gap-report-2023",
-    "background": null
+    "background": "fossil"
   },
   {
     "id": 17,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "Solar and wind costs have fallen 90% and 70% respectively since 2010 — the fastest sustained cost decline of any energy technology ever recorded.",
     "explanation": "This is not a policy subsidy story — it is a manufacturing learning curve in action. Every time solar capacity doubles, costs fall roughly 20%. The trend has been consistent for four decades and shows no sign of stopping, making clean electricity cheaper than fossil fuels in the majority of global markets.",
     "source": "IEA / BNEF; Ember Futures, The Electrotech Revolution 2024",
@@ -212,7 +212,7 @@
   {
     "id": 22,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "China is now installing more solar every two years than the entire world had installed in total as recently as 2017.",
     "explanation": "China's solar deployment pace has become almost incomprehensible in scale. It installed over 200 GW of solar in 2023 alone — more than the entire world installed in 2015. This manufacturing and deployment engine is driving global cost declines that benefit every country that builds solar.",
     "source": "IEA, Renewables 2023; Ember Futures, The Electrotech Revolution 2024",
@@ -222,7 +222,7 @@
   {
     "id": 23,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "The world now adds more solar capacity in a single year than all the nuclear power ever built throughout history — and at a fraction of the cost.",
     "explanation": "Global cumulative nuclear capacity stands at roughly 400 GW, built over 70 years. Solar is now adding that same amount approximately every two to three years, with costs orders of magnitude lower per unit of installed capacity. The pace of the electrotech build-out has no historical precedent.",
     "source": "IAEA, IEA; Ember Futures, The Electrotech Revolution 2024",
@@ -242,7 +242,7 @@
   {
     "id": 25,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "The economic benefits of solar ownership flow overwhelmingly to users, not manufacturers — a $100 panel saves its owner roughly $500 over 30 years.",
     "explanation": "Solar panel manufacturers operate on thin margins of around 5%. Installers earn modest margins too. But the owner of those panels gets 30 years of near-free electricity, with net savings roughly 100x the manufacturer's profit margin. The value of electrotech is captured locally by the people who deploy it.",
     "source": "Alibaba / Greenmatch / Renewable Energy Hub; Ember Futures, The Electrotech Revolution 2024",
@@ -262,7 +262,7 @@
   {
     "id": 27,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "Six of the ten largest solar manufacturers in the world did not exist 20 years ago — electrotech creates entirely new industries, not just new products.",
     "explanation": "The electrotech revolution is not a story of incumbent industries gradually greening themselves. It is a story of new entrants, new supply chains, and new economic powers rising. China dominates solar manufacturing today having started from near zero two decades ago — a template for what is possible when countries back the builders.",
     "source": "Ember Futures, The Electrotech Revolution 2024",
@@ -322,7 +322,7 @@
   {
     "id": 33,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "The global solar industry has become so efficient that a solar panel now produces the energy used to manufacture it within 1–4 months — then generates clean power for 25–30 years.",
     "explanation": "Energy payback time for modern silicon solar panels is 1–4 years in lower-irradiance climates, and under one year in sunny regions. Over a 30-year lifespan, a typical panel generates 10–30 times the energy required to produce it. The manufacturing process itself is increasingly powered by renewable electricity, further shrinking the carbon footprint.",
     "source": "NREL, Life Cycle Assessment of Solar PV; Ember Futures, The Electrotech Revolution 2024",
@@ -362,7 +362,7 @@
   {
     "id": 37,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "Solar electricity is now cheaper than the marginal cost of running existing coal plants in most of the world — even before accounting for carbon.",
     "explanation": "When new solar is cheaper to build and operate than the fuel cost alone of an existing coal plant, the economics of early coal retirement become compelling. This 'coal displacement' threshold has been crossed in major markets including the U.S., Europe, India, and Australia — and the trend is spreading globally.",
     "source": "BNEF, New Energy Outlook 2023; Ember Futures, The Electrotech Revolution 2024",
@@ -392,7 +392,7 @@
   {
     "id": 40,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "For the first time in human history, we can convert sunlight directly to motion, heat, and information — with no combustion, no fuel supply chain, and no emissions.",
     "explanation": "An EV charged by rooftop solar converts sunlight to transport directly. A heat pump powered by wind electricity converts renewable energy to warmth. A data center running on solar converts photons to computation. Electrotech has made the sun the direct engine of human civilization — a genuinely unprecedented moment in history.",
     "source": "Ember Futures, The Electrotech Revolution 2024",
@@ -402,7 +402,7 @@
   {
     "id": 41,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "Rooftop solar turns consumers into prosumers — and billions of prosumers represent a more resilient, decentralized energy system than any centralized grid.",
     "explanation": "Every rooftop solar owner becomes a mini power plant, feeding surplus electricity back into the grid. Aggregate rooftop solar capacity in the U.S. already exceeds 50 GW — comparable to 50 large nuclear plants. Distributed generation reduces transmission losses, improves resilience, and shifts energy economics in favor of households.",
     "source": "IEA; Ember Futures, The Electrotech Revolution 2024",
@@ -597,7 +597,7 @@
     "explanation": "Waiting for carbon pricing or international climate agreements to drive the transition is backwards: deploying solar, EVs, heat pumps, and storage is what makes emissions fall. Global CO₂ from energy remains near record highs. Only by dramatically accelerating electrotech deployment — on the order of tripling current rates — can the world bend the emissions curve fast enough to avoid the worst outcomes.",
     "source": "Global Carbon Project; Rystad Energy; Ember Futures, The Electrotech Revolution 2024",
     "source_url": "https://ember-climate.org/insights/research/the-electrotech-revolution/",
-    "background": "electrotech"
+    "background": "fossil"
   },
   {
     "id": 61,
@@ -622,7 +622,7 @@
   {
     "id": 63,
     "tone": "boost",
-    "category": "Electrotech",
+    "category": "Solar Energy",
     "fact": "Vietnam went from near-zero to 17 GW of solar in just three years — proving that rapid electrotech transformation is possible even in developing economies.",
     "explanation": "Vietnam's solar deployment surge from 2018 to 2021 is one of the fastest energy transitions in history. Driven by feed-in tariffs, improving equipment access, and strong investor interest, Vietnam installed as much solar in three years as Germany had in fifteen. It demonstrates that the pace of transition in emerging economies can exceed that of wealthy nations when the conditions are right.",
     "source": "IEA; Ember Futures, The Electrotech Revolution 2024",

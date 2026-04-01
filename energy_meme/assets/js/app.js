@@ -16,6 +16,7 @@
     let currentId      = parseInt(app.dataset.currentId, 10) || 0;
     let currentTone    = app.dataset.currentTone || '';
     let luckyNextTone  = 'boost'; // alternates each lucky press
+    let isLuckyMode    = false;   // true while a lucky-sourced fact is displayed
 
     // ── DOM refs ──────────────────────────────────────────────────
     const welcomeNote   = document.getElementById('welcome-note');
@@ -85,19 +86,24 @@
             }
         }
 
-        // Download link
-        if (dlBtn) {
-            dlBtn.href     = BASE + 'generate.php?id=' + fact.id;
-            dlBtn.download = 'energy-fact-' + fact.id + '.png';
-        }
-
         // Show fact container, hide welcome note
         if (factContainer) factContainer.classList.remove('fact-container--hidden');
         if (welcomeNote)   welcomeNote.hidden = true;
 
-        // Update active tone button styles (isLucky flag set by caller)
-        setActiveToneButton(fact.tone, updateCard._isLucky);
+        // Track lucky mode state and build download URL accordingly
+        isLuckyMode = updateCard._isLucky || false;
         updateCard._isLucky = false;
+
+        // Download link — include lucky_tone so generate.php uses the right background
+        if (dlBtn) {
+            let dlUrl = BASE + 'generate.php?id=' + fact.id;
+            if (isLuckyMode) dlUrl += '&lucky_tone=' + encodeURIComponent(fact.tone);
+            dlBtn.href     = dlUrl;
+            dlBtn.download = 'energy-fact-' + fact.id + '.png';
+        }
+
+        // Update active tone button styles
+        setActiveToneButton(fact.tone, isLuckyMode);
 
         // Apply background image — same source as the downloadable PNG
         applyCardBackground(fact.background_url);
@@ -112,9 +118,13 @@
             permalink.textContent = window.location.href;
         }
 
-        // OG image meta
+        // OG image meta — also include lucky_tone if applicable
         const ogImg = document.querySelector('meta[property="og:image"]');
-        if (ogImg) ogImg.setAttribute('content', BASE + 'generate.php?id=' + fact.id);
+        if (ogImg) {
+            let ogUrl = BASE + 'generate.php?id=' + fact.id;
+            if (isLuckyMode) ogUrl += '&lucky_tone=' + encodeURIComponent(fact.tone);
+            ogImg.setAttribute('content', ogUrl);
+        }
     }
 
     // ── Highlight the active tone button ──────────────────────────
@@ -176,6 +186,7 @@
     window.selectTone = function (tone) {
         const exclude = currentTone === tone ? currentId : 0;
         fetchFact(tone, exclude, null, function (fact) {
+            updateCard._isLucky = false;
             updateCard(fact);
         });
     };
