@@ -1,70 +1,47 @@
-/* ── Reset & base (matches energytools family) ─────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Our Energy Story — scrolly layout (loads after ../assets/css/site.css + tools.css). */
 
 :root {
-  --color-brand:     #f7941d;
-  --color-brand-dark:#e57a00;
-  --color-text:      #333;
-  --color-text-muted:#666;
-  --color-text-light:#777;
-  --color-border:    #e9ecef;
-  --color-border-input: #ddd;
-  --color-surface:   #f8f9fa;
-  --color-highlight-bg: #fff4e5;
-  --color-total:     #d4874d;
-  --color-total-area:rgba(212, 135, 77, 0.2);
-  --color-grid:      #7088a0;
-  --color-solar:     #4a9e5c;
-  --color-solar-area:rgba(74, 158, 92, 0.2);
-  --color-active-highlight: rgba(247, 148, 29, 0.15);
-  --color-band:      rgba(120, 160, 200, 0.18);
-  --color-marker:    rgba(0,0,0,0.2);
-  --font-sans:       -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --max-width:       1100px;
+  --color-brand:       var(--ta-rust-500);
+  --color-brand-dark:  var(--ta-rust-600);
+  --color-text:        var(--ta-walnut-900);
+  --color-text-muted:  var(--ta-walnut-500);
+  --color-text-light:  var(--ta-walnut-400);
+  --color-border:      rgba(42, 31, 21, 0.14);
+  --color-border-input: rgba(42, 31, 21, 0.22);
+  --color-surface:     var(--ta-cream-200);
+  --color-highlight-bg: var(--ta-cream-100);
+  --color-total:       var(--ta-rust-500);
+  --color-total-area:  rgba(154, 68, 35, 0.18);
+  --color-grid:        #5c6b78;
+  --color-solar:       var(--ta-pine-600);
+  --color-solar-area:  rgba(61, 74, 42, 0.22);
+  --color-active-highlight: rgba(154, 68, 35, 0.12);
+  --color-band:        rgba(107, 88, 71, 0.12);
+  --color-marker:      rgba(42, 31, 21, 0.18);
+  --max-width:         1100px;
 }
 
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+.myenergy-card {
+  margin-block: 1.5rem 2.5rem;
+  padding: 0;
 }
 
-body {
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  color: var(--color-text);
-  background: linear-gradient(135deg, #fff7e6 0%, #f5f5f1 100%);
-  min-height: 100vh;
-  padding: 20px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Container (matches energytools) ──────────────────────── */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  overflow: clip;
-}
-
-/* ── Header (orange gradient bar) ─────────────────────────── */
-header {
-  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
-  color: white;
-  padding: 40px 30px;
+.myenergy-hero {
   text-align: center;
+  padding: 2rem 1.5rem 1.75rem;
+  background: linear-gradient(135deg, var(--ta-rust-500) 0%, var(--ta-rust-600) 100%);
+  color: var(--fg-on-accent);
 }
 
-header h1 {
-  font-size: 2.5em;
-  font-weight: 700;
-  margin-bottom: 10px;
+.myenergy-hero__title {
+  color: var(--fg-on-accent) !important;
+  margin-bottom: 0.5rem;
 }
 
-.subtitle {
-  font-size: 1.1em;
-  opacity: 0.95;
+.myenergy-hero__lede {
+  color: var(--ta-cream-200) !important;
+  margin-inline: auto;
+  max-width: 36rem;
 }
 
 .scroll-cue {
@@ -73,18 +50,18 @@ header h1 {
   align-items: center;
   gap: 0.3rem;
   margin-top: 1.5rem;
-  color: rgba(255,255,255,0.8);
-  font-size: 0.75rem;
+  color: rgba(250, 245, 233, 0.85);
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   animation: pulse 2.5s ease-in-out infinite;
 }
+
 @keyframes pulse {
   0%, 100% { opacity: 0.5; transform: translateY(0); }
   50%      { opacity: 1;   transform: translateY(4px); }
 }
 
-/* ── Scrollytelling layout ─────────────────────────────────── */
 #scrolly {
   position: relative;
   padding: 0;
@@ -92,20 +69,21 @@ header h1 {
 
 .scrolly-container {
   display: flex;
-  gap: 24px;
-  padding: 0 30px;
+  gap: 1.5rem;
+  padding: 0 1.25rem;
 }
 
 .sticky-chart {
   position: sticky;
-  top: 20px;
+  top: 5.5rem;
   flex: 1 1 58%;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 6rem);
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   margin: 0;
-  background: white;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
 }
 
 #chart {
@@ -127,18 +105,19 @@ header h1 {
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
+
 .chart-legend .legend-item {
   display: flex;
   align-items: center;
   gap: 0.35rem;
 }
+
 .chart-legend .swatch {
   width: 14px;
   height: 3px;
   border-radius: 1px;
 }
 
-/* ── Scroll steps ──────────────────────────────────────────── */
 .scroll-steps {
   flex: 0 0 38%;
   padding: 0 0 50vh;
@@ -148,20 +127,22 @@ header h1 {
   padding-top: 1rem;
   margin-bottom: 2rem;
 }
+
 .step-hero-image img {
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
   display: block;
 }
 
 .step-image {
   margin-top: 0.75rem;
 }
+
 .step-image img {
   width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
   display: block;
 }
 
@@ -180,111 +161,123 @@ header h1 {
 
 .step-content {
   background: var(--color-highlight-bg);
-  border-radius: 5px;
-  padding: 20px 24px;
-  border-left: 4px solid var(--color-brand);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
 }
 
 .step-content h3 {
-  font-size: 1.1em;
-  font-weight: 600;
-  color: var(--color-brand);
-  margin-bottom: 8px;
+  font-size: 1.05em;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--accent);
+  margin-bottom: 0.5rem;
 }
 
 .step-content p {
-  font-size: 0.95em;
-  line-height: 1.7;
-  color: #555;
+  font-size: 0.92em;
+  line-height: 1.65;
+  color: var(--fg-body);
 }
 
 .step-content .step-date {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--color-text-light);
-  margin-top: 10px;
+  margin-top: 0.65rem;
 }
 
-/* ── Footer / summary ─────────────────────────────────────── */
 .outro {
-  background: var(--color-surface);
-  padding: 40px 30px;
+  background: var(--bg-tint);
+  padding: 2.25rem 1.5rem;
   text-align: center;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
 }
-.outro-inner { max-width: 900px; margin: 0 auto; }
+
+.outro-inner { max-width: 56rem; margin: 0 auto; }
+
 .outro h2 {
-  font-size: 1.5em;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--color-brand);
-  margin-bottom: 24px;
+  font-family: var(--font-display);
+  color: var(--accent);
+  margin-bottom: 1.25rem;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
+
 .stat-card {
-  background: white;
-  border-radius: 5px;
-  padding: 20px;
-  border: 1px solid var(--color-border);
+  background: var(--bg-raised);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
+
 .stat-card .stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-brand);
+  font-size: 1.85rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--accent);
   line-height: 1.1;
 }
+
 .stat-card .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-top: 6px;
+  margin-top: 0.35rem;
 }
 
 .colophon {
-  font-size: 0.9em;
-  color: var(--color-text-light);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
 }
 
-/* ── Chart axis & element styling ─────────────────────────── */
 .axis text {
   font-family: var(--font-sans);
   font-size: 11px;
   fill: var(--color-text-muted);
 }
+
 .axis line,
 .axis path {
-  stroke: #ddd;
+  stroke: var(--color-border-input);
 }
+
 .zero-line {
-  stroke: #ccc;
+  stroke: var(--ta-walnut-400);
   stroke-dasharray: 4 3;
 }
+
 .grid-line line {
-  stroke: #eee;
+  stroke: rgba(42, 31, 21, 0.06);
 }
+
 .event-marker line {
   stroke: var(--color-marker);
   stroke-dasharray: 3 2;
 }
+
 .highlight-band {
   fill: var(--color-band);
 }
+
 .active-highlight {
   fill: var(--color-active-highlight);
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  header h1 { font-size: 2em; }
+  .myenergy-hero__title { font-size: 1.65rem !important; }
 
   .scrolly-container {
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0 1rem;
   }
 
   .sticky-chart {
@@ -313,5 +306,11 @@ header h1 {
 @media (max-width: 480px) {
   .stats {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue {
+    animation: none;
   }
 }

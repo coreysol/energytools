@@ -27,39 +27,35 @@ $chartColors = [];
 
 $chartLabels[] = 'VPP';
 $chartValues[] = round($result['net_cost_vpp'], 0);
-$chartColors[] = 'rgba(247, 148, 29, 0.8)';
+$chartColors[] = 'rgba(154, 68, 35, 0.88)';
 
 if ($baseline === 'gas' || $baseline === 'average') {
     $chartLabels[] = 'Gas peaker';
     $chartValues[] = round($result['net_cost_gas'], 0);
-    $chartColors[] = 'rgba(100, 100, 100, 0.8)';
+    $chartColors[] = 'rgba(107, 88, 71, 0.82)';
 }
 if ($baseline === 'battery' || $baseline === 'average') {
     $chartLabels[] = 'Utility-scale battery';
     $chartValues[] = round($result['net_cost_battery'], 0);
-    $chartColors[] = 'rgba(33, 150, 243, 0.8)';
+    $chartColors[] = 'rgba(61, 74, 42, 0.82)';
 }
 
 $baselineLabel = $baseline === 'gas' ? 'gas peaker' : ($baseline === 'battery' ? 'utility-scale battery' : 'average of gas peaker and battery');
 $base = BASE_PATH . '/';
+$energytools_page_title = 'VPP Value Calculator – Results';
+$energytools_design_css_prefix = '../assets';
+$energytools_base_href = $base;
+$energytools_brand_line = 'VPP Value — Results';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="<?php echo htmlspecialchars($base); ?>">
-    <title>VPP Value Calculator – Results</title>
-    <link rel="stylesheet" href="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>VPP Value Calculator – Results</h1>
-            <p class="subtitle">Savings per MW of VPP deployed (utility/ratepayer perspective)</p>
-        </header>
-        <main class="results-container">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<main id="main">
+    <div class="tool-shell tool-shell--wide">
+        <div class="tool-shell__main results-container">
+            <h1 class="tool-page-title">VPP Value Calculator – Results</h1>
+            <p class="tool-page-lede">Savings per MW of VPP deployed (utility/ratepayer perspective).</p>
             <div class="results-header">
                 <h2>Your results</h2>
                 <p>Comparison baseline: <strong><?php echo htmlspecialchars($baselineLabel); ?></strong>. Resource adequacy net costs in 2022 $/MW/year. Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
@@ -80,7 +76,7 @@ $base = BASE_PATH . '/';
                 <div class="chart-container">
                     <canvas id="vppChart"></canvas>
                 </div>
-                <p style="margin-top: 12px; color: #666; font-size: 0.95em;">Lower bar = lower net cost. Savings = difference between the alternative and VPP.</p>
+                <p class="form-note" style="margin-top: 0.75rem;">Lower bar = lower net cost. Savings = difference between the alternative and VPP.</p>
             </div>
 
             <div class="selected-inputs-ref">
@@ -99,8 +95,8 @@ $base = BASE_PATH . '/';
                 % of peak from VPPs: <?php echo number_format((float) $inputs['pct_peak_vpp'], 1); ?>%.
                 <?php endif; ?>
             </div>
-            <div style="margin-top: 30px; text-align: center;">
-                <a href="<?php echo htmlspecialchars(BASE_PATH); ?>/index.php" class="btn-primary">New calculation</a>
+            <div style="margin-top: 1.75rem; text-align: center;">
+                <a href="<?php echo htmlspecialchars(BASE_PATH); ?>/index.php" class="btn btn-primary">New calculation</a>
             </div>
 
             <div class="methods-container">
@@ -164,13 +160,14 @@ $base = BASE_PATH . '/';
                     </section>
                 </div>
             </div>
-        </main>
-
-        <footer>
-            <p>Based on <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023), &ldquo;Real Reliability: The Value of Virtual Power,&rdquo; prepared for Google</a>.</p>
-        </footer>
+        </div>
     </div>
-
+</main>
+<?php
+$energytools_footer_html = '<p>Based on <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023), &ldquo;Real Reliability: The Value of Virtual Power,&rdquo; prepared for Google</a>.</p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+?>
     <script>
         (function() {
             var labels = <?php echo json_encode($chartLabels); ?>;
@@ -215,5 +212,4 @@ $base = BASE_PATH . '/';
             });
         })();
     </script>
-</body>
-</html>
+<?php require __DIR__ . '/../includes/design-close.php'; ?>

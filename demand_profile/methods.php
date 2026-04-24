@@ -4,26 +4,23 @@
  */
 
 require_once __DIR__ . '/includes/config.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculation Methods - Demand Profile Generator</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Calculation Methods</h1>
-            <p class="subtitle">How we build your demand profile</p>
-        </header>
 
-        <main class="methods-container">
+$energytools_page_title = 'Calculation Methods — Demand Profile Generator';
+$energytools_design_css_prefix = '../assets';
+$energytools_brand_line = 'Demand Profile — Methods';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
+?>
+<main id="main">
+    <div class="tool-shell tool-shell--wide">
+        <div class="tool-shell__main methods-container">
             <div class="methods-content">
+                <h1 class="tool-page-title" style="margin-bottom: 0.35rem;">Calculation Methods</h1>
+                <p class="tool-page-lede" style="margin-bottom: 2rem;">How we build your demand profile.</p>
+
                 <h2>Calculation Methods Summary</h2>
-                
+
                 <section class="method-section">
                     <h3>Base Load Profile</h3>
                     <p>
@@ -54,7 +51,7 @@ require_once __DIR__ . '/includes/config.php';
 
                 <section class="method-section">
                     <h3>Seasonal Adjustments</h3>
-                    
+
                     <h4>Air Conditioning (Summer Only)</h4>
                     <ul>
                         <li><strong>Peak cooling hours (2–6 PM):</strong> Additional load = Base kW × (1.0 + (CDD ÷ 2000) × 0.5)</li>
@@ -105,15 +102,15 @@ require_once __DIR__ . '/includes/config.php';
                     </p>
                 </section>
 
-                <div style="margin-top: 40px; text-align: center;">
-                    <a href="index.php" class="btn-primary" style="display: inline-block; text-decoration: none;">Back to Form</a>
+                <div style="margin-top: 2.5rem; text-align: center;">
+                    <a href="index.php" class="btn btn-primary">Back to Form</a>
                 </div>
             </div>
-        </main>
-
-        <footer>
-            <p>This tool generates demand profiles based on typical residential patterns and your inputs.</p>
-        </footer>
+        </div>
     </div>
-</body>
-</html>
+</main>
+<?php
+$energytools_footer_html = '<p>This tool generates demand profiles based on typical residential patterns and your inputs.</p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+require __DIR__ . '/../includes/design-close.php';

@@ -83,23 +83,20 @@ $avgYearRecover = ($avgYearLostRevenue > 0) ? round(($repairCost / $avgYearLostR
 
 // Use htmlspecialchars for all output to prevent XSS
 $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Residential Solar Maintenance Cost Calculator</title>
-    <link rel="stylesheet" href="mcalc.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Residential Solar Maintenance Cost Calculator</h1>
-            <p class="subtitle">Calculate the cost of delayed solar panel repairs</p>
-        </header>
 
-        <main>
+$energytools_page_title = 'Residential Solar Maintenance Cost Calculator';
+$energytools_design_css_prefix = '../assets';
+$energytools_extra_stylesheets = ['mcalc.css'];
+$energytools_brand_line = 'Solar maintenance calculator';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
+?>
+<main id="main">
+    <div class="tool-shell tool-shell--wide">
+        <div class="tool-shell__main">
+            <h1 class="tool-page-title">Residential Solar Maintenance Cost Calculator</h1>
+            <p class="tool-page-lede">Calculate the cost of delayed solar panel repairs.</p>
 <?php if (!empty($_POST['showResults'])): ?>
             <div class="results-container">
                 <div class="results-header">
@@ -170,7 +167,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                         <input type="hidden" name="brokenModuleSize" value="<?php echo (int)$brokenModuleSize; ?>">
                         <input type="hidden" name="stateKwhCosts" value="<?php echo htmlspecialchars((string)(float)$stateKwhCosts, ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="repairCost" value="<?php echo htmlspecialchars((string)(int)$repairCost, ENT_QUOTES, 'UTF-8'); ?>">
-                        <button type="submit" class="btn-primary">Recalculate</button>
+                        <button type="submit" class="btn btn-primary">Recalculate</button>
                     </form>
                 </div>
             </div>
@@ -217,7 +214,7 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
                 <input type="hidden" name="showResults" value="showResults">
                 
                 <div class="form-group">
-                    <button type="submit" class="btn-primary">Calculate</button>
+                    <button type="submit" class="btn btn-primary">Calculate</button>
                 </div>
             </form>
             <script>
@@ -247,13 +244,13 @@ $safeChosenState = htmlspecialchars($chosenState, ENT_QUOTES, 'UTF-8');
             })();
             </script>
 <?php endif; ?>
-        </main>
-
-        <footer>
-            <p>This tool generates estimates based on typical solar production patterns and your inputs.</p>
-            <p class="data-source-note">Electricity cost (kWh) by state: U.S. Energy Information Administration (EIA), State Electricity Profiles, 2024 average retail price (residential), converted to $/kWh. <a href="https://www.eia.gov/electricity/state/" target="_blank" rel="noopener noreferrer">eia.gov/electricity/state</a>. Profile year 2024; release November 10, 2025.</p>
-            <p class="data-source-note">Energy production factor by state: Derived from solar resource and utility-scale PV capacity factor data. EIA state capacity factors (e.g. AZ 29.1%, UT 29.0%, CA 28.4%); NREL ATB capacity factors by resource class (GHI). State factors scaled to relative solar resource (Southwest highest, Northeast/Pacific NW lower). US = 1.20 baseline. <a href="https://www.eia.gov/todayinenergy/detail.php?id=39832" target="_blank" rel="noopener noreferrer">EIA Today in Energy</a>; <a href="https://atb.nrel.gov/electricity/2024/utility-scale_pv" target="_blank" rel="noopener noreferrer">NREL ATB</a>.</p>
-        </footer>
+        </div>
     </div>
-</body>
-</html>
+</main>
+<?php
+$energytools_footer_html = '<p>This tool generates estimates based on typical solar production patterns and your inputs.</p>'
+    . '<p class="data-source-note">Electricity cost (kWh) by state: U.S. Energy Information Administration (EIA), State Electricity Profiles, 2024 average retail price (residential), converted to $/kWh. <a href="https://www.eia.gov/electricity/state/" target="_blank" rel="noopener noreferrer">eia.gov/electricity/state</a>. Profile year 2024; release November 10, 2025.</p>'
+    . '<p class="data-source-note">Energy production factor by state: Derived from solar resource and utility-scale PV capacity factor data. EIA state capacity factors (e.g. AZ 29.1%, UT 29.0%, CA 28.4%); NREL ATB capacity factors by resource class (GHI). State factors scaled to relative solar resource (Southwest highest, Northeast/Pacific NW lower). US = 1.20 baseline. <a href="https://www.eia.gov/todayinenergy/detail.php?id=39832" target="_blank" rel="noopener noreferrer">EIA Today in Energy</a>; <a href="https://atb.nrel.gov/electricity/2024/utility-scale_pv" target="_blank" rel="noopener noreferrer">NREL ATB</a>.</p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+require __DIR__ . '/../includes/design-close.php';

@@ -43,42 +43,41 @@ $og_url    = $preloaded_fact
     : $base_url;
 
 $base_href = BASE_PATH . '/';
+$e = static function (string $s): string {
+    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+};
+$energytools_extra_head_html = '
+    <meta name="description" content="' . $e(mb_substr($og_desc, 0, 160)) . '">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="' . $e($og_title) . '">
+    <meta property="og:description" content="' . $e($og_desc) . '">
+    <meta property="og:image" content="' . $e($og_img) . '">
+    <meta property="og:url" content="' . $e($og_url) . '">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="' . $e($og_title) . '">
+    <meta name="twitter:description" content="' . $e($og_desc) . '">
+    <meta name="twitter:image" content="' . $e($og_img) . '">
+';
+
+$energytools_page_title = 'Energy Facts & Memes';
+$energytools_design_css_prefix = '../assets';
+$energytools_base_href = $base_href;
+$energytools_extra_stylesheets = ['assets/css/style.css'];
+$energytools_brand_line = 'Energy Facts & Memes';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="<?= htmlspecialchars($base_href) ?>">
-    <title>Energy Facts &amp; Memes</title>
-    <meta name="description" content="<?= htmlspecialchars(mb_substr($og_desc, 0, 160)) ?>">
+<main id="main">
+    <div class="tool-shell">
+        <div class="tool-shell__main" id="fact-app"
+             data-base="<?= htmlspecialchars($base_href, ENT_QUOTES, 'UTF-8') ?>"
+             data-current-id="0"
+             data-current-tone=""
+             data-permalink-id="<?= $preloaded_fact ? (int)$preloaded_fact['id'] : '' ?>">
 
-    <meta property="og:type"        content="website">
-    <meta property="og:title"       content="<?= htmlspecialchars($og_title) ?>">
-    <meta property="og:description" content="<?= htmlspecialchars($og_desc) ?>">
-    <meta property="og:image"       content="<?= htmlspecialchars($og_img) ?>">
-    <meta property="og:url"         content="<?= htmlspecialchars($og_url) ?>">
-
-    <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="<?= htmlspecialchars($og_title) ?>">
-    <meta name="twitter:description" content="<?= htmlspecialchars($og_desc) ?>">
-    <meta name="twitter:image"       content="<?= htmlspecialchars($og_img) ?>">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container" id="fact-app"
-         data-base="<?= htmlspecialchars($base_href) ?>"
-         data-current-id="0"
-         data-current-tone=""
-         data-permalink-id="<?= $preloaded_fact ? (int)$preloaded_fact['id'] : '' ?>">
-
-        <header>
-            <h1>Energy Facts</h1>
-            <p class="subtitle">Shareable facts from the clean energy transition</p>
-        </header>
-
-        <main>
+            <h1 class="tool-page-title" style="margin-bottom: 0.35rem;">Energy Facts</h1>
+            <p class="tool-page-lede" style="margin-bottom: 1.25rem;">Shareable facts from the clean energy transition.</p>
 
             <!-- ── Mood selector ─────────────────────────────────── -->
             <div class="tone-selector">
@@ -174,13 +173,13 @@ $base_href = BASE_PATH . '/';
 
             </div><!-- #fact-container -->
 
-        </main>
-
-        <footer>
-            <p>Facts sourced from peer-reviewed research and public reports. &nbsp;&middot;&nbsp; <a href="../">&#8592; All Energy Tools</a></p>
-        </footer>
+        </div>
     </div>
-
-    <script src="assets/js/app.js"></script>
-</body>
-</html>
+</main>
+<?php
+$energytools_footer_html = '<p>Facts sourced from peer-reviewed research and public reports. · <a class="text-link-accent" href="../index.php">All Energy Tools</a></p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+?>
+<script src="assets/js/app.js"></script>
+<?php require __DIR__ . '/../includes/design-close.php'; ?>

@@ -34,24 +34,21 @@ foreach (['include_resilience', 'include_emissions', 'include_ancillary', 'compa
     }
 }
 $base = BASE_PATH . '/';
+$energytools_page_title = 'VPP Value Calculator';
+$energytools_design_css_prefix = '../assets';
+$energytools_base_href = $base;
+$energytools_brand_line = 'VPP Value Calculator';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="<?php echo htmlspecialchars($base); ?>">
-    <title>VPP Value Calculator</title>
-    <link rel="stylesheet" href="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>VPP Value Calculator</h1>
-            <p class="subtitle">Estimate utility savings per MW of virtual power plants deployed. (<a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle report, 2023</a>)</p>
-        </header>
-        <main>
-            <form method="POST" action="<?php echo htmlspecialchars(BASE_PATH); ?>/process.php" id="vppForm">
+<main id="main">
+    <div class="tool-shell tool-shell--wide">
+        <div class="tool-shell__main">
+            <h1 class="tool-page-title">VPP Value Calculator</h1>
+            <p class="tool-page-lede">Estimate utility savings per MW of virtual power plants deployed. (<a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle report, 2023</a>)</p>
+
+            <form method="POST" action="<?php echo htmlspecialchars(BASE_PATH); ?>/process.php" id="vppForm" style="margin-top: 1.5rem;">
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="include_resilience" name="include_resilience" value="1" <?php echo $defaults['include_resilience'] ? 'checked' : ''; ?>>
@@ -194,17 +191,18 @@ $base = BASE_PATH . '/';
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn-primary">Calculate savings per MW</button>
+                    <button type="submit" class="btn btn-primary">Calculate savings per MW</button>
                 </div>
                 <p class="form-note">Methods and assumptions will be displayed on the results page. Results are based on the model in the Brattle report and do not reflect actual value calculated with specificity for a particular utility area.</p>
             </form>
-        </main>
-
-        <footer>
-            <p>Based on <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023), &ldquo;Real Reliability: The Value of Virtual Power,&rdquo; prepared for Google</a>.</p>
-        </footer>
+        </div>
     </div>
-    <script src="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/js/tooltips.js"></script>
-    <script src="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/js/accordion.js"></script>
-</body>
-</html>
+</main>
+<?php
+$energytools_footer_html = '<p>Based on <a href="https://www.brattle.com/wp-content/uploads/2023/04/Real-Reliability-The-Value-of-Virtual-Power_5.3.2023.pdf" target="_blank" rel="noopener noreferrer">Brattle Group (2023), &ldquo;Real Reliability: The Value of Virtual Power,&rdquo; prepared for Google</a>.</p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+?>
+<script src="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/js/tooltips.js"></script>
+<script src="<?php echo htmlspecialchars(BASE_PATH); ?>/assets/js/accordion.js"></script>
+<?php require __DIR__ . '/../includes/design-close.php'; ?>

@@ -46,23 +46,17 @@ foreach ($seasons as $season) {
 // Round up to next nice number (add 10% padding and round up)
 $max_kw = ceil($max_kw * 1.1);
 
+$energytools_page_title = 'Demand Profile Results';
+$energytools_design_css_prefix = '../assets';
+$energytools_brand_line = 'Demand Profile Results';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demand Profile Results</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Demand Profile Results</h1>
-        </header>
-
-        <main class="results-container">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<main id="main">
+    <div class="tool-shell tool-shell--wide">
+        <div class="tool-shell__main results-container">
             <div class="results-header">
                 <h2>Your Demand Profile</h2>
                 <p>Based on your inputs:</p>
@@ -89,24 +83,22 @@ $max_kw = ceil($max_kw * 1.1);
             <div class="download-section">
                 <h3>Download Your Data</h3>
                 <p>Download the complete 15-minute interval data in Green Button CSV format:</p>
-                <a href="download.php" class="download-btn">Download CSV File</a>
+                <a href="download.php" class="btn btn-primary download-btn">Download CSV File</a>
             </div>
             <?php endif; ?>
 
-            <div style="margin-top: 30px; text-align: center;">
-                <a href="index.php" class="btn-primary" style="display: inline-block; text-decoration: none;">Generate New Profile</a>
+            <div style="margin-top: 1.75rem; text-align: center;">
+                <a href="index.php" class="btn btn-primary">Generate New Profile</a>
             </div>
-        </main>
-
-        <footer>
-            <p>Results are based on typical residential load patterns and your inputs.</p>
-        </footer>
+        </div>
     </div>
-
+</main>
+<?php
+$energytools_footer_html = '<p>Results are based on typical residential load patterns and your inputs.</p>';
+$energytools_footer_append = '';
+require __DIR__ . '/../includes/design-footer.php';
+?>
     <script>
-        // Chart configuration
-        // X-axis: Hours of day (0-23, starting at midnight on left)
-        // Y-axis: kW usage
         const chartOptions = {
             type: 'line',
             options: {
@@ -151,26 +143,30 @@ $max_kw = ceil($max_kw * 1.1);
             }
         };
 
-        // Create charts for each season
-        <?php foreach ($seasons as $season): ?>
+        <?php
+        $colors = [
+            'spring' => ['stroke' => 'rgb(61, 74, 42)', 'fill' => 'rgba(61, 74, 42, 0.2)'],
+            'summer' => ['stroke' => 'rgb(184, 130, 45)', 'fill' => 'rgba(184, 130, 45, 0.2)'],
+            'fall' => ['stroke' => 'rgb(196, 107, 66)', 'fill' => 'rgba(196, 107, 66, 0.2)'],
+            'winter' => ['stroke' => 'rgb(107, 88, 71)', 'fill' => 'rgba(107, 88, 71, 0.2)'],
+        ];
+        foreach ($seasons as $season):
+        ?>
         const data<?php echo ucfirst($season); ?> = {
             labels: [<?php for ($hour = 0; $hour < 24; $hour++): ?><?php echo $hour; ?><?php echo $hour < 23 ? ',' : ''; ?><?php endfor; ?>],
             datasets: [{
                 label: 'Average kW',
                 data: [
-                    <?php 
+                    <?php
                     $hour_data = $seasonal_data[$season];
-                    for ($hour = 0; $hour < 24; $hour++): 
+                    for ($hour = 0; $hour < 24; $hour++):
                         $kw = $hour_data[$hour] ?? 0;
                     ?>
                     <?php echo number_format($kw, 2); ?><?php echo $hour < 23 ? ',' : ''; ?>
                     <?php endfor; ?>
                 ],
-                borderColor: '<?php 
-                    $colors = ['spring' => 'rgb(76, 175, 80)', 'summer' => 'rgb(255, 152, 0)', 'fall' => 'rgb(156, 39, 176)', 'winter' => 'rgb(33, 150, 243)'];
-                    echo $colors[$season];
-                ?>',
-                backgroundColor: '<?php echo $colors[$season]; ?>33',
+                borderColor: '<?php echo $colors[$season]['stroke']; ?>',
+                backgroundColor: '<?php echo $colors[$season]['fill']; ?>',
                 borderWidth: 2,
                 pointRadius: 3,
                 pointHoverRadius: 5
@@ -186,5 +182,4 @@ $max_kw = ceil($max_kw * 1.1);
         );
         <?php endforeach; ?>
     </script>
-</body>
-</html>
+<?php require __DIR__ . '/../includes/design-close.php'; ?>

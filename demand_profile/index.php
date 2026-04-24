@@ -38,30 +38,27 @@ if (isset($_GET['has_wfh'])) {
 if (isset($_GET['has_ev'])) {
     $has_ev = true;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demand Profile Generator</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Demand Profile Generator</h1>
-            <p class="subtitle">Generate residential electricity demand profiles based on your home characteristics</p>
-        </header>
 
-        <main>
-            <form method="POST" action="process.php" id="demandForm">
+$energytools_page_title = 'Demand Profile Generator';
+$energytools_design_css_prefix = '../assets';
+$energytools_brand_line = 'Demand Profile Generator';
+$energytools_home_href = '../index.php';
+require __DIR__ . '/../includes/design-head.php';
+require __DIR__ . '/../includes/design-header.php';
+?>
+<main id="main">
+    <div class="tool-shell">
+        <div class="tool-shell__main">
+            <h1 class="tool-page-title">Demand Profile Generator</h1>
+            <p class="tool-page-lede">Generate residential electricity demand profiles based on your home characteristics.</p>
+
+            <form method="POST" action="process.php" id="demandForm" style="margin-top: 1.75rem;">
                 <div class="form-group">
                     <label for="zip_code">Zip Code <span class="required">*</span></label>
-                    <input 
-                        type="text" 
-                        id="zip_code" 
-                        name="zip_code" 
+                    <input
+                        type="text"
+                        id="zip_code"
+                        name="zip_code"
                         value="<?php echo $zip_code; ?>"
                         placeholder="12345"
                         maxlength="5"
@@ -76,10 +73,10 @@ if (isset($_GET['has_ev'])) {
 
                 <div class="form-group">
                     <label for="annual_kwh">Annual kWh Usage <span class="required">*</span></label>
-                    <input 
-                        type="number" 
-                        id="annual_kwh" 
-                        name="annual_kwh" 
+                    <input
+                        type="number"
+                        id="annual_kwh"
+                        name="annual_kwh"
                         value="<?php echo $annual_kwh; ?>"
                         placeholder="12000"
                         min="1000"
@@ -95,10 +92,10 @@ if (isset($_GET['has_ev'])) {
 
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
-                        <input 
-                            type="checkbox" 
-                            id="has_ac" 
-                            name="has_ac" 
+                        <input
+                            type="checkbox"
+                            id="has_ac"
+                            name="has_ac"
                             value="1"
                             <?php echo $has_ac ? 'checked' : ''; ?>
                         >
@@ -108,10 +105,10 @@ if (isset($_GET['has_ev'])) {
 
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
-                        <input 
-                            type="checkbox" 
-                            id="has_heating" 
-                            name="has_heating" 
+                        <input
+                            type="checkbox"
+                            id="has_heating"
+                            name="has_heating"
                             value="1"
                             <?php echo $has_heating ? 'checked' : ''; ?>
                         >
@@ -121,10 +118,10 @@ if (isset($_GET['has_ev'])) {
 
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
-                        <input 
-                            type="checkbox" 
-                            id="has_wfh" 
-                            name="has_wfh" 
+                        <input
+                            type="checkbox"
+                            id="has_wfh"
+                            name="has_wfh"
                             value="1"
                             <?php echo $has_wfh ? 'checked' : ''; ?>
                         >
@@ -134,10 +131,10 @@ if (isset($_GET['has_ev'])) {
 
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
-                        <input 
-                            type="checkbox" 
-                            id="has_ev" 
-                            name="has_ev" 
+                        <input
+                            type="checkbox"
+                            id="has_ev"
+                            name="has_ev"
                             value="1"
                             <?php echo $has_ev ? 'checked' : ''; ?>
                         >
@@ -146,7 +143,7 @@ if (isset($_GET['has_ev'])) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn-primary">Generate Demand Profile</button>
+                    <button type="submit" class="btn btn-primary">Generate Demand Profile</button>
                 </div>
             </form>
 
@@ -188,34 +185,28 @@ if (isset($_GET['has_ev'])) {
                     For exact historical usage, download Green Button or interval data from your
                     electric utility if available.
                 </p>
-                <p style="margin-top: 20px;">
-                    <a href="methods.php" style="color: #f7941d; font-weight: 600; text-decoration: underline;">
-                        Learn more about the calculation methods and formulas used →
-                    </a>
+                <p style="margin-top: 1.25rem;">
+                    <a href="methods.php" class="text-link-accent">Learn more about the calculation methods and formulas used →</a>
                 </p>
             </section>
-        </main>
-
-        <footer>
-            <p>This tool generates demand profiles based on typical residential patterns and your inputs.</p>
-            <?php
-            // Get git commit hash for version number
-            $git_version = '';
-            // Find git repository root (may be in parent directory)
-            $git_root = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && git rev-parse --show-toplevel 2>/dev/null');
-            if ($git_root) {
-                $git_root = trim($git_root);
-                $git_hash = shell_exec('cd ' . escapeshellarg($git_root) . ' && git rev-parse --short HEAD 2>/dev/null');
-                if ($git_hash) {
-                    $git_version = trim($git_hash);
-                }
-            }
-            if ($git_version): ?>
-                <p style="margin-top: 10px; font-size: 0.9em; color: #666;">Version: <?php echo htmlspecialchars($git_version); ?></p>
-            <?php endif; ?>
-        </footer>
+        </div>
     </div>
-
-    <script src="assets/js/form-validation.js"></script>
-</body>
-</html>
+</main>
+<?php
+$git_version = '';
+$git_root = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && git rev-parse --show-toplevel 2>/dev/null');
+if ($git_root) {
+    $git_root = trim($git_root);
+    $git_hash = shell_exec('cd ' . escapeshellarg($git_root) . ' && git rev-parse --short HEAD 2>/dev/null');
+    if ($git_hash) {
+        $git_version = trim($git_hash);
+    }
+}
+$energytools_footer_html = '<p>This tool generates demand profiles based on typical residential patterns and your inputs.</p>';
+$energytools_footer_append = $git_version !== ''
+    ? '<p class="footer-version">Version: ' . htmlspecialchars($git_version, ENT_QUOTES, 'UTF-8') . '</p>'
+    : '';
+require __DIR__ . '/../includes/design-footer.php';
+?>
+<script src="assets/js/form-validation.js"></script>
+<?php require __DIR__ . '/../includes/design-close.php'; ?>
