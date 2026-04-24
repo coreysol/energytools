@@ -3,10 +3,13 @@
  * Sticky site header. Requires:
  *   $energytools_brand_line (string) — subtitle next to "Energy Tools"
  *   $energytools_home_href (string) — link to hub (e.g. '../index.php' or 'index.php')
+ * Optional:
+ *   $energytools_site_home_href (string) — main site root (default '/')
  */
 if (!isset($energytools_brand_line, $energytools_home_href)) {
     throw new InvalidArgumentException('design-header.php: set $energytools_brand_line and $energytools_home_href');
 }
+$energytools_site_home_href = $energytools_site_home_href ?? '/';
 ?>
 <body class="tool-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -20,6 +23,7 @@ if (!isset($energytools_brand_line, $energytools_home_href)) {
         <nav class="site-nav" aria-label="Site">
             <ul class="site-nav__list">
                 <li><a class="site-nav__link" href="<?= htmlspecialchars($energytools_home_href, ENT_QUOTES, 'UTF-8') ?>">All tools</a></li>
+                <li><a class="site-nav__link" href="<?= htmlspecialchars($energytools_site_home_href, ENT_QUOTES, 'UTF-8') ?>">Home</a></li>
             </ul>
         </nav>
     </div>
