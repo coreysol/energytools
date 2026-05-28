@@ -239,6 +239,65 @@
   color: var(--fg-muted);
 }
 
+.myenergy-hero__subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 36rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(250, 245, 233, 0.92);
+}
+
+.community {
+  background: var(--bg-raised);
+  padding: 2.25rem 1.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.community__inner {
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.community h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+.community__intro {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--fg-body);
+}
+
+.community__prompts {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.community__prompts li {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--bg-tint);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--fg-body);
+}
+
+.community__cta {
+  margin: 0;
+}
+
 .axis text {
   font-family: var(--font-sans);
   font-size: 11px;
